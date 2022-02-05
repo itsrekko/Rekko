@@ -4,7 +4,7 @@ module.exports = class Response {
         this.statusCode = 500; // default error code
     }
 
-    constructResponseObject(message, headerJSON = undefined, errorValues = undefined){
+    constructResponseObject(message, headerJSON = undefined, data = undefined, errorValues = undefined){
         // construct statusCode
         if (errorValues === undefined){
             this.statusCode = 200;
@@ -35,7 +35,8 @@ module.exports = class Response {
         return {
             statusCode: this.statusCode,
             headers: this.headers,
-            message: message
+            message: message,
+            data: data
         }
     }
 }
