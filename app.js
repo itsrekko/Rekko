@@ -7,17 +7,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 
-
 // routes
 var indexRouter = require('./routes/index.route');
 var app = express();
-
-// database setup
-require('./database');
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
 
 // react routes
 app.use(express.static(path.join(__dirname, "client", "build")));
@@ -25,6 +17,13 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
+
+// database setup
+require('./database');
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
