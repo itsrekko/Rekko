@@ -1,29 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-import { Home } from './pages/Home';
 import {Component} from 'react';
-import { Navbar } from './layout/Navbar';
+import {Title} from './components/Title';
+import SearchBar from './components/SearchBar';
 export default class App extends Component {
-  constructor(props){
-    super(props);
-  }
-
   render() {
     return (
       <div className="App">
-        <Navbar/>
         <header className="App-header">
-          <Home/>
+          <h1 className="App-title">
+            <Title/>
+          </h1>
         </header>
         <body className="App-body">
-          <p>body component will go here</p>
+          <SearchBar/>
         </body>
       </div>
     ); 
   }
 }
-
-
-/*
-<img src={logo} className="App-logo" alt="logo" />
-*/
