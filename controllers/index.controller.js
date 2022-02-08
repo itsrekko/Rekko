@@ -45,10 +45,6 @@ exports.test = (req, res, next) => {
     res.send("Hello darkness my old friend");
 };
 
-exports.home = (req, res, next) => {
-    res.render('index', { title: 'Express' });
-};
-
 exports.getAllUsers = async (req, res, next) => {
     var responseVal = undefined;
     try{
