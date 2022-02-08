@@ -1,7 +1,7 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var cors = require('cors');
 var express = require('express');
-var mongoose = require('mongoose');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -9,7 +9,7 @@ var logger = require('morgan');
 
 
 // routes
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index.route');
 var app = express();
 
 // database setup
@@ -18,6 +18,13 @@ require('./database');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+// react file builder
+app.use(express.static(path.join(__dirname, "client", "build")));
+// react root
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
