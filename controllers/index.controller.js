@@ -1,7 +1,24 @@
 const Response = require('../util/response');
 const userModel = require('../models/user.model');
 const errorTypes = require('../consts/errorTypes');
+const userinfoModel = require('../models/userinfo.model');
 const responseObj = new Response();
+
+async function updateUserLogin(userID){
+    let newUserLogin  = new userinfoModel({
+        UserId: userID,
+        LoginStatus: true // might need to rethink this method by passing it in the param of the method
+    });
+
+    await newUserLogin.save(function(err){
+        if (err){
+            console.error(`Failed to create new user with error: ${err}`);
+            throw(err);
+        }
+    });
+
+    return newUserLogin;
+}
 
 async function getAllUsers(){
     return await userModel.find({})
@@ -77,6 +94,8 @@ exports.createNewUser = async (req, res, next) => {
             // check if the user exists first
             let userCheck = await checkIfUserExists(userLogin);
             if (userCheck){
+                // create a login value
+                await updateUserLogin(userCheck?._id);
                 responseVal = responseObj.constructResponseObject(`User with login ${userLogin} already exists`, req.headers, 
                 {
                     "UserLogin": userLogin,
@@ -86,6 +105,8 @@ exports.createNewUser = async (req, res, next) => {
             }
             else{
                 const mongoRequest = await addNewUser(userLogin);
+                // create a login value
+                await updateUserLogin(mongoRequest?._id);
                 responseVal = responseObj.constructResponseObject(`Successfully created a user with login ${userLogin}`, req.headers, mongoRequest);
             }
         }
