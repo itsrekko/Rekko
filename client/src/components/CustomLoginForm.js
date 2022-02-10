@@ -1,10 +1,11 @@
-import { Component } from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {Typography} from '@material-ui/core';
+import {withStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@mui/material/Button';
 import CustomStyler from "../util/CustomStyler";
-import { Typography } from '@material-ui/core';
+import axios from 'axios';
 
 class CustomRoundLoginForm extends Component {
     constructor(props) {
@@ -22,9 +23,20 @@ class CustomRoundLoginForm extends Component {
     };
 
     handleSubmit = async (event) => {
-        console.log('event clicked', event);
-        window.alert(`hi user ${this.state.username}`);
-        
+        await axios.post('check_and_create_new_user', {
+            userLogin: this.state.username
+        })
+        .then(res => {
+            console.log(res.data['data']);
+            if (res.data['data']['existingUser']){
+                console.log('old user');
+                // take back to the search screen
+            }
+            else{
+                console.log('new user');
+                // show the product component
+            }
+        });
     }
     render(){
         const {classes} = this.props;

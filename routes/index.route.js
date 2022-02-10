@@ -5,7 +5,7 @@ var indexController = require('../controllers/index.controller');
 /* GET home page. */
 router.get('/', indexController.home);
 router.get('/test', indexController.test)
-router.get('/getAllUsers', indexController.getAllUsers);
-router.post('/createNewUser', indexController.createNewUser);
+router.get('/get_all_users', indexController.getAllUsers);
+router.post('/check_and_create_new_user', indexController.createNewUser);
 
 module.exports = router;

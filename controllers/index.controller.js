@@ -77,7 +77,12 @@ exports.createNewUser = async (req, res, next) => {
             // check if the user exists first
             let userCheck = await checkIfUserExists(userLogin);
             if (userCheck){
-                responseVal = responseObj.constructResponseObject(`User with login ${userLogin} already exists`, req.headers, null, errorTypes.default.duplicateUserError)
+                responseVal = responseObj.constructResponseObject(`User with login ${userLogin} already exists`, req.headers, 
+                {
+                    "UserLogin": userLogin,
+                    "_id": userCheck?._id,
+                    "existingUser": true
+                });
             }
             else{
                 const mongoRequest = await addNewUser(userLogin);
