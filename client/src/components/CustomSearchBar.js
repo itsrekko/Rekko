@@ -5,53 +5,10 @@ import TextField from '@material-ui/core/TextField';
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
+import CustomStyler from "../util/CustomStyler";;
 
-const styles = () => ({
-  container: {
-    marginTop: '25px',
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    backgroundColor: '#F5F5F7',
-    width: '40vw',
-    "@media (max-width: 1675px)": { width: "50vw" },
-    "@media (max-width: 768px)": { width: "60vw" },
-    "@media (max-width: 490px)": { width: "78vw" },
-    borderRadius: '25px',
-    "& label": {
-      width: "100%",
-      textAlign: "center",
-      transformOrigin: "center",
-        "&.Mui-focused": {
-          transformOrigin: "center"
-        }
-     }
-  },
 
-  cssLabel: {
-    color: '#A0A5BD',
-  },
-
-  cssOutlinedInput: {
-    '&$cssFocused $notchedOutline': {
-      borderColor: `#F5F5F7 !important`,
-      borderRadius: '25px',
-    },
-  },
-
-  cssFocused: {
-    color: 'black',
-  },
-
-  notchedOutline: {
-    borderRadius: '25px',
-    borderWidth: '1px',
-    borderColor: '#F5F5F7 !important',
-  },
-});
-
-class CustomTextField extends React.Component {
+class CustomSearchBar extends React.Component {
   state = {
     name: '',
   };
@@ -63,7 +20,7 @@ class CustomTextField extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const {classes} = this.props;
 
     return (
       <form className={classes.container} noValidate autoComplete="off">
@@ -105,8 +62,8 @@ class CustomTextField extends React.Component {
   }
 }
 
-CustomTextField.propTypes = {
+CustomSearchBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CustomTextField);
+export default withStyles(CustomStyler)(CustomSearchBar);

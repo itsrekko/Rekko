@@ -1,20 +1,36 @@
 import './App.css';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import {Component} from 'react';
-import {Title} from './components/Title';
-import SearchBar from './components/SearchBar';
+import Login from './pages/Login';
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      'Poiret One',
+      'Regular 400',
+    ].join(','),
+  },});
+
 export default class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      currentScreen: []
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+        currentScreen: <Login appContext={this}/>
+    })
+}
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">
-            <Title/>
-          </h1>
-        </header>
-        <body className="App-body">
-          <SearchBar/>
-        </body>
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          {this.state.currentScreen}
+        </div>
+      </ThemeProvider>
     ); 
   }
 }

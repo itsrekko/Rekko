@@ -2,6 +2,11 @@
   text-align: center;
   background-color: #F2E1D8;
   height: 100vh;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
 }
 
 .App-logo {
