@@ -1,14 +1,12 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import '../assets/css/login.css';
 import CustomRoundLoginForm from "../components/CustomLoginForm";
 
 class Login extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            user: undefined
-        }
-    };
+        this.state = {};
+    }
 
     render(){
         return(
@@ -22,7 +20,7 @@ class Login extends Component {
                     </p>
                 </header>
                 <body>
-                    <CustomRoundLoginForm/>
+                    <CustomRoundLoginForm appContext={this.props.appContext}/>
                 </body>
             </div>
         );

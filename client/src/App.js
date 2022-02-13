@@ -1,7 +1,8 @@
 import './App.css';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
-import {Component} from 'react';
+import React, {Component} from 'react';
 import Login from './pages/Login';
+
 const theme = createTheme({
   typography: {
     fontFamily: [

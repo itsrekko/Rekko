@@ -1,17 +1,19 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Typography} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@mui/material/Button';
+import Button from '@material-ui/core/Button';
 import CustomStyler from "../util/CustomStyler";
+import WelcomeUser from '../pages/WelcomeUser';
 import axios from 'axios';
 
 class CustomRoundLoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: ''
+            username: '',
+            userid: ''
         }
     }
 
@@ -19,23 +21,30 @@ class CustomRoundLoginForm extends Component {
         this.setState({
           [username]: event.target.value,
         });
-        console.log(this.state.username)
     };
 
     handleSubmit = async (event) => {
         await axios.post('check_and_create_new_user', {
             userLogin: this.state.username
         })
-        .then(res => {
-            console.log(res.data['data']);
+        .then(res => {            
+            this.setState({
+                userid: res.data['data']['_id']
+            });
+
             if (res.data['data']['existingUser']){
                 console.log('old user');
                 // take back to the search screen
             }
             else{
                 console.log('new user');
-                // show the product component
             }
+            
+            this.props.appContext.setState({
+                username: this.state.username,
+                userid: res.data['data']['_id'],
+                currentScreen: <WelcomeUser appContext={this.props.appContext}/>
+            })
         });
     }
     render(){
@@ -85,9 +94,10 @@ class CustomRoundLoginForm extends Component {
                     onClick={this.handleSubmit}
                 >
                     <Typography style={{
-                        fontWeight: 400,
-                        lineHeight: '40.95px',
-                        fontSize: '17px'
+                        fontWeight: 550,
+                        lineHeight: '21.47px',
+                        fontSize: '17px',
+                        color: '#FFFFFF'
                     }}>
                         Continue
                     </Typography>

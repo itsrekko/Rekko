@@ -9,14 +9,7 @@ async function updateUserLogin(userID){
         UserId: userID,
         LoginStatus: true // might need to rethink this method by passing it in the param of the method
     });
-
-    await newUserLogin.save(function(err){
-        if (err){
-            console.error(`Failed to create new user with error: ${err}`);
-            throw(err);
-        }
-    });
-
+    await newUserLogin.save();
     return newUserLogin;
 }
 
@@ -45,14 +38,7 @@ async function addNewUser(userLogin){
     let newUser = new userModel({
         UserLogin: userLogin
     });
-
-    await newUser.save(function(err){
-        if (err){
-            console.error(`Failed to create new user with error: ${err}`);
-            throw(err);
-        }
-    });
-
+    await newUser.save();
     return newUser;
 }
 
@@ -113,7 +99,7 @@ exports.createNewUser = async (req, res, next) => {
         
     }
     catch (error){
-        responseVal = responseObj.constructResponseObject(error.message, error['statusCode'], null, error.name)
+        responseVal = responseObj.constructResponseObject(error.message || 'Internal server error', error.headers, null, error.name || errorTypes.default.serverError)
     }
     finally{
         res.status(responseVal.statusCode).send(responseVal);

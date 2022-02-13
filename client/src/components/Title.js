@@ -1,4 +1,4 @@
-import {Typography} from '@mui/material';
+import Typography from '@material-ui/core/Typography';
 
 export const Title = () => {
     return(
