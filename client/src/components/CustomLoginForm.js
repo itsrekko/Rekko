@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CustomStyler from "../util/CustomStyler";
 import WelcomeUser from '../pages/WelcomeUser';
+import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 
 class CustomRoundLoginForm extends Component {
@@ -50,7 +51,12 @@ class CustomRoundLoginForm extends Component {
     render(){
         const {classes} = this.props;
         return(
-            <div>
+            <Grid
+                container
+                direction={'column'}
+                justifyContent={'center'}
+                alignItems={'center'}
+            >
                 <TextField
                     id="standard-name"
                     label="Username"
@@ -102,7 +108,7 @@ class CustomRoundLoginForm extends Component {
                         Continue
                     </Typography>
                 </Button>
-            </div>
+            </Grid>
         );
     }
 }
