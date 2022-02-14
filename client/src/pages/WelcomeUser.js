@@ -9,7 +9,9 @@ class WelcomeUser extends Component {
             ...props
         }
     }
+
     changeToHomeScreen = (event) => {
+        console.log("I am coming here");
         this.props.appContext.setState({
             currentScreen: <Home appContext={this.props.appContext}/>
         })

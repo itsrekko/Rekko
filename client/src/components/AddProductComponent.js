@@ -101,6 +101,7 @@ class AddProductComponent extends Component {
         })
         .then(res => {
             window.alert('Review Added');
+            this.state.buttonAction();
         });
     }
     

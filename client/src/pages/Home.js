@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Search from "@material-ui/icons/Search";
+import CustomSearchBar from '../components/CustomSearchBar';
 
 class Home extends Component {
     constructor(props){
@@ -9,7 +9,7 @@ class Home extends Component {
     
     render(){
         return(
-            <Search/>
+            <CustomSearchBar/>
         );
     }
 }
