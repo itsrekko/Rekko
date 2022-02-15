@@ -12,6 +12,13 @@ var indexRouter = require('./routes/index.route');
 var productRouter = require('./routes/product.route');
 var app = express();
 
+app.set('forceSSLOptions', {
+  enable301Redirects: true,
+  trustXFPHeader: false,
+  httpsPort: 443,
+  sslRequiredMessage: 'SSL Required.'
+});
+
 // react routes
 app.use(express.static(path.join(__dirname, "client", "build")));
 // react root
