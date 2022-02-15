@@ -14,7 +14,8 @@ class CustomRoundLoginForm extends Component {
         super(props);
         this.state = {
             username: '',
-            userid: ''
+            userid: '',
+            existingUser: false
         }
     }
 
@@ -34,17 +35,24 @@ class CustomRoundLoginForm extends Component {
             });
 
             if (res.data['data']['existingUser']){
-                console.log('old user');
-                // take back to the search screen
+                this.setState({
+                    existingUser: true
+                })
             }
             else{
-                console.log('new user');
+                this.setState({
+                    existingUser: false
+                })
             }
             
             this.props.appContext.setState({
                 username: this.state.username,
                 userid: res.data['data']['_id'],
-                currentScreen: <WelcomeUser appContext={this.props.appContext}/>
+                existingUser: this.state.existingUser,
+                currentScreen: <WelcomeUser
+                                    existingUser={this.state.existingUser}
+                                    appContext={this.props.appContext}
+                                />
             })
         });
     }

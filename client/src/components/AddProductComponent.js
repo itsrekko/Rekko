@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
     },
     customTitle: {
         color: '#6C5B57',
-        marginTop: '25px',
+        paddingTop: '32px',
         fontSize: '18px',
         fontWeight: 'bold',
         marginLeft: '20px',
@@ -100,7 +100,6 @@ class AddProductComponent extends Component {
             reviewText: this.state.review
         })
         .then(res => {
-            window.alert('Review Added');
             this.state.buttonAction();
         });
     }
