@@ -5,6 +5,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var enforce = require('express-sslify');
 var logger = require('morgan');
 
 // routes
@@ -12,12 +13,7 @@ var indexRouter = require('./routes/index.route');
 var productRouter = require('./routes/product.route');
 var app = express();
 
-app.set('forceSSLOptions', {
-  enable301Redirects: true,
-  trustXFPHeader: false,
-  httpsPort: 443,
-  sslRequiredMessage: 'SSL Required.'
-});
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 // react routes
 app.use(express.static(path.join(__dirname, "client", "build")));
