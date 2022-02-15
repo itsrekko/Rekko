@@ -5,7 +5,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var enforce = require('express-sslify');
 var logger = require('morgan');
 
 // routes
@@ -13,7 +12,14 @@ var indexRouter = require('./routes/index.route');
 var productRouter = require('./routes/product.route');
 var app = express();
 
-app.use(enforce.HTTPS({ trustProtoHeader: true }))
+if(process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    else
+      next()
+  })
+}
 
 // react routes
 app.use(express.static(path.join(__dirname, "client", "build")));
