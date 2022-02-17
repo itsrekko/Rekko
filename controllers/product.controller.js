@@ -1,15 +1,65 @@
 const Response = require('../util/response');
 const errorTypes = require('../consts/errorTypes');
-const Product = require('../models/product.model');
-const Review = require('../models/review.model');
+const productModel = require('../models/product.model');
+const reviewModel = require('../models/review.model');
+
 const responseObj = new Response();
 var indexController = require('./index.controller');
 
-async function createNewReview(userModel, productModel, lengthOfUse, reviewText){
-    let newUserReview = new Review({
-        User: userModel,
-        Product: productModel,
-        LengthOfUse: lengthOfUse,
+async function getAllProducts() {
+    return await productModel.find({})
+    .then(results => {
+        return results;
+    })
+    .catch(error => {
+        console.error(`Failed to fetch all products with error: ${error}`)
+    })
+}
+
+exports.getAllProducts = async (req, res, next) => {
+    var responseVal = undefined;
+    try{
+        const mongoRequest = await getAllProducts();
+        responseVal = responseObj.constructResponseObject(`Successfully fetched all products`, req.headers, mongoRequest);
+    }
+    catch (error){
+        responseVal = responseObj.constructResponseObject(error.message, error['statusCode'], null, error.name)
+    }
+    finally{
+        res.status(responseVal.statusCode).send(responseVal);
+    }
+}
+
+async function getProductsByProductName(productName) {
+
+    return await productModel.find({ProductName: productName})
+    .then(results => {
+        return results;
+    })
+    .catch(error => {
+        console.error(`Failed to fetch product for product name: ${productName} with error: ${error}`)
+    })
+}
+
+exports.getProductsByProductName = async (req, res, next) => {
+    var responseVal = undefined;
+    const productName = req.query.productName;
+    try{
+        const mongoRequest = await getProductsByProductName(productName);
+        responseVal = responseObj.constructResponseObject(`Successfully fetched product for product name ${productName}`, req.headers, mongoRequest);
+    }
+    catch (error){
+        responseVal = responseObj.constructResponseObject(error.message, error['statusCode'], null, error.name)
+    }
+    finally{
+        res.status(responseVal.statusCode).send(responseVal);
+    }
+}
+
+async function createNewReview(userID, productID, reviewText) {
+    let newUserReview = new reviewModel({
+        UserId: userID,
+        ProductId: productID,
         ReviewText: reviewText
     });
 
@@ -29,12 +79,12 @@ async function checkIfProductExists(productBrand, productName){
     });
 }
 
-async function addOrUpdateProduct(productBrand, productName, productURI = null){
+async function addOrUpdateProduct(productBrand, productName, productURI = null) {
     let productCheck = await checkIfProductExists(productBrand, productName);
     if (productCheck){
         if (productURI && productURI !== null && productURI !== undefined & productURI !== ''){
             // update the product
-            return await Product.findOneAndUpdate({_id: productCheck?._id}, 
+            return await productModel.findOneAndUpdate({_id: productCheck?._id}, 
                 {$set:{ProductURI:productURI}},
                 {new: true})
             .then(result => {
@@ -50,7 +100,7 @@ async function addOrUpdateProduct(productBrand, productName, productURI = null){
         }
     }
     else{
-        let newProduct = new Product({
+        let newProduct = new productModel({
             ProductBrand: productBrand,
             ProductName: productName,
             ProductURI: productURI != null ? productURI : ''

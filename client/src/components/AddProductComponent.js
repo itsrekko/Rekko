@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
+import Home from '../pages/Home';
 
 const useStyles = makeStyles(() => ({
     button: {
@@ -97,7 +98,6 @@ class AddProductComponent extends Component {
             productBrand: this.state.brand,
             productName: this.state.product,
             lengthOfUse: this.state.lengthOfUse,
-            //productURI = ; // ignore for now. Talk about it on the standup
             reviewText: this.state.review
         })
         .then(res => {

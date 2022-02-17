@@ -1,0 +1,17 @@
+.card-row {
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    max-height: fit-content;
+    max-width: 85%;
+}
+
+.card {
+    align-items: stretch;
+    flex-direction: column;
+}
+
+.searchbar-container {
+    padding-bottom: 10vw;
+}
