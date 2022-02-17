@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
-import CustomStyler from "../util/CustomStyler";;
+import CustomStyler from "../utils/CustomStyler";;
 
 
 class CustomSearchBar extends React.Component {
@@ -21,12 +21,10 @@ class CustomSearchBar extends React.Component {
 
   render() {
     const {classes} = this.props;
-
     return (
-      <form className={classes.container} noValidate autoComplete="off">
         <TextField
-          id="standard-name"
-          label="Search for a product or friend"
+          id="home-search-bar"
+          placeholder="Search for a product or friend"
           className={classes.textField}
           value={this.state.name}
           onChange={this.handleChange('name')}
@@ -57,7 +55,6 @@ class CustomSearchBar extends React.Component {
             inputMode: 'numeric',
           }}
         />
-      </form>
     );
   }
 }

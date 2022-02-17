@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import CustomStyler from "../util/CustomStyler";
+import CustomStyler from "../utils/CustomStyler";
 import WelcomeUser from '../pages/WelcomeUser';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
@@ -26,7 +26,7 @@ class CustomRoundLoginForm extends Component {
     };
 
     handleSubmit = async (event) => {
-        await axios.post('check_and_create_new_user', {
+        await axios.post('user/checkAndCreateNewUser', {
             userLogin: this.state.username
         })
         .then(res => {            

@@ -12,11 +12,11 @@ let reviewSchema = new Schema({
         ref: 'Product',
         required: true
     },
-    ReviewText: { 
+    ReviewText: {
         type: String,
         required: true
     },
-    ReviwedAt: {
+    ReviewedAt: {
         type : Date, 
         default: Date.now
     }

@@ -6,11 +6,11 @@ let productSchema = new Schema({
         type: String, 
         required: true
     },
-    ProductName: { 
+    ProductName: {
         type: String,
         required: true
     },
-    ProductURI: { 
+    ProductURI: {
         type: String,
         default: ''
     },

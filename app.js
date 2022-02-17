@@ -8,8 +8,10 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 // routes
-var indexRouter = require('./routes/index.route');
+var indexRouter = require('./routes/index.route')
+var userRouter = require('./routes/user.route');
 var productRouter = require('./routes/product.route');
+var reviewRouter = require('./routes/review.route');
 var app = express();
 
 if(process.env.NODE_ENV === 'production') {
@@ -48,7 +50,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', indexRouter);
+app.use('/user', userRouter);
 app.use('/product', productRouter);
+app.use('/review', reviewRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
