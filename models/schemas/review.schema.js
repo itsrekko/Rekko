@@ -1,11 +1,42 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const userSchema = require('./user.schema');
-const productSchema = require('./product.schema');
 
 module.exports = new Schema({
-    User: userSchema,
-    Product: productSchema,
+    User: {
+        UserLogin: { 
+            type: String, 
+            required: true
+        },
+        _id: { 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'User',
+            required: true
+        },
+    },
+    Product: {
+        ProductBrand: {
+            type: String, 
+            required: true
+        },
+        ProductName: { 
+            type: String,
+            required: true
+        },
+        ProductURI: { 
+            type: String,
+            default: ''
+        },
+        _id: { 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'Product',
+            required: true
+        },
+    },
+    NumberOfYearsUsed: {
+        type: String,
+        default: '',
+        required: true
+    },
     ReviewText: { 
         type: String,
         required: true

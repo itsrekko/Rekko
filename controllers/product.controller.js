@@ -5,10 +5,11 @@ const Review = require('../models/review.model');
 const responseObj = new Response();
 var indexController = require('./index.controller');
 
-async function createNewReview(userModel, productModel, reviewText){
+async function createNewReview(userModel, productModel, numberOfYearsUsed, reviewText){
     let newUserReview = new Review({
         User: userModel,
         Product: productModel,
+        NumberOfYearsUsed: numberOfYearsUsed,
         ReviewText: reviewText
     });
 
@@ -75,6 +76,7 @@ exports.addNewProductReview = async (req, res, next) => {
     const productBrand = req.body.productBrand;
     const productName = req.body.productName;
     const productURI = req.body.productURI;
+    const numberOfYearsUsed = req.body.numberOfYearsUsed;
     const reviewText = req.body.reviewText;
     var responseVal = undefined;
     try {
@@ -113,11 +115,13 @@ exports.addNewProductReview = async (req, res, next) => {
                 const newReview = await createNewReview(
                     userCheck,
                     productVal,
+                    numberOfYearsUsed,
                     reviewText);
                 responseVal = responseObj.constructResponseObject(`Created a new product review`, req.headers, 
                 {
                     "user": newReview?.User,
                     "product": newReview?.Product,
+                    "numberOfYearsUsed": newReview?.NumberOfYearsUsed,
                     "reviewText": newReview?.ReviewText,
                     "reviewedAt": newReview?.ReviewedAt
                 });
@@ -125,6 +129,7 @@ exports.addNewProductReview = async (req, res, next) => {
         }
     }
     catch (err) {
+        console.log(err);
         responseVal = responseObj.constructResponseObject(err.message || 'Internal server error', err.headers, null, err.name || errorTypes.default.serverError)
     }
     finally {
