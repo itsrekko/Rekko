@@ -24,7 +24,7 @@ async function getAllUsers(){
 }
 
 exports.checkIfUserExists = async (userLogin) => {
-    return await userModel.exists({UserLogin: userLogin})
+    return await userModel.findOne({UserLogin: userLogin})
     .then(result => {
         return result;
     })

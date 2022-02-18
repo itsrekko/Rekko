@@ -18,7 +18,7 @@ async function createNewReview(userModel, productModel, reviewText){
 }
 
 async function checkIfProductExists(productBrand, productName){
-    return await Product.exists({ProductBrand: productBrand, ProductName: productName})
+    return await Product.findOne({ProductBrand: productBrand, ProductName: productName})
     .then(result => {
         return result;
     })
@@ -110,7 +110,10 @@ exports.addNewProductReview = async (req, res, next) => {
             }
             else{
                 const productVal = await addOrUpdateProduct(productBrand, productName, productURI);
-                const newReview = await createNewReview(userCheck, productVal, reviewText);
+                const newReview = await createNewReview(
+                    userCheck,
+                    productVal,
+                    reviewText);
                 responseVal = responseObj.constructResponseObject(`Created a new product review`, req.headers, 
                 {
                     "user": newReview?.User,
