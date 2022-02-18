@@ -93,7 +93,7 @@ class AddProductComponent extends Component {
 
     handleSubmit = async (event) => {
         await axios.post('product/addNewProductReview', {
-            userID: this.state.userid,
+            userLogin: this.state.username,
             productBrand: this.state.brand,
             productName: this.state.product,
             //productURI = ; // ignore for now. Talk about it on the standup
