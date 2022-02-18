@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const userModel = require('./user.model');
+const productModel = require('./product.model');
 
 let reviewSchema = new Schema({
-    UserId: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User',
+    User: {
+        userModel, 
         required: true
     },
-    ProductId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
+    Product: {
+        productModel,
         required: true
     },
     ReviewText: { 
@@ -22,5 +22,7 @@ let reviewSchema = new Schema({
     }
 });
 
+// uncomment the following line to have a unique review
+// need to think this through
 //reviewSchema.index({UserId: 1, ProductId: 1, ReviewText: 1}, {unique: true});
 module.exports = mongoose.model('Review', reviewSchema);
