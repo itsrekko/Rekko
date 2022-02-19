@@ -23,8 +23,8 @@ async function getAllUsers(){
     })
 }
 
-async function checkIfUserExists(userLogin){
-    return await userModel.exists({UserLogin: userLogin})
+exports.checkIfUserExists = async (userLogin) => {
+    return await userModel.findOne({UserLogin: userLogin})
     .then(result => {
         return result;
     })
@@ -78,7 +78,7 @@ exports.createNewUser = async (req, res, next) => {
         }
         else{
             // check if the user exists first
-            let userCheck = await checkIfUserExists(userLogin);
+            let userCheck = await this.checkIfUserExists(userLogin);
             if (userCheck){
                 // create a login value
                 await updateUserLogin(userCheck?._id);
