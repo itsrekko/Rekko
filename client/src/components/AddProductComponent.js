@@ -96,7 +96,7 @@ class AddProductComponent extends Component {
             userLogin: this.state.username,
             productBrand: this.state.brand,
             productName: this.state.product,
-            numberOfYearsUsed: this.state.lengthOfUse,
+            lengthOfUse: this.state.lengthOfUse,
             //productURI = ; // ignore for now. Talk about it on the standup
             reviewText: this.state.review
         })

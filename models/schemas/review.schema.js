@@ -32,7 +32,7 @@ module.exports = new Schema({
             required: true
         },
     },
-    NumberOfYearsUsed: {
+    LengthOfUse: {
         type: String,
         default: '',
         required: true

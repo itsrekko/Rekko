@@ -5,11 +5,11 @@ const Review = require('../models/review.model');
 const responseObj = new Response();
 var indexController = require('./index.controller');
 
-async function createNewReview(userModel, productModel, numberOfYearsUsed, reviewText){
+async function createNewReview(userModel, productModel, lengthOfUse, reviewText){
     let newUserReview = new Review({
         User: userModel,
         Product: productModel,
-        NumberOfYearsUsed: numberOfYearsUsed,
+        LengthOfUse: lengthOfUse,
         ReviewText: reviewText
     });
 
@@ -76,7 +76,7 @@ exports.addNewProductReview = async (req, res, next) => {
     const productBrand = req.body.productBrand;
     const productName = req.body.productName;
     const productURI = req.body.productURI;
-    const numberOfYearsUsed = req.body.numberOfYearsUsed;
+    const lengthOfUse = req.body.lengthOfUse;
     const reviewText = req.body.reviewText;
     var responseVal = undefined;
     try {
@@ -115,13 +115,13 @@ exports.addNewProductReview = async (req, res, next) => {
                 const newReview = await createNewReview(
                     userCheck,
                     productVal,
-                    numberOfYearsUsed,
+                    lengthOfUse,
                     reviewText);
                 responseVal = responseObj.constructResponseObject(`Created a new product review`, req.headers, 
                 {
                     "user": newReview?.User,
                     "product": newReview?.Product,
-                    "numberOfYearsUsed": newReview?.NumberOfYearsUsed,
+                    "lengthOfUse": newReview?.lengthOfUse,
                     "reviewText": newReview?.ReviewText,
                     "reviewedAt": newReview?.ReviewedAt
                 });
