@@ -11,14 +11,14 @@ const Home = (props) => {
     // TODO: Modify this to include paged fetching
     // TODO: Fix getAllReviews to get from the path / and not /home
     useEffect(() => {
-        axios.get('review/getAllReviews', {})
+        axios.get('http://localhost:8888/review/getAllReviews', {})
         .then(res => {
-            console.log(res);
+            setState({...state, reviews: res.data.data});
         })
         .catch(error => {
             console.log (`Error fetching all the reviews while mounting the home page with error: ${error}`);
         })
-    })
+    }, [])
     
     return(
         <div>

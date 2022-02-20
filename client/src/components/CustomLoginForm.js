@@ -23,7 +23,7 @@ const CustomLoginForm = (props) => {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-        await axios.post('user/checkAndCreateNewUser', {
+        await axios.post('http://localhost:8888/user/checkAndCreateNewUser', {
             userLogin: state.userName
         })
         .then(res => {
