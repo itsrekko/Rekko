@@ -3,6 +3,19 @@ const mongoose = require('mongoose');
 const reviewModel = require('../models/review.model');
 const responseObj = new Response();
 
+exports.createNewReview = async (userModel, productModel, lengthOfUse, reviewText) => {
+    let newUserReview = new reviewModel({
+        User: userModel,
+        Product: productModel,
+        LengthOfUse: lengthOfUse,
+        ReviewText: reviewText
+    });
+
+    await newUserReview.save();
+
+    return newUserReview;
+}
+
 async function getAllReviews () {
     return await reviewModel.find({})
     .then(results => {

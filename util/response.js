@@ -6,7 +6,6 @@ module.exports = class Response {
 
     constructResponseObject(message, headerJSON = undefined, data = undefined, errorValues = undefined){
         // construct statusCode
-
         if (errorValues === undefined){
             this.statusCode = 200;
         }

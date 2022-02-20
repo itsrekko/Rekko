@@ -1,9 +1,21 @@
 const Response = require('../util/response');
 const errorTypes = require('../consts/errorTypes');
 const productModel = require('../models/product.model');
-const reviewModel = require('../models/review.model');
+
+var userController = require('./user.controller');
+var reviewController = require('./reviews.controller')
 
 const responseObj = new Response();
+
+async function getAllProducts() {
+    return await productModel.find({})
+    .then(results => {
+        return results;
+    })
+    .catch(error => {
+        console.error(`Failed to fetch all products with error: ${error}`)
+    })
+}
 
 async function getAllProducts() {
     return await productModel.find({})
@@ -55,20 +67,8 @@ exports.getProductsByProductName = async (req, res, next) => {
     }
 }
 
-async function createNewReview(userID, productID, reviewText) {
-    let newUserReview = new reviewModel({
-        UserId: userID,
-        ProductId: productID,
-        ReviewText: reviewText
-    });
-
-    await newUserReview.save();
-
-    return newUserReview;
-}
-
-async function checkIfProductExists(productBrand, productName) {
-    return await productModel.exists({ProductBrand: productBrand, ProductName: productName})
+async function checkIfProductExists(productBrand, productName){
+    return await productModel.findOne({ProductBrand: productBrand, ProductName: productName})
     .then(result => {
         return result;
     })
@@ -121,18 +121,19 @@ exports.home = (req, res, next) => {
 }
 
 exports.addNewProductReview = async (req, res, next) => {
-    const userID = req.body.userID;
+    console.log(req.body);
+    const userLogin = req.body.userLogin;
     const productBrand = req.body.productBrand;
     const productName = req.body.productName;
     const productURI = req.body.productURI;
+    const lengthOfUse = req.body.lengthOfUse;
     const reviewText = req.body.reviewText;
-    
     var responseVal = undefined;
     try {
         // response validation
-        if (!userID || userID === null || userID === undefined){
+        if (!userLogin || userLogin === null || userLogin === undefined){
             // user login has not been passed in
-            responseVal = responseObj.constructResponseObject(`Response body requires param userID`, req.headers, null, errorTypes.default.badQuery)
+            responseVal = responseObj.constructResponseObject(`Response body requires param userLogin`, req.headers, null, errorTypes.default.badQuery)
         }
         // response validation
         else if (!productBrand || productBrand === null || productBrand === undefined){
@@ -150,22 +151,35 @@ exports.addNewProductReview = async (req, res, next) => {
             responseVal = responseObj.constructResponseObject(`Response body requires param reviewText`, req.headers, null, errorTypes.default.badQuery)
         }
         else{
+            // check if the user exists
             // check if the product exists
             // if not add the product 
             // if it does exist update any info missing
             // create a new user review
-            const productVal = await addOrUpdateProduct(productBrand, productName, productURI);
-            const newReview = await createNewReview(userID, productVal?._id, reviewText);
-            responseVal = responseObj.constructResponseObject(`Created a new product review`, req.headers, 
-            {
-                "userID": newReview?.UserId,
-                "reviewID": newReview?.ProductId,
-                "reviewText": newReview?.ReviewText,
-                "reviewedAt": newReview?.ReviewedAt
-            });
+            const userCheck = await userController.checkIfUserExists(userLogin);
+            if (!userCheck || userCheck === undefined || userCheck === null){
+                responseVal = responseObj.constructResponseObject('User does not exist. Create a user before posting a review', req.headers, null, errorTypes.default.badQuery)
+            }
+            else{
+                const productVal = await addOrUpdateProduct(productBrand, productName, productURI);
+                const newReview = await reviewController.createNewReview(
+                    userCheck,
+                    productVal,
+                    lengthOfUse,
+                    reviewText);
+                responseVal = responseObj.constructResponseObject(`Created a new product review`, req.headers, 
+                {
+                    "user": newReview?.User,
+                    "product": newReview?.Product,
+                    "lengthOfUse": newReview?.lengthOfUse,
+                    "reviewText": newReview?.ReviewText,
+                    "reviewedAt": newReview?.ReviewedAt
+                });
+            }
         }
     }
     catch (err) {
+        console.log(err);
         responseVal = responseObj.constructResponseObject(err.message || 'Internal server error', err.headers, null, err.name || errorTypes.default.serverError)
     }
     finally {

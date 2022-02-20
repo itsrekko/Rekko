@@ -22,9 +22,10 @@ class AddProductForm extends Component {
 
     handleSubmit = async (event) => {
         await axios.post('product/addNewProductReview', {
-            userID: this.state.userId,
+            userLogin: this.state.userName,
             productBrand: this.state.brand,
             productName: this.state.product,
+            lengthOfUse: this.state.lengthOfUse,
             reviewText: this.state.review
         })
         .then(res => {

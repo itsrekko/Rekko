@@ -9,13 +9,11 @@ const Home = (props) => {
 
     // Currently we are fetching all the data there exists for MVP. 
     // TODO: Modify this to include paged fetching
+    // TODO: Fix getAllReviews to get from the path / and not /home
     useEffect(() => {
         axios.get('review/getAllReviews', {})
         .then(res => {
             console.log(res);
-            setState({
-                reviews: res.data.data
-            });
         })
         .catch(error => {
             console.log (`Error fetching all the reviews while mounting the home page with error: ${error}`);
