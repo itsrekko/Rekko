@@ -1,11 +1,15 @@
-import React, { Component } from "react";
+import React, {useState} from "react";
+import PropTypes from 'prop-types';
 import Home from '../pages/Home';
 import Box from '@material-ui/core/Box';
 import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
-import AddProductComponent from "../components/AddProductComponent";
+import AddProductForm from "../components/AddProductForm";
 import Button from '@material-ui/core/Button';
 import {Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText} from "@material-ui/core";
+import { useNavigate } from 'react-router-dom';
+
+import {useGlobalState} from '../context/GlobalState';
 
 const style = {
     textAlign: 'center',
@@ -20,89 +24,91 @@ const style = {
     p: 4,
 };
 
-class WelcomeUser extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            ...props,
-            openModal: this.props.existingUser ? false : true,
-            openDialog: this.props.existingUser ? true : false   
-        }
+const WelcomeUser = (props) => {
+    const [state, setState] = useState({
+        openModal: props.existingUser ? false : true,
+        openDialog: props.existingUser ? true : false
+    })
+
+    const [globalState, setGlobalState] = useGlobalState()
+    const navigate = useNavigate();
+
+    const changeToHomeScreen = (event) => {
+        navigate(`/home/${globalState.userName}`);
     }
 
-    changeToHomeScreen = (event) => {
-        this.props.appContext.setState({
-            currentScreen: <Home appContext={this.props.appContext}/>
-        })
-    }
-
-    handleModalClose = async (event) => {
-        this.setState({
+    const handleModalClose = (event) => {
+        setState(state => ({
+            ...state,
             openModal: false
-        })
+        }))
     }
 
-    handleDialogClose = async (event) => {
-        this.setState({
+    const handleDialogClose = (event) => {
+        setState(state => ({
+            ...state,
             openDialog: false
-        })
+        }))
     }
-
-    render(){
-        return(
-            <div>
-                <Dialog
-                    open={this.state.openDialog}
-                    onClose={this.handleDialogClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">
-                    {`Welcome back ${this.state.appContext.state.username} 🎊🎊🎊`}
-                    </DialogTitle>
-                    <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        Would you like to add a review?
-                    </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                    <Button onClick={this.handleDialogClose}>
-                        <b>Yes</b>
-                    </Button>
-                    <Button onClick={this.changeToHomeScreen} autoFocus>
-                        <b>No</b>
-                    </Button>
-                    </DialogActions>
-                </Dialog>
-                <Modal
-                    open={this.state.openModal}
-                    onClose={this.handleModalClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Box sx={style}>
-                        <Typography style={{textAlign: 'center'}} id="modal-modal-title" variant="h6" component="h2">
-                            Welcome {this.state.appContext.state.username} 🎊🎊🎊
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            We are excited to have you here !! <br/>
-                            Click anywhere on the screen to continue
-                        </Typography>
-                    </Box>
-                </Modal>
-                <AddProductComponent
-                    username={this.state.appContext.state.username}
-                    userid={this.state.appContext.state.userid}
-                    cardTitle={'What’s a beauty product you can’t live without at the moment?'}
-                    buttonText={'Start discovering products'}
-                    buttonAction={this.changeToHomeScreen}
-                />
-            </div>
-        );
-    }
+    
+    return(
+        <div>
+            <Dialog
+                open={state.openDialog}
+                onClose={() => {handleDialogClose}}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                {`Welcome back ${globalState.userName} 🎊🎊🎊`}
+                </DialogTitle>
+                <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                    Would you like to add a review?
+                </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                <Button onClick={() => {handleDialogClose}}>
+                    <b>Yes</b>
+                </Button>
+                <Button onClick={() => {changeToHomeScreen}} autoFocus>
+                    <b>No</b>
+                </Button>
+                </DialogActions>
+            </Dialog>
+            <Modal
+                open={state.openModal}
+                onClose={handleModalClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <Typography style={{textAlign: 'center'}} id="modal-modal-title" variant="h6" component="h2">
+                        Welcome {globalState.userName} 🎊🎊🎊
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        We are excited to have you here !! <br/>
+                        Click anywhere on the screen to continue
+                    </Typography>
+                </Box>
+            </Modal>
+            <AddProductForm
+                userName={globalState.userName}
+                userId={globalState.userId}
+                cardTitle={'What’s a beauty product you can’t live without at the moment?'}
+                buttonText={'Start discovering products'}
+                buttonAction={changeToHomeScreen}
+            />
+        </div>
+    );
 }
 
-export default WelcomeUser;
+WelcomeUser.propTypes = {
+    existingUser: PropTypes.bool.isRequired,
+};
 
-/*
- */
+WelcomeUser.defaultProps = {
+    existingUser: false,
+};
+
+export default WelcomeUser;

@@ -1,76 +1,64 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import {withStyles} from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+
+import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import CustomStyler from "../utils/CustomStyler";
-import WelcomeUser from '../pages/WelcomeUser';
+import LoginFormStyler from "../utils/LoginFormStyler";
 import Grid from '@material-ui/core/Grid';
-import axios from 'axios';
 
-class CustomRoundLoginForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            userid: '',
+import {useGlobalState} from '../context/GlobalState';
+
+const CustomLoginForm = (props) => {
+    const [state, setState] = useGlobalState({
+            userName: '',
+            userId: '',
             existingUser: false
-        }
-    }
+    });
 
-    handleChange = (username) => (event) => {
-        this.setState({
-          [username]: event.target.value,
-        });
-    };
+    const {classes} = props;
+    const navigate = useNavigate();
 
-    handleSubmit = async (event) => {
+    const handleSubmit = async (event) => {
         await axios.post('user/checkAndCreateNewUser', {
-            userLogin: this.state.username
+            userLogin: state.userName
         })
-        .then(res => {            
-            this.setState({
-                userid: res.data['data']['_id']
-            });
-
+        .then(res => {
             if (res.data['data']['existingUser']){
-                this.setState({
+                setState({
+                    ...state,
+                    userId: res.data['data']['_id'],
                     existingUser: true
                 })
             }
             else{
-                this.setState({
+                setState({
+                    ...state,
+                    userId: res.data['data']['_id'],
                     existingUser: false
                 })
             }
-            
-            this.props.appContext.setState({
-                username: this.state.username,
-                userid: res.data['data']['_id'],
-                existingUser: this.state.existingUser,
-                currentScreen: <WelcomeUser
-                                    existingUser={this.state.existingUser}
-                                    appContext={this.props.appContext}
-                                />
-            })
+            navigate('/welcome');
         });
     }
-    render(){
-        const {classes} = this.props;
-        return(
+
+    return (
             <Grid
                 container
                 direction={'column'}
                 justifyContent={'center'}
                 alignItems={'center'}
             >
-                <TextField
+            <TextField
                     id="standard-name"
-                    label="Username"
+                    label = "Username"
+                    placeholder="Please enter a new/old username "
                     className={classes.textField}
-                    value={this.state.name}
-                    onChange={this.handleChange('username')}
+                    value={state.userName}
+                    onChange= {(event) => setState({...state, userName: event.target.value})}
                     margin="normal"
                     variant="outlined"
                     InputLabelProps={{
@@ -105,7 +93,7 @@ class CustomRoundLoginForm extends Component {
                         minHeight: '54px',
                         maxHeight: '54px',
                     }}
-                    onClick={this.handleSubmit}
+                    onClick={() => handleSubmit()}
                 >
                     <Typography style={{
                         fontWeight: 550,
@@ -117,13 +105,12 @@ class CustomRoundLoginForm extends Component {
                     </Typography>
                 </Button>
             </Grid>
-        );
-    }
+    )
 }
 
-CustomRoundLoginForm.propTypes = {
+CustomLoginForm.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(CustomStyler("left"))(CustomRoundLoginForm);
+export default withStyles(LoginFormStyler("left"))(CustomLoginForm);
   

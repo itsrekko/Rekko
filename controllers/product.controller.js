@@ -126,6 +126,7 @@ exports.addNewProductReview = async (req, res, next) => {
     const productName = req.body.productName;
     const productURI = req.body.productURI;
     const reviewText = req.body.reviewText;
+    
     var responseVal = undefined;
     try {
         // response validation

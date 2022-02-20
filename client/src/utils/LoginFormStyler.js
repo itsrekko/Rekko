@@ -1,6 +1,4 @@
-const CustomStyler = (
-    textfieldLabelPosition= "center"
-  ) => ({
+const LoginFormStyler = (textfieldLabelPosition= "center") => ({
     container: {
       marginTop: '25px',
       display: 'grid',
@@ -56,4 +54,4 @@ const CustomStyler = (
     },
   });
 
-export default CustomStyler
+export default LoginFormStyler

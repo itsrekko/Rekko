@@ -1,7 +1,13 @@
 import './App.css';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
-import React, {Component} from 'react';
+import React from 'react';
+import {BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import Login from './pages/Login';
+import WelcomeUser from './pages/WelcomeUser';
+import Home from './pages/Home';
+import GlobalStateProvider from './context/GlobalState';
 
 const theme = createTheme({
   typography: {
@@ -11,27 +17,24 @@ const theme = createTheme({
     ].join(','),
   },});
 
-export default class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      currentScreen: []
-    }
-  }
+const App = () => {
 
-  componentDidMount() {
-    this.setState({
-        currentScreen: <Login appContext={this}/>
-    })
+  return (
+    <ThemeProvider theme={theme}>
+    <GlobalStateProvider>
+    <Router>
+      <div className="App">
+      <Routes>
+          <Route path = "/" exact element={<Login />} />
+          <Route path = "/welcome" element={<WelcomeUser />} />
+          <Route path = "/home/:userName" element={<Home />} />
+      </Routes>
+      </div>
+    </Router>
+    </GlobalStateProvider>
+    </ThemeProvider>
+    
+  );
 }
 
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <div className="App">
-          {this.state.currentScreen}
-        </div>
-      </ThemeProvider>
-    ); 
-  }
-}
+export default App;
