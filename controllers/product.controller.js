@@ -121,7 +121,6 @@ exports.home = (req, res, next) => {
 }
 
 exports.addNewProductReview = async (req, res, next) => {
-    console.log(req.body);
     const userLogin = req.body.userLogin;
     const productBrand = req.body.productBrand;
     const productName = req.body.productName;
@@ -179,7 +178,6 @@ exports.addNewProductReview = async (req, res, next) => {
         }
     }
     catch (err) {
-        console.log(err);
         responseVal = responseObj.constructResponseObject(err.message || 'Internal server error', err.headers, null, err.name || errorTypes.default.serverError)
     }
     finally {
