@@ -1,6 +1,6 @@
 const Response = require('../util/response');
 const userModel = require('../models/user.model');
-const userInfoModel = require('../models/userInfo.model');
+const userInfoModel = require('../models/userInformation.model');
 const errorTypes = require('../consts/errorTypes');
 const responseObj = new Response();
 
