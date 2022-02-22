@@ -1,20 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import ReviewCard from './ReviewCard';
 
 
-class ReviewCardContainer extends React.Component {
-    // Add implementation of the review card over here when both reviews and products are populated.
-    render() { 
-        return(
-            <div>
-                <p> TODO: Required to add implementation for the cards for every card in a loop</p>
-            </div>
-    )}
-}
+const ReviewCardContainer = (props) => {
+    const [state, setState] = useState({reviewCards: []})
 
-ReviewCardContainer.propTypes = {
-    reviews: PropTypes.array.isRequired
+    useEffect(async () => {
+        await axios.get(`${window.location.origin.toString()}/review/getAllReviews`, {})
+        .then(res => {
+            console.log(res.data.data);
+            let allReviews = [];
+            res.data.data.forEach(x => allReviews.push(<ReviewCard heading={x['User']['UserLogin']} brandName={x['Product']['ProductBrand']} productName={x['Product']['ProductName']} review={x['ReviewText']}/>));
+            console.log(allReviews);
+            setState({...state, allReviewCards: allReviews});
+        })
+        .catch(error => {
+            console.log (`Error fetching all the reviews while mounting the home page with error: ${error}`);
+        })
+    }, [])
+
+    return(
+        <div>
+            {state.allReviewCards}
+        </div>
+    )
 }
 
 export default ReviewCardContainer;
