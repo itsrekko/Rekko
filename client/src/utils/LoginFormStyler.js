@@ -31,6 +31,21 @@ const LoginFormStyler = (textfieldLabelPosition= "center") => ({
           }
        }
     },
+
+    searchTextField: {
+      backgroundColor: '#F5F5F7',
+      width: "500px",
+      "@media (max-width: 768px)": { width: "69vw" }, 
+      borderRadius: '25px',
+      "& label": {
+        width: "100%",
+        textAlign: textfieldLabelPosition,
+        transformOrigin: textfieldLabelPosition,
+          "&.Mui-focused": {
+            transformOrigin: textfieldLabelPosition
+          }
+       }
+    },
   
     cssLabel: {
       color: '#A0A5BD',
@@ -40,6 +55,7 @@ const LoginFormStyler = (textfieldLabelPosition= "center") => ({
       '&$cssFocused $notchedOutline': {
         borderColor: `#F5F5F7 !important`,
         borderRadius: '25px',
+        borderWidth: '0px',
       },
     },
   
@@ -49,7 +65,7 @@ const LoginFormStyler = (textfieldLabelPosition= "center") => ({
   
     notchedOutline: {
       borderRadius: '25px',
-      borderWidth: '1px',
+      borderWidth: '0px',
       borderColor: '#F5F5F7 !important',
     },
   });

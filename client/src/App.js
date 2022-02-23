@@ -26,7 +26,8 @@ const App = () => {
       <div className="App">
       <Routes>
           <Route path = "/" exact element={<Login />} />
-          <Route path = "/welcome" element={<WelcomeUser />} />
+          <Route path = "/welcome" element={<WelcomeUser cardTitle={'What’s a beauty product you can’t live without at the moment?'} buttonText={'Start discovering products'}/>} />
+          <Route path = "/review" element={<WelcomeUser cardTitle='Share another product you love' buttonText={'Keep discovering products'}/>} />
           <Route path = "/home/:userName" element={<Home />} />
       </Routes>
       </div>

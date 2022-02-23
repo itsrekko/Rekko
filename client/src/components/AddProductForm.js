@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
-import Home from '../pages/Home';
 import AddProductFileStyler from "../utils/AddProductFileStyler";
 
 class AddProductForm extends Component {
@@ -21,7 +20,7 @@ class AddProductForm extends Component {
     }
 
     handleSubmit = async (event) => {
-        await axios.post('product/addNewProductReview', {
+        await axios.post(`${window.location.origin.toString()}/product/addNewProductReview`, {
             userLogin: this.state.userName,
             productBrand: this.state.brand,
             productName: this.state.product,
