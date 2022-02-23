@@ -55,8 +55,8 @@ const CustomLoginForm = (props) => {
             >
             <TextField
                     id="standard-name"
-                    label = "Username"
-                    placeholder="Please enter a new/old username "
+                    label = "Your first name and last initial (e.g. Meg M)"
+                    placeholder="Your first name and last initial (e.g. Meg M)"
                     className={classes.textField}
                     value={state.userName}
                     onChange= {(event) => setState({...state, userName: event.target.value})}

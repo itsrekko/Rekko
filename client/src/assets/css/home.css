@@ -1,7 +1,7 @@
 .card-row {
     margin: 0 auto;
     float: none;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border-radius: 7px;
     max-height: fit-content;
     max-width: 85%;
@@ -13,5 +13,6 @@
 }
 
 .searchbar-container {
-    padding-bottom: 10vw;
+    margin-top: 31px;
+    margin-bottom: 27px;
 }

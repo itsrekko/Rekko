@@ -5,7 +5,31 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import {makeStyles} from "@material-ui/core/styles";
 import '../assets/css/home.css';
+
+const useStyles = makeStyles(() => ({
+    button: {
+        "&.MuiButton-root": {
+          backgroundColor: '#6C5B57',
+          width: "245px",
+          "@media (max-width: 768px)": { width: "100px" },
+          outerHeight: '30px',
+          '&:hover': {
+            backgroundColor: '#5e4f4b',
+          }
+        },
+        "&.MuiButton-sizeLarge": "56px",
+        marginLeft: '10px'
+      },
+    }));
+
+function withMyHook(Component){
+    return function WrappedComponent(props){
+        const classes = useStyles();
+        return <Component {...props} classes={classes}/>
+    }
+}
 
 class ReviewCard extends React.Component {
     
@@ -14,9 +38,10 @@ class ReviewCard extends React.Component {
     }
 
     render() {
-    return (
-        <div className='card-row'>
-            <Card className='card'>
+        const classes = this.props.classes;
+        return (
+            <div className='card-row'>
+                <Card className='card'>
                 <CardContent>
                     <Typography gutterBottom align='left' color="textSecondary" component="h6">
                     {this.props.heading}
@@ -50,7 +75,7 @@ class ReviewCard extends React.Component {
                             fontSize: '17px',
                             color: '#FFFFFF'
                         }}>
-                            Continue
+                            Comment
                         </Typography>
                     </Button>
 
@@ -88,4 +113,4 @@ ReviewCard.propTypes = {
     review: PropTypes.string.isRequired
 }
 
-export default ReviewCard;
+export default withMyHook(ReviewCard);
