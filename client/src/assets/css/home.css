@@ -4,7 +4,7 @@
     margin-bottom: 20px;
     border-radius: 7px;
     max-height: fit-content;
-    max-width: 85%;
+    width: 640px;
 }
 
 .card {
@@ -15,4 +15,16 @@
 .searchbar-container {
     margin-top: 31px;
     margin-bottom: 27px;
+}
+
+@media only screen and (max-width: 540px) {
+    .card-row {
+        width: 90vw;
+    }
+}
+
+@media only screen and (min-width: 541px) and (max-width: 700px) {
+    .card-row {
+        width: 79vw;
+    }
 }
