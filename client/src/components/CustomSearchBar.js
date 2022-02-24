@@ -8,8 +8,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import LoginFormStyler from '../utils/LoginFormStyler';
 import axios from 'axios';
 import {useGlobalState} from '../context/GlobalState';
+import ReviewCard from './ReviewCard';
 
 const CustomSearchBar = (props) => {
+  const [globalState, globalSetState] = useGlobalState();
   const [state, setState] = useState({ searchVal: ''});
   const {classes} = props;
   
@@ -21,6 +23,14 @@ const CustomSearchBar = (props) => {
     })
     .then(res => {
       console.log(res.data.data);
+      const val = [<ReviewCard 
+        heading={`test`} 
+        brandName={`test`} 
+        productName={`test`} 
+        review={`test`}
+    />]
+      globalSetState({...globalState, allReviewCards: val});
+      console.log(globalState);
     })
     .catch(error => {
         console.log (`Error fetching all the reviews while mounting the home page with error: ${error}`);
