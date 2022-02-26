@@ -47,6 +47,9 @@ const CustomSearchBar = (props) => {
         margin="normal"
         variant="outlined"
         InputLabelProps={{
+          style: {
+            fontSize: '13px'
+          },
           classes: {
             root: classes.cssLabel,
             focused: classes.cssFocused,
@@ -54,7 +57,7 @@ const CustomSearchBar = (props) => {
         }}
         InputProps={{
           inputProps: {
-            style: { textAlign: "center" },
+            style: { textAlign: "center", fontSize: '13px' },
           },
           endAdornment: (
             <InputAdornment position="start">

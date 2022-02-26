@@ -63,6 +63,9 @@ const CustomLoginForm = (props) => {
                     margin="normal"
                     variant="outlined"
                     InputLabelProps={{
+                        style: {
+                            fontSize: '13px'
+                        },
                         classes: {
                         root: classes.cssLabel,
                         focused: classes.cssFocused,
@@ -70,7 +73,10 @@ const CustomLoginForm = (props) => {
                     }}
                     InputProps={{
                         inputProps: {
-                        style: { textAlign: "left" },
+                            style: { 
+                                textAlign: "left",
+                                fontSize: '13px'
+                            },
                         },
                         classes: {
                             root: classes.cssOutlinedInput,
