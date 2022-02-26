@@ -17,16 +17,16 @@ const Home = (props) => {
     useEffect(async () => {
         await axios.get(`${window.location.origin.toString()}/review/getAllReviews`, {})
         .then(res => {
-            console.log(res.data.data);
             let allReviews = [];
             res.data.data.forEach(x => allReviews.push(
-            <ReviewCard 
-                heading={`${x['User']['UserLogin']}, ${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
-                brandName={x['Product']['ProductBrand']} 
-                productName={x['Product']['ProductName']} 
-                review={x['ReviewText']}
-            />));
-            setState({...state, allReviewCards: allReviews});
+                <ReviewCard
+                    key={x['_id']}
+                    heading={`${x['User']['UserLogin']}, ${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
+                    brandName={x['Product']['ProductBrand']} 
+                    productName={x['Product']['ProductName']} 
+                    review={x['ReviewText']}
+                />));
+            setState({...state, allReviewCards: allReviews, storedReviewCards: allReviews});
         })
         .catch(error => {
             console.log (`Error fetching all the reviews while mounting the home page with error: ${error}`);
@@ -44,7 +44,7 @@ const Home = (props) => {
         <div>
              <Box sx={{ '& > button': { m: 1 } }} className="searchbar-container">
                 <CustomSearchBar />
-                <IconButton aria-label="add" size="large" style={{marginTop: '18px'}} onClick={changeToReviewScreen}>
+                <IconButton aria-label="add" style={{marginTop: '18px'}} onClick={changeToReviewScreen}>
                     <AddIcon />
                 </IconButton>
              </Box>

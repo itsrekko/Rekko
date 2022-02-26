@@ -2,7 +2,6 @@ import './App.css';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from './pages/Login';
 import WelcomeUser from './pages/WelcomeUser';

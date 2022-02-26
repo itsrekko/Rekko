@@ -27,6 +27,7 @@ const CustomLoginForm = (props) => {
             userLogin: state.userName
         })
         .then(res => {
+            console.log(res.data);
             if (res.data['data']['existingUser']){
                 setState({
                     ...state,
@@ -54,7 +55,7 @@ const CustomLoginForm = (props) => {
                 alignItems={'center'}
             >
             <TextField
-                    id="standard-name"
+                    id="username"
                     label = "Your first name and last initial (e.g. Meg M)"
                     placeholder="Your first name and last initial (e.g. Meg M)"
                     className={classes.textField}

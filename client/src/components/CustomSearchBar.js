@@ -16,21 +16,41 @@ const CustomSearchBar = (props) => {
   const {classes} = props;
   
   const handleSubmit = async (event) => {
-    await axios.get(`${window.location.origin.toString()}/review/searchByReviewText`, {
+    if (state.searchVal === ''){
+      await axios.get(`${window.location.origin.toString()}/review/getAllReviews`, {})
+      .then(res => {
+          let allReviews = [];
+          res.data.data.forEach(x => allReviews.push(
+              <ReviewCard
+                  key={x['_id']}
+                  heading={`${x['User']['UserLogin']}, ${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
+                  brandName={x['Product']['ProductBrand']} 
+                  productName={x['Product']['ProductName']} 
+                  review={x['ReviewText']}
+              />));
+          setState({...state, allReviewCards: allReviews, storedReviewCards: allReviews});
+      })
+      .catch(error => {
+          console.log (`Error fetching all the reviews while mounting the home page with error: ${error}`);
+      })
+      return;
+    }
+    await axios.get(`${window.location.origin.toString()}/review/searchThroughEntireReview`, {
       params: {
         reviewRegex: state.searchVal
       }
     })
     .then(res => {
-      console.log(res.data.data);
-      const val = [<ReviewCard 
-        heading={`test`} 
-        brandName={`test`} 
-        productName={`test`} 
-        review={`test`}
-    />]
-      globalSetState({...globalState, allReviewCards: val});
-      console.log(globalState);
+      let allFetchedReviews = [];
+      res.data.data.forEach(x => allFetchedReviews.push(
+        <ReviewCard 
+          key={x['_id']}
+          heading={`${x['User']['UserLogin']}, ${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
+          brandName={x['Product']['ProductBrand']} 
+          productName={x['Product']['ProductName']}
+          review={x['ReviewText']}
+        />));
+      globalSetState({...globalState, allReviewCards: allFetchedReviews});
     })
     .catch(error => {
         console.log (`Error fetching all the reviews while mounting the home page with error: ${error}`);
@@ -43,7 +63,14 @@ const CustomSearchBar = (props) => {
         placeholder="Search for a product or friend"
         className={classes.searchTextField}
         value={state.searchVal}
-        onChange={(event) => setState({...state, searchVal: event.target.value})}
+        onChange={(event) => {
+            setState({...state, searchVal: event.target.value})
+            if (event.target.value === ''){
+              globalSetState({...globalState, allReviewCards: globalState.storedReviewCards});
+              return;
+            }
+          }
+        }
         margin="normal"
         variant="outlined"
         InputLabelProps={{
