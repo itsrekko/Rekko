@@ -41,10 +41,14 @@ const ReviewCard = (props) => {
     const [globalState, setGlobalState] = useGlobalState();
     const [state, setState] = useState(
         {   likes: props.likes,
-            hasLiked: props.likes.includes(globalState.userName)});
-    const classes = props.classes;
+            hasLiked: props.likes.includes(globalState.userName)
+        });
+    
     const navigate = useNavigate();
+    const classes = props.classes;
+    
     let buttonText = state.hasLiked === true ? 'Unlike' : 'Like';
+
     const handleLikeButton = async (event) => {
         if (globalState.userName !== '') {
             await axios.put(`${window.location.origin.toString()}/review/likes`, {
@@ -53,7 +57,6 @@ const ReviewCard = (props) => {
                 hasUserLiked: state.hasLiked
             })
             .then(res => {
-                console.log(res.data.data);
                 setState(prevState => ({
                     likes: JSON.parse(res.data['data']),
                     hasLiked: !prevState.hasLiked}));
@@ -63,12 +66,6 @@ const ReviewCard = (props) => {
             navigate('/'); // Take them to the login page
         }
     }
-
-    useEffect(async () => {
-        buttonText = state.hasLiked === true ? 'Unlike' : 'Like';
-    });
-
-    console.log(state.likes);
 
     return (
         <div className='card-row'>

@@ -58,7 +58,6 @@ exports.getAllUsers = async (req, res, next) => {
 }
 
 exports.createNewUser = async (req, res, next) => {
-    console.log(req.body);
     const userName = req.body.userName;
     var responseVal = undefined;
     try{

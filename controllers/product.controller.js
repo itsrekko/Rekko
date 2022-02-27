@@ -128,7 +128,6 @@ exports.addNewProductReview = async (req, res, next) => {
     const lengthOfUse = req.body.lengthOfUse;
     const reviewText = req.body.reviewText;
 
-    console.log(req.body);
     var responseVal = undefined;
     try {
         // response validation
