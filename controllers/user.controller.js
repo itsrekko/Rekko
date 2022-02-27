@@ -4,13 +4,13 @@ const userInfoModel = require('../models/userInformation.model');
 const errorTypes = require('../consts/errorTypes');
 const responseObj = new Response();
 
-async function updateUserLogin(userID) {
-    let newUserLogin  = new userInfoModel({
+async function updateUserName(userID) {
+    let newUserName  = new userInfoModel({
         UserId: userID,
-        LoginStatus: true // might need to rethink this method by passing it in the param of the method
+        LoginStatus: true
     });
-    await newUserLogin.save();
-    return newUserLogin;
+    await newUserName.save();
+    return newUserName;
 }
 
 async function getAllUsers() {
@@ -24,20 +24,20 @@ async function getAllUsers() {
     })
 }
 
-exports.checkIfUserExists = async (userLogin) => {
-    return await userModel.findOne({UserLogin: userLogin})
+exports.checkIfUserExists = async (userName) => {
+    return await userModel.findOne({UserName: userName})
     .then(result => {
         return result;
     })
     .catch(error => {
-        console.error(`Failed to check if userLogin exists with error: ${error}`);
+        console.error(`Failed to check if userName exists with error: ${error}`);
         throw(error);
     });
 }
 
-async function addNewUser(userLogin) {
+async function addNewUser(userName) {
     let newUser = new userModel({
-        UserLogin: userLogin
+        UserName: userName
     });
     await newUser.save();
     return newUser;
@@ -58,31 +58,31 @@ exports.getAllUsers = async (req, res, next) => {
 }
 
 exports.createNewUser = async (req, res, next) => {
-    const userLogin = req.body.userLogin;
+    const userName = req.body.userName;
     var responseVal = undefined;
     try{
         // response validation
-        if (!userLogin || userLogin === null || userLogin === undefined){
-            responseVal = responseObj.constructResponseObject(`Request body requires param userLogin`, req.headers, null, errorTypes.default.badQuery)
+        if (!userName || userName === null || userName === undefined){
+            responseVal = responseObj.constructResponseObject(`Request body requires param userName`, req.headers, null, errorTypes.default.badQuery)
         }
         else{
             // check if the user exists first
-            let userCheck = await this.checkIfUserExists(userLogin);
+            let userCheck = await this.checkIfUserExists(userName);
             if (userCheck){
                 // create a login value
-                await updateUserLogin(userCheck?._id);
-                responseVal = responseObj.constructResponseObject(`User with login ${userLogin} already exists`, req.headers, 
+                await updateUserName(userCheck?._id);
+                responseVal = responseObj.constructResponseObject(`User with login ${userName} already exists`, req.headers, 
                 {
-                    "UserLogin": userLogin,
+                    "UserName": userName,
                     "_id": userCheck?._id,
                     "existingUser": true
                 });
             }
             else{
-                const mongoRequest = await addNewUser(userLogin);
+                const mongoRequest = await addNewUser(userName);
                 // create a login value
-                await updateUserLogin(mongoRequest?._id);
-                responseVal = responseObj.constructResponseObject(`Successfully created a user with login ${userLogin}`, req.headers, mongoRequest);
+                await updateUserName(mongoRequest?._id);
+                responseVal = responseObj.constructResponseObject(`Successfully created a user with login ${userName}`, req.headers, mongoRequest);
             }
         }
         

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -8,6 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import Box from '@mui/material/Box';
 import {makeStyles} from "@material-ui/core/styles";
 import '../assets/css/home.css';
+import axios from 'axios';
+import { useGlobalState } from '../context/GlobalState';
 
 const useStyles = makeStyles(() => ({
     button: {
@@ -33,87 +36,93 @@ function withMyHook(Component){
     }
 }
 
-class ReviewCard extends React.Component {
+const ReviewCard = (props) => {
+
+    const [globalState, setGlobalState] = useGlobalState();
+    const [state, setState] = useState(
+        {   likes: props.likes,
+            hasLiked: props.likes.includes(globalState.userName)
+        });
     
-    handleSubmit = async (event) => {
-        console.log('Submit functionality works');
+    const navigate = useNavigate();
+    const classes = props.classes;
+    
+    let buttonText = state.hasLiked === true ? 'Unlike' : 'Like';
+
+    const handleLikeButton = async (event) => {
+        if (globalState.userName !== '') {
+            await axios.put(`${window.location.origin.toString()}/review/likes`, {
+                userName: globalState.userName,
+                reviewId: props.id,
+                hasUserLiked: state.hasLiked
+            })
+            .then(res => {
+                setState(prevState => ({
+                    likes: JSON.parse(res.data['data']),
+                    hasLiked: !prevState.hasLiked}));
+            });
+        } else {
+            console.error('User name is set to empty');
+            navigate('/'); // Take them to the login page
+        }
     }
 
-    render() {
-        const classes = this.props.classes;
-        return (
-            <div className='card-row'>
-                <Card className='card'>
-                <CardContent>
-                    <Typography gutterBottom fontStyle='italic' align='left' color="textSecondary" component="h5">
-                        <Box sx={{ fontStyle: 'italic', fontSize: '18px' }}>{this.props.heading}</Box>
+    return (
+        <div className='card-row'>
+            <Card className='card'>
+            <CardContent>
+                <Typography gutterBottom fontStyle='italic' align='left' color="textSecondary" component="h5">
+                    <Box sx={{ fontStyle: 'italic', fontSize: '18px' }}>{props.heading}</Box>
+                </Typography>
+                <Typography gutterBottom align='left' component="h6">
+                    {props.brandName}
+                </Typography>
+                <Typography gutterBottom align='left' variant="h5" component="h5">
+                    {props.productName}
+                </Typography>
+                <Typography variant="body2" align='left' color="textSecondary" component="p">
+                    {props.reviewText}
+                </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+                <Button
+                    id="like"
+                    variant="contained" 
+                    size="medium"
+                    className={classes.button}
+                    style={{
+                        textTransform: 'none',
+                        marginTop: '15px',
+                        minHeight: '45px',
+                        maxHeight: '45px',
+                    }}
+                    onClick={() => handleLikeButton()}
+                >
+                <Typography style={{
+                        fontWeight: 550,
+                        lineHeight: '21.47px',
+                        fontSize: '17px',
+                        color: '#FFFFFF'
+                }}>
+                        {buttonText}
                     </Typography>
-                    <Typography gutterBottom align='left' component="h6">
-                        {this.props.brandName}
-                    </Typography>
-                    <Typography gutterBottom align='left' variant="h5" component="h5">
-                        {this.props.productName}
-                    </Typography>
-                    <Typography variant="body2" align='left' color="textSecondary" component="p">
-                        {this.props.review}
-                    </Typography>
-                </CardContent>
-                <CardActions disableSpacing>
-                    <Button 
-                        id="comment"
-                        variant="contained" 
-                        className={classes.button}
-                        style={{
-                            textTransform: 'none',
-                            marginTop: '15px',
-                            minHeight: '45px',
-                            maxHeight: '45px',
-                        }}
-                        onClick={this.handleSubmit}
-                    >
-                    <Typography style={{
-                            fontWeight: 550,
-                            lineHeight: '21.47px',
-                            fontSize: '17px',
-                            color: '#FFFFFF'
-                        }}>
-                            Comment
-                        </Typography>
-                    </Button>
-
-                    <Button 
-                        id="comment"
-                        variant="contained" 
-                        size="large"
-                        className={classes.button}
-                        style={{
-                            textTransform: 'none',
-                            marginTop: '15px',
-                            minHeight: '45px',
-                            maxHeight: '45px',
-                        }}
-                        onClick={this.handleSubmit}
-                    >
-                    <Typography style={{
-                            fontWeight: 550,
-                            lineHeight: '21.47px',
-                            fontSize: '17px',
-                            color: '#FFFFFF'
-                    }}>
-                            Like
-                        </Typography>
-                    </Button>
-                </CardActions>
-            </Card>
-        </div>
-    )}
+                </Button>
+                <Typography variant="body2" align='left' color="textSecondary" component="p">
+                    Liked By {state.likes.length} users
+                </Typography>
+            </CardActions>
+        </Card>
+    </div>
+    )
 }
 
 ReviewCard.propTypes = {
+    id: PropTypes.string.isRequired,
     heading: PropTypes.string.isRequired,
     brandName: PropTypes.string.isRequired,
     productName: PropTypes.string.isRequired,
-    review: PropTypes.string.isRequired
+    reviewText: PropTypes.string.isRequired,
+    likes: PropTypes.array.isRequired
 }
 
 export default withMyHook(ReviewCard);

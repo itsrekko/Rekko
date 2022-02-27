@@ -5,4 +5,5 @@ var reviewController = require('../controllers/reviews.controller');
 router.get('/getAllReviews', reviewController.getAllReviews);
 router.get('/getReviews?:productId', reviewController.getReview);
 router.get('/searchThroughEntireReview', reviewController.searchThroughEntireReview);
+router.put('/likes', reviewController.updateLikes);
 module.exports = router;

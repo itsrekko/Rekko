@@ -1,5 +1,8 @@
 import React, {useReducer} from "react";
 
+// Use useEffect here to setItem to localStorage
+// Update initialGlobalState to defaultGlobalState || localStorage
+
 export const defaultGlobalState = {
     userName: '',
     userId: '',

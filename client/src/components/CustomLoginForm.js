@@ -24,10 +24,9 @@ const CustomLoginForm = (props) => {
 
     const handleSubmit = async (event) => {
         await axios.post(`${window.location.origin.toString()}/user/checkAndCreateNewUser`, {
-            userLogin: state.userName
+            userName: state.userName
         })
         .then(res => {
-            console.log(res.data);
             if (res.data['data']['existingUser']){
                 setState({
                     ...state,
