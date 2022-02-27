@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 module.exports = new Schema({
     User: {
-        UserLogin: { 
+        UserName: { 
             type: String, 
             required: true
         },
@@ -36,6 +36,13 @@ module.exports = new Schema({
         type: String,
         default: '',
         required: true
+    },
+    Likes: {
+        type: [String],
+        ref: 'User',
+        uniqueItems: true,
+        required: true,
+        default: []
     },
     ReviewText: { 
         type: String,

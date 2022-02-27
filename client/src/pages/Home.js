@@ -20,11 +20,13 @@ const Home = (props) => {
             let allReviews = [];
             res.data.data.forEach(x => allReviews.push(
                 <ReviewCard
+                    id={x['_id']}
                     key={x['_id']}
-                    heading={`${x['User']['UserLogin']}, ${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
+                    heading={`${x['User']['UserName']}, ${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
                     brandName={x['Product']['ProductBrand']} 
                     productName={x['Product']['ProductName']} 
                     review={x['ReviewText']}
+                    likes={x['Likes']}
                 />));
             setState({...state, allReviewCards: allReviews});
         })
