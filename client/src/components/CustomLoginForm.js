@@ -72,6 +72,12 @@ const CustomLoginForm = (props) => {
                         focused: classes.cssFocused,
                         },
                     }}
+                    onKeyPress={(event) => {
+                        if (event.key === 'Enter') {
+                            handleSubmit();
+                            event.preventDefault();
+                        }
+                    }}
                     InputProps={{
                         inputProps: {
                             style: { 

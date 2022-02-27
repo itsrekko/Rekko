@@ -14,10 +14,10 @@ const CustomSearchBar = (props) => {
   const [globalState, globalSetState] = useGlobalState();
   const [state, setState] = useState({ searchVal: ''});
   const {classes} = props;
-  
-  const handleSubmit = async (event) => {
-    if (state.searchVal === ''){
-      await axios.get(`${window.location.origin.toString()}/review/getAllReviews`, {})
+  let currentReviews = globalState.allReviewCards;
+
+  const refreshAllReviews = async (event) => {
+    await axios.get(`${window.location.origin.toString()}/review/getAllReviews`, {})
       .then(res => {
           let allReviews = [];
           res.data.data.forEach(x => allReviews.push(
@@ -28,11 +28,17 @@ const CustomSearchBar = (props) => {
                   productName={x['Product']['ProductName']} 
                   review={x['ReviewText']}
               />));
-          setState({...state, allReviewCards: allReviews, storedReviewCards: allReviews});
+          currentReviews = allReviews;
+          globalSetState({...globalState, allReviewCards: allReviews});
       })
       .catch(error => {
-          console.log (`Error fetching all the reviews while mounting the home page with error: ${error}`);
+          console.log(`Error fetching all the reviews while mounting the home page with error: ${error}`);
       })
+  }
+
+  const handleSubmit = async (event) => {
+    if (state.searchVal === ''){
+      await refreshAllReviews();
       return;
     }
     await axios.get(`${window.location.origin.toString()}/review/searchThroughEntireReview`, {
@@ -66,11 +72,17 @@ const CustomSearchBar = (props) => {
         onChange={(event) => {
             setState({...state, searchVal: event.target.value})
             if (event.target.value === ''){
-              globalSetState({...globalState, allReviewCards: globalState.storedReviewCards});
+              refreshAllReviews();
               return;
             }
           }
         }
+        onKeyPress={(event) => {
+          if (event.key === 'Enter') {
+            handleSubmit();
+            event.preventDefault();
+          }
+        }}
         margin="normal"
         variant="outlined"
         InputLabelProps={{

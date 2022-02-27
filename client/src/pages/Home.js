@@ -26,7 +26,7 @@ const Home = (props) => {
                     productName={x['Product']['ProductName']} 
                     review={x['ReviewText']}
                 />));
-            setState({...state, allReviewCards: allReviews, storedReviewCards: allReviews});
+            setState({...state, allReviewCards: allReviews});
         })
         .catch(error => {
             console.log (`Error fetching all the reviews while mounting the home page with error: ${error}`);

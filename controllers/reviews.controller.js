@@ -68,48 +68,6 @@ async function searchThroughEntireReviews (searchText) {
     .then(results => {
         return results;
     });
-    
-    return await reviewModel.find(
-        {$or: 
-            [
-                {
-                    Product: {
-                        ProductBrand: 
-                        {
-                            "$regex": searchText, 
-                            "$options": "i"
-                        }
-                    }
-                }, 
-                {
-                    Product: {
-                        ProductName: 
-                        {
-                            "$regex": searchText, 
-                            "$options": "i"
-                        }
-                    }
-                }, 
-                {
-                    User: {
-                        UserLogin: 
-                        {
-                            "$regex": searchText, 
-                            "$options": "i"
-                        }
-                    }
-                }, 
-                {
-                    ReviewText: { 
-                        "$regex": searchText, 
-                        "$options": "i"
-                    }
-                }
-            ]
-        })
-    .then(results => {
-        return results;
-    })
 }
 
 exports.getAllReviews = async (req, res, next) => {
