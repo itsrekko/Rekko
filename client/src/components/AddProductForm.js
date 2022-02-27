@@ -54,7 +54,7 @@ class AddProductForm extends Component {
                     alignItems={'center'}
                 >
                     <TextField
-                        id="standard-name"
+                        id="brand"
                         label="Brand* (e.g. Fenty Beauty)"
                         value={this.state.brand}
                         onChange={this.handleChange('brand')}
@@ -84,7 +84,7 @@ class AddProductForm extends Component {
                         }}
                     />
                     <TextField
-                        id="standard-name"
+                        id="product"
                         label="Product* (e.g. Universal Lip Luminizer)"
                         value={this.state.product}
                         onChange={this.handleChange('product')}
@@ -114,7 +114,7 @@ class AddProductForm extends Component {
                         }}
                     />
                     <TextField
-                        id="standard-name"
+                        id="lengthOfUse"
                         label="How long you’ve used it* (e.g. 2 years)"
                         placeholder="10 years"
                         value={this.state.lengthOfUse}
@@ -145,7 +145,7 @@ class AddProductForm extends Component {
                         }}
                     />
                     <TextField
-                        id="standard-name"
+                        id="review"
                         label="Why you love it*"
                         value={this.state.review}
                         onChange={this.handleChange('review')}
@@ -175,7 +175,7 @@ class AddProductForm extends Component {
                         }}
                     />
                     <Button 
-                        id="login-submit-button"
+                        id="review-submit"
                         variant="contained" 
                         className={classes.button}
                         style={{

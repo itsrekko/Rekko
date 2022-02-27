@@ -1,7 +1,7 @@
 # Rekko
 
 [![Website rekko.co](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://www.rekko.co/)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/mohaimenhasan/Rekko/graphs/commit-activity)
 
 Discover products you’ll love from a community you trust. A community based application allowing users to add product reviews and interact with a close friends & community on a trusted circle
 

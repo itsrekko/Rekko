@@ -27,6 +27,7 @@ const CustomLoginForm = (props) => {
             userLogin: state.userName
         })
         .then(res => {
+            console.log(res.data);
             if (res.data['data']['existingUser']){
                 setState({
                     ...state,
@@ -54,7 +55,7 @@ const CustomLoginForm = (props) => {
                 alignItems={'center'}
             >
             <TextField
-                    id="standard-name"
+                    id="username"
                     label = "Your first name and last initial (e.g. Meg M)"
                     placeholder="Your first name and last initial (e.g. Meg M)"
                     className={classes.textField}
@@ -63,14 +64,26 @@ const CustomLoginForm = (props) => {
                     margin="normal"
                     variant="outlined"
                     InputLabelProps={{
+                        style: {
+                            fontSize: '13px'
+                        },
                         classes: {
                         root: classes.cssLabel,
                         focused: classes.cssFocused,
                         },
                     }}
+                    onKeyPress={(event) => {
+                        if (event.key === 'Enter') {
+                            handleSubmit();
+                            event.preventDefault();
+                        }
+                    }}
                     InputProps={{
                         inputProps: {
-                        style: { textAlign: "left" },
+                            style: { 
+                                textAlign: "left",
+                                fontSize: '13px'
+                            },
                         },
                         classes: {
                             root: classes.cssOutlinedInput,

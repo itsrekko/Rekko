@@ -35,11 +35,39 @@ async function getReview (productId) {
     })
 }
 
-async function getReviewByReviewText (reviewText) {
-    return await reviewModel.find({ReviewText: { "$regex": reviewText, "$options": "i"}})
+async function searchThroughEntireReviews (searchText) {
+    return await reviewModel.find(
+        {$or: 
+            [
+                {
+                    'Product.ProductBrand': {
+                        "$regex": searchText, 
+                        "$options": "i"
+                    }
+                }, 
+                {
+                    'Product.ProductName': {
+                        "$regex": searchText, 
+                        "$options": "i"
+                    }
+                }, 
+                {
+                    'User.UserLogin': {
+                            "$regex": searchText, 
+                            "$options": "i"
+                    }
+                }, 
+                {
+                    ReviewText: { 
+                        "$regex": searchText, 
+                        "$options": "i"
+                    }
+                }
+            ]
+        })
     .then(results => {
         return results;
-    })
+    });
 }
 
 exports.getAllReviews = async (req, res, next) => {
@@ -75,7 +103,7 @@ exports.getReview = async (req, res, next) => {
 }
 
 
-exports.searchByReviewText = async (req, res, next) => {
+exports.searchThroughEntireReview = async (req, res, next) => {
     var responseVal = undefined;
     const reviewRegex = req.query.reviewRegex;
     try {
@@ -83,7 +111,7 @@ exports.searchByReviewText = async (req, res, next) => {
             responseVal = responseObj.constructResponseObject(`Fetching review by text requires param reviewRegex`, req.headers, null, errorTypes.default.badQuery)
         }
         else{
-            const mongoRequest = await getReviewByReviewText(reviewRegex);
+            const mongoRequest = await searchThroughEntireReviews(reviewRegex);
             responseVal = responseObj.constructResponseObject(`Successfully fetched review`, req.headers, mongoRequest);
         }
     } catch (error) {
