@@ -70,7 +70,7 @@ const CustomSearchBar = (props) => {
   return (
       <TextField
         id="home-search-bar"
-        placeholder="Search for a product or friend"
+        placeholder="Search by category, product or reviewer"
         className={classes.searchTextField}
         value={state.searchVal}
         onChange={(event) => {
