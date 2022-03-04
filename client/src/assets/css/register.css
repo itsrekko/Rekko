@@ -1,20 +1,20 @@
-.login-title {
+.register-title {
     margin-top: 55px;
     font-weight: 450;
     font-size: xx-large;   
 }
 
-.login-header {
+.register-header {
     color: #6C5B57;
 }
 
-.login-text {
+.register-text {
     display: inline-block;
     margin: auto;
     padding-left: 5%;
 }
 
-.login-sub-title {
+.register-sub-title {
     font-size: medium;
     margin-top: 30px;
     margin-bottom: 30px;

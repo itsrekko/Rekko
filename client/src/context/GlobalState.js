@@ -1,4 +1,4 @@
-import React, {useReducer} from "react";
+import {useReducer, useContext, createContext, useEffect} from "react";
 
 // Use useEffect here to setItem to localStorage
 // Update initialGlobalState to defaultGlobalState || localStorage
@@ -6,17 +6,27 @@ import React, {useReducer} from "react";
 export const defaultGlobalState = {
     userName: '',
     userId: '',
-    existingUser: false,
     reviews: []
 }
-const globalStateContext = React.createContext(defaultGlobalState);
-const dispatchStateContext = React.createContext(undefined);
+const globalStateContext = createContext(defaultGlobalState);
+const dispatchStateContext = createContext(undefined);
 
 const GlobalStateProvider = ({ children }) => {
+
+  const jsonElem = localStorage.getItem("GlobalState");
+  console.log(typeof jsonElem);
+
     const [state, dispatch] = useReducer(
       (state, newValue) => ({ ...state, ...newValue }),
       defaultGlobalState
     );
+
+    console.log('GlobalStateProvider called: ', state);
+
+    useEffect(() => {
+      localStorage.setItem("GlobalState", state, [state]);
+    });
+
     return (
       <globalStateContext.Provider value={state}>
         <dispatchStateContext.Provider value={dispatch}>
@@ -27,8 +37,8 @@ const GlobalStateProvider = ({ children }) => {
   };
 
 export const useGlobalState = () => [
-    React.useContext(globalStateContext),
-    React.useContext(dispatchStateContext)
+  useContext(globalStateContext),
+  useContext(dispatchStateContext)
 ];
 
 export default GlobalStateProvider;

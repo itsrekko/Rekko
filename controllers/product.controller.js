@@ -1,6 +1,6 @@
 const Response = require('../util/response');
 const errorTypes = require('../consts/errorTypes');
-const productModel = require('../models/product.model');
+const ProductModel = require('../models/product.model');
 
 var userController = require('./user.controller');
 var reviewController = require('./reviews.controller')
@@ -8,7 +8,7 @@ var reviewController = require('./reviews.controller')
 const responseObj = new Response();
 
 async function getAllProducts() {
-    return await productModel.find({})
+    return await ProductModel.find({})
     .then(results => {
         return results;
     })
@@ -18,7 +18,7 @@ async function getAllProducts() {
 }
 
 async function getAllProducts() {
-    return await productModel.find({})
+    return await ProductModel.find({})
     .then(results => {
         return results;
     })
@@ -43,7 +43,7 @@ exports.getAllProducts = async (req, res, next) => {
 
 async function getProductsByProductName(productName) {
 
-    return await productModel.find({ProductName: productName})
+    return await ProductModel.find({ProductName: productName})
     .then(results => {
         return results;
     })
@@ -68,7 +68,7 @@ exports.getProductsByProductName = async (req, res, next) => {
 }
 
 async function checkIfProductExists(productBrand, productName){
-    return await productModel.findOne({ProductBrand: productBrand, ProductName: productName})
+    return await ProductModel.findOne({ProductBrand: productBrand, ProductName: productName})
     .then(result => {
         return result;
     })
@@ -83,7 +83,7 @@ async function addOrUpdateProduct(productBrand, productName, productURI = null) 
     if (productCheck){
         if (productURI && productURI !== null && productURI !== undefined & productURI !== ''){
             // update the product
-            return await productModel.findOneAndUpdate({_id: productCheck?._id}, 
+            return await ProductModel.findOneAndUpdate({_id: productCheck?._id}, 
                 {$set:{ProductURI:productURI}},
                 {new: true})
             .then(result => {
@@ -99,7 +99,7 @@ async function addOrUpdateProduct(productBrand, productName, productURI = null) 
         }
     }
     else{
-        let newProduct = new productModel({
+        let newProduct = new ProductModel({
             ProductBrand: productBrand,
             ProductName: productName,
             ProductURI: productURI != null ? productURI : ''

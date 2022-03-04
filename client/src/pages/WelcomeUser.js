@@ -28,12 +28,7 @@ const WelcomeUser = (props) => {
 
 WelcomeUser.propTypes = {
     cardTitle: PropTypes.string.isRequired,
-    buttonText: PropTypes.string.isRequired,
-    existingUser: PropTypes.bool.isRequired,
-};
-
-WelcomeUser.defaultProps = {
-    existingUser: false,
+    buttonText: PropTypes.string.isRequired
 };
 
 export default WelcomeUser;

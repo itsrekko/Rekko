@@ -1,11 +1,11 @@
 const Response = require('../util/response');
 const mongoose = require('mongoose');
-const reviewModel = require('../models/review.model');
+const ReviewModel = require('../models/review.model');
 const errorTypes = require('../consts/errorTypes');
 const responseObj = new Response();
 
 exports.createNewReview = async (userModel, productModel, lengthOfUse, reviewText) => {
-    let newUserReview = new reviewModel({
+    let newUserReview = new ReviewModel({
         User: userModel,
         Product: productModel,
         LengthOfUse: lengthOfUse,
@@ -18,7 +18,7 @@ exports.createNewReview = async (userModel, productModel, lengthOfUse, reviewTex
 }
 
 async function getAllReviews () {
-    return await reviewModel.find({})
+    return await ReviewModel.find({})
     .then(results => {
         return results;
     })
@@ -29,14 +29,14 @@ async function getAllReviews () {
 
 async function getReview (productId) {
     const productIdObject = mongoose.Types.ObjectId(productId);
-    return await reviewModel.find({ProductId: productIdObject})
+    return await ReviewModel.find({ProductId: productIdObject})
     .then(results => {
         return results;
     })
 }
 
 async function searchThroughEntireReviews (searchText) {
-    return await reviewModel.find(
+    return await ReviewModel.find(
         {$or: 
             [
                 {
@@ -71,7 +71,7 @@ async function searchThroughEntireReviews (searchText) {
 }
 
 async function incrementLikesOnReview (reviewId, userName) {
-    return await reviewModel.findByIdAndUpdate(reviewId, {$push: {Likes: userName}}, {new: true})
+    return await ReviewModel.findByIdAndUpdate(reviewId, {$push: {Likes: userName}}, {new: true})
         .then(results => {
             return results;
     }).catch(error => {
@@ -82,7 +82,7 @@ async function incrementLikesOnReview (reviewId, userName) {
 
 async function decrementLikesOnReview (reviewId, userName) {
 
-    return await reviewModel.findByIdAndUpdate(reviewId, {$pull: {Likes: userName}}, {new: true})
+    return await ReviewModel.findByIdAndUpdate(reviewId, {$pull: {Likes: userName}}, {new: true})
         .then(results => {
             return results;
     })

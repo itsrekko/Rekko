@@ -4,6 +4,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from './pages/Login';
+import Register from './pages/Register';
 import WelcomeUser from './pages/WelcomeUser';
 import Home from './pages/Home';
 import GlobalStateProvider from './context/GlobalState';
@@ -25,9 +26,11 @@ const App = () => {
       <div className="App">
       <Routes>
           <Route path = "/" exact element={<Login />} />
+          <Route path = "/register" element={<Register />} />
           <Route path = "/welcome" element={<WelcomeUser cardTitle={'What’s a beauty product you can’t live without at the moment?'} buttonText={'Start discovering products'}/>} />
           <Route path = "/review" element={<WelcomeUser cardTitle='Share another product you love' buttonText={'Keep discovering products'}/>} />
           <Route path = "/home/:userName" element={<Home />} />
+          
       </Routes>
       </div>
     </Router>

@@ -14,13 +14,6 @@
   height: 10vmin;
 }
 
-/*
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-*/
 .App-title {
   position: absolute;
   width: 200px;

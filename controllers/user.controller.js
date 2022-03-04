@@ -1,20 +1,10 @@
 const Response = require('../util/response');
-const userModel = require('../models/user.model');
-const userInfoModel = require('../models/userInformation.model');
+const UserModel = require('../models/user.model');
 const errorTypes = require('../consts/errorTypes');
 const responseObj = new Response();
 
-async function updateUserName(userID) {
-    let newUserName  = new userInfoModel({
-        UserId: userID,
-        LoginStatus: true
-    });
-    await newUserName.save();
-    return newUserName;
-}
-
 async function getAllUsers() {
-    return await userModel.find({})
+    return await UserModel.find({})
     .then(results => {
         return results;
     })
@@ -25,7 +15,7 @@ async function getAllUsers() {
 }
 
 exports.checkIfUserExists = async (userName) => {
-    return await userModel.findOne({UserName: userName})
+    return await UserModel.findOne({UserName: userName})
     .then(result => {
         return result;
     })
@@ -36,7 +26,7 @@ exports.checkIfUserExists = async (userName) => {
 }
 
 async function addNewUser(userName) {
-    let newUser = new userModel({
+    let newUser = new UserModel({
         UserName: userName
     });
     await newUser.save();
@@ -57,8 +47,15 @@ exports.getAllUsers = async (req, res, next) => {
     }
 }
 
+exports.login = async (req, res, next) => {
+    const userEmail = req.body.userEmail;
+    const password = req.body.password;
+}
+
 exports.createNewUser = async (req, res, next) => {
+    
     const userName = req.body.userName;
+    
     var responseVal = undefined;
     try{
         // response validation
@@ -70,7 +67,6 @@ exports.createNewUser = async (req, res, next) => {
             let userCheck = await this.checkIfUserExists(userName);
             if (userCheck){
                 // create a login value
-                await updateUserName(userCheck?._id);
                 responseVal = responseObj.constructResponseObject(`User with login ${userName} already exists`, req.headers, 
                 {
                     "UserName": userName,

@@ -1,6 +1,57 @@
 const mongoose = require('mongoose');
-const reviewSchema = require('./schemas/review.schema');
+const Schema = mongoose.Schema;
 
-// uncomment the following line to have a unique review
-// need to think this through
-module.exports = mongoose.model('Review', reviewSchema);
+const ReviewSchema = new Schema({
+    User: {
+        UserName: { 
+            type: String, 
+            required: true
+        },
+        _id: { 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'User',
+            required: true
+        },
+    },
+    Product: {
+        ProductBrand: {
+            type: String, 
+            required: true
+        },
+        ProductName: { 
+            type: String,
+            required: true
+        },
+        ProductURI: { 
+            type: String,
+            default: ''
+        },
+        _id: { 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'Product',
+            required: true
+        },
+    },
+    LengthOfUse: {
+        type: String,
+        default: '',
+        required: true
+    },
+    Likes: {
+        type: [String],
+        ref: 'User',
+        uniqueItems: true,
+        required: true,
+        default: []
+    },
+    ReviewText: { 
+        type: String,
+        required: true
+    },
+    ReviwedAt: {
+        type : Date, 
+        default: Date.now
+    }
+});
+
+module.exports = ReviewModel = mongoose.model('Review', ReviewSchema);

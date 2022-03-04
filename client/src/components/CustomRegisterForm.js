@@ -5,16 +5,22 @@ import LoginFormStyler from "../utils/LoginFormStyler";
 import {validateEmail, MIN_PASSWORD_LENGTH} from '../utils/validation';
 import axios from 'axios';
 
-const CustomLoginForm = (props) => {
+const CustomRegisterForm = (props) => {
 
     const [state, setState] = useState({
+        userName: '',
         email: '',
         password: '',
+        repeatPassword: '',
+        onUserNameError: false,
         onEmailError: false,
         onPasswordError: false,
+        onRepeatPassword: false,
         onSubmitError: false,
+        userNameErrorMessage: 'SUCCESS',
         emailErrorMessage: 'SUCCESS',
         passwordErrorMessage: 'SUCCESS',
+        repeatPasswordEmailMessage: 'SUCCESS',
         formErrorMessage: 'SUCCESS'
     });
 
@@ -41,19 +47,8 @@ const CustomLoginForm = (props) => {
     }
 
     const handleSubmit = async (event) => {
+        // axios to create a new user 
         
-        if (state.onEmailError || state.onPasswordError) return;
-        
-        await axios.post(`${window.location.origin.toString()}/user/loginUser`, {
-            email: state.email,
-            password: state.password
-        })
-        .then(res => {
-            // if error show 
-            navigate(`/home/${state.userName}`);
-        });
-        // validateForm
-        // check if login information exist
     }
 
     const renderCustomTextField = (id, label, placeholder, type, validateFunction, value, onError, errorMessage) => {
@@ -157,8 +152,8 @@ const CustomLoginForm = (props) => {
     )
 }
 
-CustomLoginForm.propTypes = {
+CustomRegisterForm.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(LoginFormStyler("left"))(CustomLoginForm);
+export default withStyles(LoginFormStyler("left"))(CustomRegisterForm);
