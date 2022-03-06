@@ -709,81 +709,12 @@
             "id": "RekkoImagesBucket",
             "path": "RekkoCDKStack/RekkoImagesBucket",
             "children": {
-              "Key": {
-                "id": "Key",
-                "path": "RekkoCDKStack/RekkoImagesBucket/Key",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "RekkoCDKStack/RekkoImagesBucket/Key/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::KMS::Key",
-                      "aws:cdk:cloudformation:props": {
-                        "keyPolicy": {
-                          "Statement": [
-                            {
-                              "Action": "kms:*",
-                              "Effect": "Allow",
-                              "Principal": {
-                                "AWS": {
-                                  "Fn::Join": [
-                                    "",
-                                    [
-                                      "arn:",
-                                      {
-                                        "Ref": "AWS::Partition"
-                                      },
-                                      ":iam::",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":root"
-                                    ]
-                                  ]
-                                }
-                              },
-                              "Resource": "*"
-                            }
-                          ],
-                          "Version": "2012-10-17"
-                        },
-                        "description": "Created by RekkoCDKStack/RekkoImagesBucket"
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "aws-cdk-lib.aws_kms.CfnKey",
-                      "version": "2.15.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "aws-cdk-lib.aws_kms.Key",
-                  "version": "2.15.0"
-                }
-              },
               "Resource": {
                 "id": "Resource",
                 "path": "RekkoCDKStack/RekkoImagesBucket/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
-                  "aws:cdk:cloudformation:props": {
-                    "bucketEncryption": {
-                      "serverSideEncryptionConfiguration": [
-                        {
-                          "bucketKeyEnabled": true,
-                          "serverSideEncryptionByDefault": {
-                            "sseAlgorithm": "aws:kms",
-                            "kmsMasterKeyId": {
-                              "Fn::GetAtt": [
-                                "RekkoImagesBucketKey64339F2C",
-                                "Arn"
-                              ]
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  }
+                  "aws:cdk:cloudformation:props": {}
                 },
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
@@ -928,7 +859,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "c95f08a9253d46dc9cd17aa4a4a5b0e9491fb039e942829fcfcafdc9ba79442c.zip"
+                      "s3Key": "27712d5b421fdcc9a6f7badb4ee7c0ced661b8487ea1eb2ca0d726295559516f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -1091,7 +1022,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "c95f08a9253d46dc9cd17aa4a4a5b0e9491fb039e942829fcfcafdc9ba79442c.zip"
+                      "s3Key": "27712d5b421fdcc9a6f7badb4ee7c0ced661b8487ea1eb2ca0d726295559516f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [

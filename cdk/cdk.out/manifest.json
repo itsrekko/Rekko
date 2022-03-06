@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/abebd3f7cce2980c36c611831bd040f79b5874c1713ad73ee53a7558ac205e52.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/87f760dd57ea241172882d1778246a97ee46fd52ee5da5a58e12b23f57685b60.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -139,12 +139,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoUsersRestAPIcheckAndCreateNewUserPOST817B864D"
-          }
-        ],
-        "/RekkoCDKStack/RekkoImagesBucket/Key/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "RekkoImagesBucketKey64339F2C"
           }
         ],
         "/RekkoCDKStack/RekkoImagesBucket/Resource": [

@@ -474,65 +474,8 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/Resource"
       }
     },
-    "RekkoImagesBucketKey64339F2C": {
-      "Type": "AWS::KMS::Key",
-      "Properties": {
-        "KeyPolicy": {
-          "Statement": [
-            {
-              "Action": "kms:*",
-              "Effect": "Allow",
-              "Principal": {
-                "AWS": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:",
-                      {
-                        "Ref": "AWS::Partition"
-                      },
-                      ":iam::",
-                      {
-                        "Ref": "AWS::AccountId"
-                      },
-                      ":root"
-                    ]
-                  ]
-                }
-              },
-              "Resource": "*"
-            }
-          ],
-          "Version": "2012-10-17"
-        },
-        "Description": "Created by RekkoCDKStack/RekkoImagesBucket"
-      },
-      "UpdateReplacePolicy": "Retain",
-      "DeletionPolicy": "Retain",
-      "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoImagesBucket/Key/Resource"
-      }
-    },
     "RekkoImagesBucket39511A0E": {
       "Type": "AWS::S3::Bucket",
-      "Properties": {
-        "BucketEncryption": {
-          "ServerSideEncryptionConfiguration": [
-            {
-              "BucketKeyEnabled": true,
-              "ServerSideEncryptionByDefault": {
-                "KMSMasterKeyID": {
-                  "Fn::GetAtt": [
-                    "RekkoImagesBucketKey64339F2C",
-                    "Arn"
-                  ]
-                },
-                "SSEAlgorithm": "aws:kms"
-              }
-            }
-          ]
-        }
-      },
       "UpdateReplacePolicy": "Retain",
       "DeletionPolicy": "Retain",
       "Metadata": {
@@ -608,7 +551,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "c95f08a9253d46dc9cd17aa4a4a5b0e9491fb039e942829fcfcafdc9ba79442c.zip"
+          "S3Key": "27712d5b421fdcc9a6f7badb4ee7c0ced661b8487ea1eb2ca0d726295559516f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -633,7 +576,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesLambdagetObject/Resource",
-        "aws:asset:path": "asset.c95f08a9253d46dc9cd17aa4a4a5b0e9491fb039e942829fcfcafdc9ba79442c",
+        "aws:asset:path": "asset.27712d5b421fdcc9a6f7badb4ee7c0ced661b8487ea1eb2ca0d726295559516f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -707,7 +650,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "c95f08a9253d46dc9cd17aa4a4a5b0e9491fb039e942829fcfcafdc9ba79442c.zip"
+          "S3Key": "27712d5b421fdcc9a6f7badb4ee7c0ced661b8487ea1eb2ca0d726295559516f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -732,7 +675,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesLambdaputObject/Resource",
-        "aws:asset:path": "asset.c95f08a9253d46dc9cd17aa4a4a5b0e9491fb039e942829fcfcafdc9ba79442c",
+        "aws:asset:path": "asset.27712d5b421fdcc9a6f7badb4ee7c0ced661b8487ea1eb2ca0d726295559516f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1152,7 +1095,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/02Q3U7DMAyFn2X3qaFMcN8N7QYhpvEAU5aa4rVJqjphqqK8O0k6RK/OZzvHP3mC+hkeN/LGlWr7aqALhE8nVS9S6hwGqS+thHDwRjmyRuy/zJqPOGliTlEUJDWEkx0wF4oe7UBqLu8KRcHbs2RGx9BkSTGEnVc9up1kFAtmw0JRyJE66fAm59Qb2TUjlfb/2ChlvXHiFcfBzhpN8a+idE5XdlogWa2fFJaB7+i+bZuLd/qr3ocUjqLXDOENyylJYhRl/dyQTJezH96N3q1dmffWtOTK7xjbIlz54ad+gXoL9ebKRNWUNieNcFr0F45VCB2OAQAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/02QwU7DMAyGn2X31FAmuHdD3BDT9gBTlpritUmq2tlUVX13knSInvzZv3/byQuUr/C80XcuTN0WHV1gOok2rYql89Rpe6k1TB/BGSHv1P7brfmAgyXmmM2KtIXp6DtMQo4H35EZc1+mWfH2rJlRGKoUYg7TLpgWZacZ1YLJsNCsdE+NFrzrMc5GlqqnPP4fK2N8cKLese/8aNFl/yqLz2nyTQtEqw+DwbzwE+XH10l80J/6WJJ5nlW+NvnJNUn6CtIHWTcl3ntXk+TPcL5GuPLTrXyDcgvl5spExRAPJYtwXOIv+tpA8X0BAAA="
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/CDKMetadata/Default"
