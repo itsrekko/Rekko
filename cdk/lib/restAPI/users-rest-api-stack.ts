@@ -20,8 +20,8 @@ export const UsersRestAPIStack = (parent: CdkStack) => {
         authorizationType: AuthorizationType.NONE, // TO DO this would need to change to cognito auth
     });
     
-    createUsers.addMethod('GET', new LambdaIntegration(healthLambda), {
-        operationName: 'getAllUsers',
+    createUsers.addMethod('POST', new LambdaIntegration(healthLambda), {
+        operationName: 'createUsers',
         authorizationType: AuthorizationType.NONE, // TO DO this would need to change to cognito auth
     });
 }

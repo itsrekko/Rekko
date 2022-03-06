@@ -7,27 +7,27 @@
         "file": "tree.json"
       }
     },
-    "CdkStack.assets": {
+    "RekkoCDKStack.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "CdkStack.assets.json",
+        "file": "RekkoCDKStack.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
       }
     },
-    "CdkStack": {
+    "RekkoCDKStack": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://unknown-account/unknown-region",
       "properties": {
-        "templateFile": "CdkStack.template.json",
+        "templateFile": "RekkoCDKStack.template.json",
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6dc163a7674e704027fe57262ab22bcb593fe8f808211f52a15fcd076486ad30.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/abebd3f7cce2980c36c611831bd040f79b5874c1713ad73ee53a7558ac205e52.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
-          "CdkStack.assets"
+          "RekkoCDKStack.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
@@ -36,47 +36,275 @@
         }
       },
       "dependencies": [
-        "CdkStack.assets"
+        "RekkoCDKStack.assets"
       ],
       "metadata": {
-        "/CdkStack/MyFunction/ServiceRole/Resource": [
+        "/RekkoCDKStack/HealthFunction/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MyFunctionServiceRole3C357FF2"
+            "data": "HealthFunctionServiceRole04552894"
           }
         ],
-        "/CdkStack/MyFunction/Resource": [
+        "/RekkoCDKStack/HealthFunction/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MyFunction3BAA72D1"
+            "data": "HealthFunction19D7724A"
           }
         ],
-        "/CdkStack/CDKMetadata/Default": [
+        "/RekkoCDKStack/RekkoUsersRestAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPI70ABA7ED"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPICloudWatchRoleC18D9E89"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIAccount2F17EAD0"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIDeployment86CF7D8Bb1d4dc5ce22f844db3f2d36a6cf14179"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIDeploymentStageprodF9989DB5"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIEndpointD909F4AF"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Default/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIANYE07DD136"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIgetAllUsersD7E61452"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIgetAllUsersGETApiPermissionRekkoCDKStackRekkoUsersRestAPI85279EF2GETgetAllUsersC4D235EE"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIgetAllUsersGETApiPermissionTestRekkoCDKStackRekkoUsersRestAPI85279EF2GETgetAllUsers04FC055D"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIgetAllUsersGET58935D7F"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIcheckAndCreateNewUser7B3E9864"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIcheckAndCreateNewUserPOSTApiPermissionRekkoCDKStackRekkoUsersRestAPI85279EF2POSTcheckAndCreateNewUser42CF2651"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIcheckAndCreateNewUserPOSTApiPermissionTestRekkoCDKStackRekkoUsersRestAPI85279EF2POSTcheckAndCreateNewUser325432A7"
+          }
+        ],
+        "/RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoUsersRestAPIcheckAndCreateNewUserPOST817B864D"
+          }
+        ],
+        "/RekkoCDKStack/RekkoImagesBucket/Key/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoImagesBucketKey64339F2C"
+          }
+        ],
+        "/RekkoCDKStack/RekkoImagesBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoImagesBucket39511A0E"
+          }
+        ],
+        "/RekkoCDKStack/S3FilesLambdagetObject/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3FilesLambdagetObjectServiceRole0A7B2637"
+          }
+        ],
+        "/RekkoCDKStack/S3FilesLambdagetObject/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3FilesLambdagetObjectServiceRoleDefaultPolicy4C73EDA8"
+          }
+        ],
+        "/RekkoCDKStack/S3FilesLambdagetObject/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3FilesLambdagetObject6C63C5F6"
+          }
+        ],
+        "/RekkoCDKStack/S3FilesLambdaputObject/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3FilesLambdaputObjectServiceRole9A116707"
+          }
+        ],
+        "/RekkoCDKStack/S3FilesLambdaputObject/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3FilesLambdaputObjectServiceRoleDefaultPolicyC65ECC7D"
+          }
+        ],
+        "/RekkoCDKStack/S3FilesLambdaputObject/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "S3FilesLambdaputObject105C86DC"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIEA4E61E4"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPICloudWatchRole684BE468"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIAccount3E5193A7"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIDeployment53E5CC3080f631580aab10a27e93af72179e19dc"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIDeploymentStageprodA272572A"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIEndpoint7E8D259B"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIANYE6E5FC8A"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIgetPictureURLAC87336D"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/POST/ApiPermission.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..getPictureURL": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIgetPictureURLPOSTApiPermissionRekkoCDKStackRekkoPicturesRestAPIACC6E291POSTgetPictureURL60E2C84F"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/POST/ApiPermission.Test.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..getPictureURL": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIgetPictureURLPOSTApiPermissionTestRekkoCDKStackRekkoPicturesRestAPIACC6E291POSTgetPictureURL50A77B00"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIgetPictureURLPOST37327F40"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIuploadPictureURLFD8B91DB"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/POST/ApiPermission.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..uploadPictureURL": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIuploadPictureURLPOSTApiPermissionRekkoCDKStackRekkoPicturesRestAPIACC6E291POSTuploadPictureURL5DA1EA14"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/POST/ApiPermission.Test.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..uploadPictureURL": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIuploadPictureURLPOSTApiPermissionTestRekkoCDKStackRekkoPicturesRestAPIACC6E291POSTuploadPictureURLAE968F3D"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIuploadPictureURLPOST83467236"
+          }
+        ],
+        "/RekkoCDKStack/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/CdkStack/CDKMetadata/Condition": [
+        "/RekkoCDKStack/CDKMetadata/Condition": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadataAvailable"
           }
         ],
-        "/CdkStack/BootstrapVersion": [
+        "/RekkoCDKStack/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/CdkStack/CheckBootstrapVersion": [
+        "/RekkoCDKStack/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "CdkStack"
+      "displayName": "RekkoCDKStack"
     }
   }
 }
