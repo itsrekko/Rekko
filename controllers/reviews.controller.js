@@ -11,9 +11,7 @@ exports.createNewReview = async (userModel, productModel, lengthOfUse, reviewTex
         LengthOfUse: lengthOfUse,
         ReviewText: reviewText
     });
-
     await newUserReview.save();
-
     return newUserReview;
 }
 
@@ -70,8 +68,8 @@ async function searchThroughEntireReviews (searchText) {
     });
 }
 
-async function incrementLikesOnReview (reviewId, userName) {
-    return await reviewModel.findByIdAndUpdate(reviewId, {$push: {Likes: userName}}, {new: true})
+async function incrementLikes(model, id, userName) {
+    return await model.findByIdAndUpdate(id, {$addToSet: {Likes: userName}}, {new: true})
         .then(results => {
             return results;
     }).catch(error => {
@@ -80,9 +78,8 @@ async function incrementLikesOnReview (reviewId, userName) {
     })
 }
 
-async function decrementLikesOnReview (reviewId, userName) {
-
-    return await reviewModel.findByIdAndUpdate(reviewId, {$pull: {Likes: userName}}, {new: true})
+async function decrementLikes(model, id, userName) {
+    return await model.findByIdAndUpdate(id, {$pull: {Likes: userName}}, {new: true})
         .then(results => {
             return results;
     })
@@ -93,17 +90,19 @@ async function decrementLikesOnReview (reviewId, userName) {
 }
 
 exports.updateLikes = async (req, res, next) => {
-    const userName = req.body.userName; // Pass the current user's information
+    const userName = req.body.userName;
     const reviewId = req.body.reviewId;
     const hasUserLiked = req.body.hasUserLiked;
+
+    console.log(req.body);
 
     try {
         var updatedReview;
         if (hasUserLiked) {
-            updatedReview = await decrementLikesOnReview(reviewId, userName);
+            updatedReview = await decrementLikes(reviewModel, reviewId, userName);
 
         } else {
-            updatedReview = await incrementLikesOnReview(reviewId, userName);
+            updatedReview = await incrementLikes(reviewModel, reviewId, userName);
         }
         responseVal = responseObj.constructResponseObject(`Incremented the like`, req.headers, JSON.stringify(updatedReview.Likes));
     } catch (error) {

@@ -22,11 +22,12 @@ const Home = (props) => {
                 <ReviewCard
                     id={x['_id']}
                     key={x['_id']}
-                    heading={`${x['User']['UserName']}, ${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
+                    timeStamp={`${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
                     brandName={x['Product']['ProductBrand']} 
                     productName={x['Product']['ProductName']} 
                     reviewText={x['ReviewText']}
                     likes={x['Likes']}
+                    userName={x['User']['UserName']} 
                 />));
             setState({...state, allReviewCards: allReviews});
         })

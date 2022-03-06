@@ -2,53 +2,28 @@ import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Box from '@mui/material/Box';
-import {makeStyles} from "@material-ui/core/styles";
-import '../assets/css/home.css';
+import {CardContent, CardHeader, Button, Typography, TextField, Avatar, IconButton} from "@material-ui/core";
+import { red } from '@mui/material/colors';
+import '../assets/css/reviewCard.css';
 import axios from 'axios';
 import { useGlobalState } from '../context/GlobalState';
-
-const useStyles = makeStyles(() => ({
-    button: {
-        "&.MuiButton-root": {
-          backgroundColor: '#6C5B57',
-          width: "200px",
-          "@media (max-width: 420px)": { width: "100px" },
-          outerHeight: '30px',
-          '&:hover': {
-            backgroundColor: '#5e4f4b',
-          }
-        },
-        "&.MuiButton-sizeLarge": "56px",
-        marginLeft: '10px',
-        marginRight: '10px'
-      },
-    }));
-
-function withMyHook(Component){
-    return function WrappedComponent(props){
-        const classes = useStyles();
-        return <Component {...props} classes={classes}/>
-    }
-}
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Comment from './Comment';
 
 const ReviewCard = (props) => {
 
     const [globalState, setGlobalState] = useGlobalState();
+    const [comment, setComment] = useState('');
     const [state, setState] = useState(
-        {   likes: props.likes,
+        {   
+            likes: props.likes,
+            comments: [],
             hasLiked: props.likes.includes(globalState.userName)
         });
     
     const navigate = useNavigate();
-    const classes = props.classes;
     
-    let buttonText = state.hasLiked === true ? 'Unlike' : 'Like';
-
     const handleLikeButton = async (event) => {
         if (globalState.userName !== '') {
             await axios.put(`${window.location.origin.toString()}/review/likes`, {
@@ -57,7 +32,9 @@ const ReviewCard = (props) => {
                 hasUserLiked: state.hasLiked
             })
             .then(res => {
+                console.log(res.data['data'])
                 setState(prevState => ({
+                    ...prevState,
                     likes: JSON.parse(res.data['data']),
                     hasLiked: !prevState.hasLiked}));
             });
@@ -67,62 +44,104 @@ const ReviewCard = (props) => {
         }
     }
 
+    const postComment = async (event) => {
+        if (globalState.userName !== '') {
+            await axios.post(`${window.location.origin.toString()}/comment`, {
+                userName: globalState.userName,
+                reviewId: props.id,
+                commentText: comment
+            })
+            .then(
+                res => {
+                    setState(prevState => ({
+                        ...prevState,
+                        comments: res.data['data'],
+                    }));
+                }
+            )
+        } else {
+            console.error('User name is set to empty');
+            navigate('/'); // Take them to the login page
+        }
+    }
+
+    const RenderComments = () => {
+        let commentList = []
+        
+        state.comments.forEach(comment => {
+            commentList.push(
+                <Comment likes={comment['Likes']} userName={comment['UserName']} text={comment['Text']} id={comment['_id']}/>
+        )})
+        return commentList;      
+    }
+
     return (
-        <div className='card-row'>
-            <Card className='card'>
-            <CardContent>
-                <Typography gutterBottom fontStyle='italic' align='left' color="textSecondary" component="h5">
-                    <Box sx={{ fontStyle: 'italic', fontSize: '18px' }}>{props.heading}</Box>
-                </Typography>
-                <Typography gutterBottom align='left' component="h6">
-                    {props.brandName}
-                </Typography>
-                <Typography gutterBottom align='left' variant="h5" component="h5">
-                    {props.productName}
-                </Typography>
-                <Typography variant="body2" align='left' color="textSecondary" component="p">
-                    {props.reviewText}
-                </Typography>
-            </CardContent>
-            <CardActions disableSpacing>
-                <Button
-                    id="like"
-                    variant="contained" 
-                    size="medium"
-                    className={classes.button}
-                    style={{
-                        textTransform: 'none',
-                        marginTop: '15px',
-                        minHeight: '45px',
-                        maxHeight: '45px',
-                    }}
-                    onClick={() => handleLikeButton()}
+        <Card className="reviewCard">
+            <CardHeader
+                avatar={
+                <Avatar 
+                    aria-label="recipe"
+                    className="reviewCard__avatar"
+                    alt={props.userName}
                 >
-                <Typography style={{
-                        fontWeight: 550,
-                        lineHeight: '21.47px',
-                        fontSize: '17px',
-                        color: '#FFFFFF'
-                }}>
-                        {buttonText}
-                    </Typography>
-                </Button>
-                <Typography variant="body2" align='left' color="textSecondary" component="p">
-                    Liked By {state.likes.length} users
-                </Typography>
-            </CardActions>
+                    {props.userName.charAt(0)}
+                </Avatar>
+                }
+                title={<Typography variant={"h6"}>{props.brandName}</Typography>}
+                subheader={props.productName}
+            >
+            </CardHeader>
+            
+            <CardContent>
+                {/* Insert a picture over here */}
+            </CardContent>
+            <CardContent>
+            <Typography variant="body2" align='left' component="p">
+                <strong>{props.userName}</strong> {props.reviewText}
+            </Typography>
+            </CardContent>
+            <IconButton aria-label="Like" onClick={() => handleLikeButton()}>
+                {state.hasLiked === true ?<FavoriteIcon className="reviewCard_likeButton"/>:  <FavoriteBorderIcon style={{color: red}}/>}
+                
+            </IconButton>
+            <div className='reviewCard__actionContainer'>
+            <Typography className='reviewCard__actionText' variant="body2" align='left' color="textSecondary" component="p">
+                {state.likes.length} likes 
+            </Typography>
+            <Typography className='reviewCard__actionText' variant="body2" align='left' color="textSecondary" component="p">
+                {state.comments.length} comments 
+            </Typography>
+            </div>
+            <form className="reviewCard__inputCommentBox">
+            <TextField
+                className="comment__input"
+                margin="normal"
+                type="text"
+                multiline
+                value={comment}
+                placeholder="Add a comment ..."
+                onChange={(e) => setComment(e.target.value)}
+            />
+            <Button
+                className="comment_button"
+                onClick={(e) => postComment(e)}
+            >
+                Post
+            </Button>
+            </form>
+            <RenderComments/>
         </Card>
-    </div>
     )
 }
 
 ReviewCard.propTypes = {
     id: PropTypes.string.isRequired,
-    heading: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
     brandName: PropTypes.string.isRequired,
     productName: PropTypes.string.isRequired,
     reviewText: PropTypes.string.isRequired,
-    likes: PropTypes.array.isRequired
+    likes: PropTypes.array.isRequired,
+    timeStamp: PropTypes.string.isRequired
 }
 
-export default withMyHook(ReviewCard);
+export default ReviewCard;
