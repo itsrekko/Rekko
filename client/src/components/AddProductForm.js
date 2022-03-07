@@ -103,16 +103,19 @@ class AddProductForm extends Component {
 
     handleSubmit = async (event) => {
         console.log(uploadFile);
-        let formData = new FormData();
-        formData.append('Content-Type', uploadFile.type);
-        Object.entries(presignedPostUrl.fields).forEach(([k, v]) => {
-            formData.append(k, v);
-        });
-        formData.append('file', uploadFile);
-        await axios.post(presignedPostUrl.url, formData, {
-            headers: {'Content-Type': uploadFile.type},
-        });
-
+        if (uploadFileName !== '')
+        {
+            let formData = new FormData();
+            formData.append('Content-Type', uploadFile.type);
+            Object.entries(presignedPostUrl.fields).forEach(([k, v]) => {
+                formData.append(k, v);
+            });
+            formData.append('file', uploadFile);
+            await axios.post(presignedPostUrl.url, formData, {
+                headers: {'Content-Type': uploadFile.type},
+            });
+        }
+        
         await axios.post(`${window.location.origin.toString()}/product/addNewProductReview`, {
             userName: this.state.userName,
             productBrand: this.state.brand,
