@@ -151,6 +151,11 @@ exports.addNewProductReview = async (req, res, next) => {
             // user login has not been passed in
             responseVal = responseObj.constructResponseObject(`Response body requires param reviewText`, req.headers, null, errorTypes.default.badQuery)
         }
+        // response validation
+        else if (!imageName || imageName === null || imageName === undefined){
+            // user login has not been passed in
+            responseVal = responseObj.constructResponseObject(`Response body requires param imageName`, req.headers, null, errorTypes.default.badQuery)
+        }
         else{
             // check if the user exists
             // check if the product exists
