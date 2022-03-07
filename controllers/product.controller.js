@@ -126,6 +126,7 @@ exports.addNewProductReview = async (req, res, next) => {
     const productName = req.body.productName;
     const productURI = req.body.productURI;
     const lengthOfUse = req.body.lengthOfUse;
+    const imageName = req.body.imageName;
     const reviewText = req.body.reviewText;
 
     var responseVal = undefined;
@@ -166,12 +167,14 @@ exports.addNewProductReview = async (req, res, next) => {
                     userCheck,
                     productVal,
                     lengthOfUse,
+                    imageName,
                     reviewText);
                 responseVal = responseObj.constructResponseObject(`Created a new product review`, req.headers, 
                 {
                     "user": newReview?.User,
                     "product": newReview?.Product,
-                    "lengthOfUse": newReview?.lengthOfUse,
+                    "lengthOfUse": newReview?.LengthOfUse,
+                    "imageName": newReview?.ImageName,
                     "reviewText": newReview?.ReviewText,
                     "reviewedAt": newReview?.ReviewedAt
                 });

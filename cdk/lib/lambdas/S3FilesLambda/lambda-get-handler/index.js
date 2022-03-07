@@ -4,25 +4,30 @@ const myS3 = new AWS.S3();
 exports.handler = async (event) => {
   let requestObject = JSON.parse(event.body);
   const s3Bucket = process.env.s3Bucket;
-  const s3Action = process.env.s3Action; // putObject || getObject
   
   var params = {
     "Bucket": s3Bucket,
     "Key": requestObject.fileName,
   };
-  if (s3Action === 'putObject'){
-    params["ContentType"] = requestObject.fileType;
-  }
   try{
-    const uploadURL =  await myS3.getSignedUrl(s3Action, params);
+    const uploadURL =  await myS3.getSignedUrl('getObject', params);
     return {
       statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': "*",
+        'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+      },
       body: uploadURL
     }
   }
   catch (err) {
     return {
       statusCode: 404,
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: `bad error while uploading the file ${err}`
     }
   }

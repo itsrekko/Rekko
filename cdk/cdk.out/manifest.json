@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/87f760dd57ea241172882d1778246a97ee46fd52ee5da5a58e12b23f57685b60.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6fd8f13f1eff26513a0d1d0bca1f5af7f6a2a23c03da4fa1e9e158f89c0ad7e6.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -147,40 +147,40 @@
             "data": "RekkoImagesBucket39511A0E"
           }
         ],
-        "/RekkoCDKStack/S3FilesLambdagetObject/ServiceRole/Resource": [
+        "/RekkoCDKStack/S3FilesGetLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "S3FilesLambdagetObjectServiceRole0A7B2637"
+            "data": "S3FilesGetLambdaServiceRole18DF8B49"
           }
         ],
-        "/RekkoCDKStack/S3FilesLambdagetObject/ServiceRole/DefaultPolicy/Resource": [
+        "/RekkoCDKStack/S3FilesGetLambda/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "S3FilesLambdagetObjectServiceRoleDefaultPolicy4C73EDA8"
+            "data": "S3FilesGetLambdaServiceRoleDefaultPolicy25DE6BF0"
           }
         ],
-        "/RekkoCDKStack/S3FilesLambdagetObject/Resource": [
+        "/RekkoCDKStack/S3FilesGetLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "S3FilesLambdagetObject6C63C5F6"
+            "data": "S3FilesGetLambda59DC02D5"
           }
         ],
-        "/RekkoCDKStack/S3FilesLambdaputObject/ServiceRole/Resource": [
+        "/RekkoCDKStack/S3FilesPutLambda/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "S3FilesLambdaputObjectServiceRole9A116707"
+            "data": "S3FilesPutLambdaServiceRole975BEA4F"
           }
         ],
-        "/RekkoCDKStack/S3FilesLambdaputObject/ServiceRole/DefaultPolicy/Resource": [
+        "/RekkoCDKStack/S3FilesPutLambda/ServiceRole/DefaultPolicy/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "S3FilesLambdaputObjectServiceRoleDefaultPolicyC65ECC7D"
+            "data": "S3FilesPutLambdaServiceRoleDefaultPolicy3E027B93"
           }
         ],
-        "/RekkoCDKStack/S3FilesLambdaputObject/Resource": [
+        "/RekkoCDKStack/S3FilesPutLambda/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "S3FilesLambdaputObject105C86DC"
+            "data": "S3FilesPutLambda4B50B441"
           }
         ],
         "/RekkoCDKStack/RekkoPicturesRestAPI/Resource": [
@@ -204,7 +204,7 @@
         "/RekkoCDKStack/RekkoPicturesRestAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "RekkoPicturesRestAPIDeployment53E5CC3080f631580aab10a27e93af72179e19dc"
+            "data": "RekkoPicturesRestAPIDeployment53E5CC30369a628b1b9184674bfe8569d7c6b1a3"
           }
         ],
         "/RekkoCDKStack/RekkoPicturesRestAPI/DeploymentStage.prod/Resource": [

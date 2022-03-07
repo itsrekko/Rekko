@@ -32,6 +32,10 @@ module.exports = new Schema({
             required: true
         },
     },
+    ImageName: {
+        type: String,
+        default: ''
+    },
     LengthOfUse: {
         type: String,
         default: '',

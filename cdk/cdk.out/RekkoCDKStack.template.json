@@ -476,13 +476,32 @@
     },
     "RekkoImagesBucket39511A0E": {
       "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "CorsConfiguration": {
+          "CorsRules": [
+            {
+              "AllowedHeaders": [
+                "*"
+              ],
+              "AllowedMethods": [
+                "GET",
+                "POST",
+                "PUT"
+              ],
+              "AllowedOrigins": [
+                "*"
+              ]
+            }
+          ]
+        }
+      },
       "UpdateReplacePolicy": "Retain",
       "DeletionPolicy": "Retain",
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoImagesBucket/Resource"
       }
     },
-    "S3FilesLambdagetObjectServiceRole0A7B2637": {
+    "S3FilesGetLambdaServiceRole18DF8B49": {
       "Type": "AWS::IAM::Role",
       "Properties": {
         "AssumeRolePolicyDocument": {
@@ -513,10 +532,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/S3FilesLambdagetObject/ServiceRole/Resource"
+        "aws:cdk:path": "RekkoCDKStack/S3FilesGetLambda/ServiceRole/Resource"
       }
     },
-    "S3FilesLambdagetObjectServiceRoleDefaultPolicy4C73EDA8": {
+    "S3FilesGetLambdaServiceRoleDefaultPolicy25DE6BF0": {
       "Type": "AWS::IAM::Policy",
       "Properties": {
         "PolicyDocument": {
@@ -533,35 +552,34 @@
           ],
           "Version": "2012-10-17"
         },
-        "PolicyName": "S3FilesLambdagetObjectServiceRoleDefaultPolicy4C73EDA8",
+        "PolicyName": "S3FilesGetLambdaServiceRoleDefaultPolicy25DE6BF0",
         "Roles": [
           {
-            "Ref": "S3FilesLambdagetObjectServiceRole0A7B2637"
+            "Ref": "S3FilesGetLambdaServiceRole18DF8B49"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/S3FilesLambdagetObject/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "RekkoCDKStack/S3FilesGetLambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
-    "S3FilesLambdagetObject6C63C5F6": {
+    "S3FilesGetLambda59DC02D5": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "27712d5b421fdcc9a6f7badb4ee7c0ced661b8487ea1eb2ca0d726295559516f.zip"
+          "S3Key": "050a6d57211fafa2b160b6fa311d68d3434b91a8ef50a09b10dd4dd3d90748e2.zip"
         },
         "Role": {
           "Fn::GetAtt": [
-            "S3FilesLambdagetObjectServiceRole0A7B2637",
+            "S3FilesGetLambdaServiceRole18DF8B49",
             "Arn"
           ]
         },
         "Environment": {
           "Variables": {
-            "s3Action": "getObject",
             "s3Bucket": {
               "Ref": "RekkoImagesBucket39511A0E"
             }
@@ -571,17 +589,17 @@
         "Runtime": "nodejs12.x"
       },
       "DependsOn": [
-        "S3FilesLambdagetObjectServiceRoleDefaultPolicy4C73EDA8",
-        "S3FilesLambdagetObjectServiceRole0A7B2637"
+        "S3FilesGetLambdaServiceRoleDefaultPolicy25DE6BF0",
+        "S3FilesGetLambdaServiceRole18DF8B49"
       ],
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/S3FilesLambdagetObject/Resource",
-        "aws:asset:path": "asset.27712d5b421fdcc9a6f7badb4ee7c0ced661b8487ea1eb2ca0d726295559516f",
+        "aws:cdk:path": "RekkoCDKStack/S3FilesGetLambda/Resource",
+        "aws:asset:path": "asset.050a6d57211fafa2b160b6fa311d68d3434b91a8ef50a09b10dd4dd3d90748e2",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
     },
-    "S3FilesLambdaputObjectServiceRole9A116707": {
+    "S3FilesPutLambdaServiceRole975BEA4F": {
       "Type": "AWS::IAM::Role",
       "Properties": {
         "AssumeRolePolicyDocument": {
@@ -612,10 +630,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/S3FilesLambdaputObject/ServiceRole/Resource"
+        "aws:cdk:path": "RekkoCDKStack/S3FilesPutLambda/ServiceRole/Resource"
       }
     },
-    "S3FilesLambdaputObjectServiceRoleDefaultPolicyC65ECC7D": {
+    "S3FilesPutLambdaServiceRoleDefaultPolicy3E027B93": {
       "Type": "AWS::IAM::Policy",
       "Properties": {
         "PolicyDocument": {
@@ -632,35 +650,34 @@
           ],
           "Version": "2012-10-17"
         },
-        "PolicyName": "S3FilesLambdaputObjectServiceRoleDefaultPolicyC65ECC7D",
+        "PolicyName": "S3FilesPutLambdaServiceRoleDefaultPolicy3E027B93",
         "Roles": [
           {
-            "Ref": "S3FilesLambdaputObjectServiceRole9A116707"
+            "Ref": "S3FilesPutLambdaServiceRole975BEA4F"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/S3FilesLambdaputObject/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "RekkoCDKStack/S3FilesPutLambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
-    "S3FilesLambdaputObject105C86DC": {
+    "S3FilesPutLambda4B50B441": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "27712d5b421fdcc9a6f7badb4ee7c0ced661b8487ea1eb2ca0d726295559516f.zip"
+          "S3Key": "5481631e56868a4ac08deb19a510771eb27ef9e7b33256c1430a64eaa2d493b3.zip"
         },
         "Role": {
           "Fn::GetAtt": [
-            "S3FilesLambdaputObjectServiceRole9A116707",
+            "S3FilesPutLambdaServiceRole975BEA4F",
             "Arn"
           ]
         },
         "Environment": {
           "Variables": {
-            "s3Action": "putObject",
             "s3Bucket": {
               "Ref": "RekkoImagesBucket39511A0E"
             }
@@ -670,12 +687,12 @@
         "Runtime": "nodejs12.x"
       },
       "DependsOn": [
-        "S3FilesLambdaputObjectServiceRoleDefaultPolicyC65ECC7D",
-        "S3FilesLambdaputObjectServiceRole9A116707"
+        "S3FilesPutLambdaServiceRoleDefaultPolicy3E027B93",
+        "S3FilesPutLambdaServiceRole975BEA4F"
       ],
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/S3FilesLambdaputObject/Resource",
-        "aws:asset:path": "asset.27712d5b421fdcc9a6f7badb4ee7c0ced661b8487ea1eb2ca0d726295559516f",
+        "aws:cdk:path": "RekkoCDKStack/S3FilesPutLambda/Resource",
+        "aws:asset:path": "asset.5481631e56868a4ac08deb19a510771eb27ef9e7b33256c1430a64eaa2d493b3",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -741,7 +758,7 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Account"
       }
     },
-    "RekkoPicturesRestAPIDeployment53E5CC3080f631580aab10a27e93af72179e19dc": {
+    "RekkoPicturesRestAPIDeployment53E5CC30369a628b1b9184674bfe8569d7c6b1a3": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -767,7 +784,7 @@
           "Ref": "RekkoPicturesRestAPIEA4E61E4"
         },
         "DeploymentId": {
-          "Ref": "RekkoPicturesRestAPIDeployment53E5CC3080f631580aab10a27e93af72179e19dc"
+          "Ref": "RekkoPicturesRestAPIDeployment53E5CC30369a628b1b9184674bfe8569d7c6b1a3"
         },
         "StageName": "prod"
       },
@@ -824,7 +841,7 @@
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "S3FilesLambdagetObject6C63C5F6",
+            "S3FilesGetLambda59DC02D5",
             "Arn"
           ]
         },
@@ -868,7 +885,7 @@
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "S3FilesLambdagetObject6C63C5F6",
+            "S3FilesGetLambda59DC02D5",
             "Arn"
           ]
         },
@@ -931,7 +948,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "S3FilesLambdagetObject6C63C5F6",
+                    "S3FilesGetLambda59DC02D5",
                     "Arn"
                   ]
                 },
@@ -970,7 +987,7 @@
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "S3FilesLambdaputObject105C86DC",
+            "S3FilesPutLambda4B50B441",
             "Arn"
           ]
         },
@@ -1014,7 +1031,7 @@
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "S3FilesLambdaputObject105C86DC",
+            "S3FilesPutLambda4B50B441",
             "Arn"
           ]
         },
@@ -1077,7 +1094,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "S3FilesLambdaputObject105C86DC",
+                    "S3FilesPutLambda4B50B441",
                     "Arn"
                   ]
                 },

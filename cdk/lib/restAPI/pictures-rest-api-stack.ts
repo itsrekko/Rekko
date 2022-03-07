@@ -1,12 +1,13 @@
 import {CdkStack} from '../cdk-stack';
 import { PicturesS3Stack } from '../s3Bucket/pictures-s3-stack';
-import { S3FilesLambda } from '../lambdas/S3FilesLambda/S3FilesLambda';
+import { S3FilesGetLambda } from '../lambdas/S3FilesLambda/S3FilesGetLambda';
+import { S3FilesPutLambda } from '../lambdas/S3FilesLambda/S3FilesPutLambda';
 import { AuthorizationType, LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
 
 export const PictureRestStack = async (parent: CdkStack) => {
     const picturesS3Stack = PicturesS3Stack(parent);
-    const getObjectLambda = S3FilesLambda(parent, 'getObject', picturesS3Stack.bucketName);
-    const putObjectLambda = S3FilesLambda(parent, 'putObject', picturesS3Stack.bucketName);
+    const getObjectLambda = S3FilesGetLambda(parent, picturesS3Stack.bucketName);
+    const putObjectLambda = S3FilesPutLambda(parent, picturesS3Stack.bucketName);
     const restAPI = new RestApi(parent, 'RekkoPicturesRestAPI', 
     {
         description: 'Rest API for Rekko Users to upload pictures',

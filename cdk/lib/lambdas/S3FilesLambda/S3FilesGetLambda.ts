@@ -3,13 +3,12 @@ import {Function, Runtime, Code } from 'aws-cdk-lib/aws-lambda';
 import {join} from 'path';
 import {CdkStack} from '../../cdk-stack';
 
-export const S3FilesLambda = (parent: CdkStack, s3ActionName: string, s3BucketName: string) => {
-    const putLambda = new Function(parent, `S3FilesLambda${s3ActionName}`, {
+export const S3FilesGetLambda = (parent: CdkStack, s3BucketName: string) => {
+    const putLambda = new Function(parent, `S3FilesGetLambda`, {
         runtime: Runtime.NODEJS_12_X,
         handler: 'index.handler',
-        code: Code.fromAsset(join(__dirname, 'lambda-handler')),
+        code: Code.fromAsset(join(__dirname, 'lambda-get-handler')),
         environment: {
-            s3Action: s3ActionName,
             s3Bucket: s3BucketName
         }
     });

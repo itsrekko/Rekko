@@ -4,11 +4,12 @@ const reviewModel = require('../models/review.model');
 const errorTypes = require('../consts/errorTypes');
 const responseObj = new Response();
 
-exports.createNewReview = async (userModel, productModel, lengthOfUse, reviewText) => {
+exports.createNewReview = async (userModel, productModel, lengthOfUse, imageName, reviewText) => {
     let newUserReview = new reviewModel({
         User: userModel,
         Product: productModel,
         LengthOfUse: lengthOfUse,
+        ImageName: imageName,
         ReviewText: reviewText
     });
 
