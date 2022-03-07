@@ -6,9 +6,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import {useDropzone} from 'react-dropzone';
-import "../assets/css/dropzone.css";
 import {PICTURES_API} from '../consts/awsConsts';
 import AddProductFileStyler from "../utils/AddProductFileStyler";
+import "../assets/css/dropzone.css";
 
 let uploadFile = undefined;
 let uploadFileName = '';
@@ -45,7 +45,7 @@ const DropZoneToUploadFile = (props) => {
         data : data
       };
       
-      axios(config)
+      await axios(config)
         .then(function (response) {
             console.log(JSON.stringify(response.data));
             uploadFile = acceptedFiles[0];

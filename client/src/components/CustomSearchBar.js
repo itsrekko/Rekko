@@ -8,6 +8,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import LoginFormStyler from '../utils/LoginFormStyler';
 import axios from 'axios';
 import {useGlobalState} from '../context/GlobalState';
+import {PICTURES_API} from '../consts/awsConsts';
 import ReviewCard from './ReviewCard';
 
 const CustomSearchBar = (props) => {
@@ -20,7 +21,22 @@ const CustomSearchBar = (props) => {
     await axios.get(`${window.location.origin.toString()}/review/getAllReviews`, {})
       .then(res => {
           let allReviews = [];
-          res.data.data.forEach(x => allReviews.push(
+          res.data.data.forEach(x => {
+            // fetch the particular picture from s3 here
+            // get pre-signed URL using APIGateway
+            const pictureName = x['ImageName'];
+            var data = JSON.stringify({
+                "fileName": pictureName
+            });
+
+            var config = {
+                method: 'post',
+                url: PICTURES_API.GET_PICTURE_URL,
+                data : data
+            };
+
+            var imgObj = axios(config);
+            allReviews.push(
               <ReviewCard
                   key={x['_id']}
                   id={x['_id']}
@@ -28,8 +44,11 @@ const CustomSearchBar = (props) => {
                   brandName={x['Product']['ProductBrand']} 
                   productName={x['Product']['ProductName']} 
                   reviewText={x['ReviewText']}
+                  imageAlt = {pictureName}
+                  imageObj = {imgObj}
                   likes={x['Likes']}
-              />));
+              />)
+            });
           currentReviews = allReviews;
           globalSetState({...globalState, allReviewCards: allReviews});
       })
@@ -50,16 +69,34 @@ const CustomSearchBar = (props) => {
     })
     .then(res => {
       let allFetchedReviews = [];
-      res.data.data.forEach(x => allFetchedReviews.push(
-        <ReviewCard 
-          key={x['_id']}
-          id={x['_id']}
-          heading={`${x['User']['UserName']}, ${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
-          brandName={x['Product']['ProductBrand']} 
-          productName={x['Product']['ProductName']}
-          reviewText={x['ReviewText']}
-          likes={x['Likes']}
-        />));
+      res.data.data.forEach(x => {
+        // fetch the particular picture from s3 here
+        // get pre-signed URL using APIGateway
+        const pictureName = x['ImageName'];
+        var data = JSON.stringify({
+            "fileName": pictureName
+        });
+
+        var config = {
+            method: 'post',
+            url: PICTURES_API.GET_PICTURE_URL,
+            data : data
+        };
+
+        var imgObj = axios(config);
+        allFetchedReviews.push(
+          <ReviewCard 
+            key={x['_id']}
+            id={x['_id']}
+            heading={`${x['User']['UserName']}, ${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
+            brandName={x['Product']['ProductBrand']} 
+            productName={x['Product']['ProductName']}
+            reviewText={x['ReviewText']}
+            imageAlt = {pictureName}
+            imageObj = {imgObj}
+            likes={x['Likes']}
+        />)
+      });
       globalSetState({...globalState, allReviewCards: allFetchedReviews});
     })
     .catch(error => {
