@@ -66,6 +66,7 @@ const ReviewCard = (props) => {
             })
             .then(res => {
                 setState(prevState => ({
+                    ...state,
                     likes: JSON.parse(res.data['data']),
                     hasLiked: !prevState.hasLiked}));
             });
