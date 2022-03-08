@@ -16,22 +16,18 @@
 }
 
 .reviewCard__actionContainer {
-    padding-left: 16px;
+    padding-left: 12px;
     border-bottom: 1px solid lightgray;
     display: flex;
-}
-  
-.reviewCard__text {
-    font-weight: normal;
+    flex-direction: row;
 }
 
 .reviewCard__actionText {
-    font-weight: normal;
-    margin-right: 10px;
+    padding: 4px;
 }
 
 .reviewCard__likeButton {
-    fill: red;
+    color: red;
 }
   
 .reviewCard__header {
@@ -53,8 +49,7 @@
 .reviewCard__commentBox {
     display: flex;
     align-items: center;
-    padding-left: 16px;
-    padding-top: 8px;
+    padding: 8px;
     object-fit: contain;
 }
 

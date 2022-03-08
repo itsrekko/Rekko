@@ -132,24 +132,19 @@ exports.addNewProductReview = async (req, res, next) => {
     try {
         if (!userName || userName === null || userName === undefined) {
             responseVal = responseObj.constructResponseObject(`Response body requires param userName`, req.headers, null, errorTypes.default.badQuery)
-            console.log('Response body requires param userName')
         }
         else if (!productBrand || productBrand === null || productBrand === undefined){
             responseVal = responseObj.constructResponseObject(`Response body requires param productBrand`, req.headers, null, errorTypes.default.badQuery)
-            console.log('Response body requires param productBrand')
         }
         else if (!productName || productName === null || productName === undefined){
             responseVal = responseObj.constructResponseObject(`Response body requires param productName`, req.headers, null, errorTypes.default.badQuery)
-            console.log('Response body requires param productName')
         }
         else if (!reviewText || reviewText === null || reviewText === undefined){
             responseVal = responseObj.constructResponseObject(`Response body requires param reviewText`, req.headers, null, errorTypes.default.badQuery)
-            console.log('Response body requires param reviewText')
         }
         else{
             const userCheck = await userController.checkIfUserExists(userName);
             if (!userCheck || userCheck === undefined || userCheck === null){
-                console.log('User does not exist')
                 responseVal = responseObj.constructResponseObject('User does not exist. Create a user before posting a review', req.headers, null, errorTypes.default.badQuery)
             }
             else{
@@ -167,7 +162,6 @@ exports.addNewProductReview = async (req, res, next) => {
                     "reviewText": newReview?.ReviewText,
                     "reviewedAt": newReview?.ReviewedAt
                 });
-                console.log('Created a new product review')
             }
         }
     }

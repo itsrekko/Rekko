@@ -25,7 +25,6 @@ exports.createNewComment = async (req, res, next) => {
     }
     catch (error){
         responseVal = responseObj.constructResponseObject(error.message, error['statusCode'], null, error.name)
-        console.log('ERROR: ', responseVal);
     }
     finally{
         res.status(responseVal.statusCode).send(responseVal);
@@ -36,7 +35,6 @@ async function getCommentsForReviewId (reviewId) {
     const reviewIdObject = mongoose.Types.ObjectId(reviewId);
     return await commentModel.find({ReviewId: reviewIdObject}).sort({CommentedAt: -1})
     .then(results => {
-        console.log(results);
         return results;
     })
     .catch(error => {
@@ -44,18 +42,8 @@ async function getCommentsForReviewId (reviewId) {
     })
 }
 
-async function getCommentsForUserId (userName) {
-    return await commentModel.find({UserName: userIdObject}).sort({CommentedAt: -1})
-    .then(results => {
-        return results;
-    })
-    .catch(error => {
-        console.error(`Failed to fetch all comments with error: ${error} for userId: ${userId}`);
-    })
-}
-
 exports.getCommentsForReview = async (req, res, next) => {
-    const reviewId = req.body.reviewId;
+    const reviewId = req.query.reviewId;
     try{
         const mongoRequest = await getCommentsForReviewId(reviewId);
         responseVal = responseObj.constructResponseObject(`Successfully fetched all comments for review ${reviewId}`, req.headers, mongoRequest);
