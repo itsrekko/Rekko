@@ -130,32 +130,19 @@ exports.addNewProductReview = async (req, res, next) => {
 
     var responseVal = undefined;
     try {
-        // response validation
         if (!userName || userName === null || userName === undefined) {
-            // user login has not been passed in
             responseVal = responseObj.constructResponseObject(`Response body requires param userName`, req.headers, null, errorTypes.default.badQuery)
         }
-        // response validation
         else if (!productBrand || productBrand === null || productBrand === undefined){
-            // user login has not been passed in
             responseVal = responseObj.constructResponseObject(`Response body requires param productBrand`, req.headers, null, errorTypes.default.badQuery)
         }
-        // response validation
         else if (!productName || productName === null || productName === undefined){
-            // user login has not been passed in
             responseVal = responseObj.constructResponseObject(`Response body requires param productName`, req.headers, null, errorTypes.default.badQuery)
         }
-        // response validation
         else if (!reviewText || reviewText === null || reviewText === undefined){
-            // user login has not been passed in
             responseVal = responseObj.constructResponseObject(`Response body requires param reviewText`, req.headers, null, errorTypes.default.badQuery)
         }
         else{
-            // check if the user exists
-            // check if the product exists
-            // if not add the product 
-            // if it does exist update any info missing
-            // create a new user review
             const userCheck = await userController.checkIfUserExists(userName);
             if (!userCheck || userCheck === undefined || userCheck === null){
                 responseVal = responseObj.constructResponseObject('User does not exist. Create a user before posting a review', req.headers, null, errorTypes.default.badQuery)

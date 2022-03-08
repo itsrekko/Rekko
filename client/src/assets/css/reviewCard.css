@@ -1,0 +1,78 @@
+.reviewCard {
+    margin-bottom: 20px;
+    border-radius: 7px;
+    max-width: 500px;
+    background-color: white;
+    border: 1px solid lightgray;
+    align-items: left;
+    text-align: left;
+}
+
+.reviewCard__image {
+    width: 100%;
+    object-fit: contain;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+.reviewCard__actionContainer {
+    padding-left: 12px;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    flex-direction: row;
+}
+
+.reviewCard__actionText {
+    padding: 4px;
+}
+
+.reviewCard__likeButton {
+    color: red;
+}
+  
+.reviewCard__header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+  
+.reviewCard__avatar {
+    margin-right: 10px;
+}
+
+.reviewCard__inputCommentBox {
+    display: flex;
+    padding-left: 16px;
+    object-fit: contain;
+}
+
+.reviewCard__commentBox {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    object-fit: contain;
+}
+
+.comment__input {
+    flex: 1;
+    border: none;
+}
+
+.comment__button {
+flex: 0;
+border: none;
+color: #6082a3;
+background-color: transparent;
+}
+
+@media only screen and (max-width: 540px) {
+    .reviewCard {
+        width: 90vw;
+    }
+}
+
+@media only screen and (min-width: 541px) and (max-width: 700px) {
+    .reviewCard {
+        width: 79vw;
+    }
+}
