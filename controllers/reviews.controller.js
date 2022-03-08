@@ -69,50 +69,6 @@ async function searchThroughEntireReviews (searchText) {
     });
 }
 
-async function incrementLikes(model, id, userName) {
-    return await model.findByIdAndUpdate(id, {$addToSet: {Likes: userName}}, {new: true})
-        .then(results => {
-            return results;
-    }).catch(error => {
-        console.error(`Failed to add liked user to the review: ${error}`);
-        throw(error);
-    })
-}
-
-async function decrementLikes(model, id, userName) {
-    return await model.findByIdAndUpdate(id, {$pull: {Likes: userName}}, {new: true})
-        .then(results => {
-            return results;
-    })
-    .catch(error => {
-        console.error(`Failed to remove liked user from the review: ${error}`);
-        throw(error);
-    })
-}
-
-exports.updateLikes = async (req, res, next) => {
-    const userName = req.body.userName;
-    const reviewId = req.body.reviewId;
-    const hasUserLiked = req.body.hasUserLiked;
-
-    console.log(req.body);
-
-    try {
-        var updatedReview;
-        if (hasUserLiked) {
-            updatedReview = await decrementLikes(reviewModel, reviewId, userName);
-
-        } else {
-            updatedReview = await incrementLikes(reviewModel, reviewId, userName);
-        }
-        responseVal = responseObj.constructResponseObject(`Incremented the like`, req.headers, JSON.stringify(updatedReview.Likes));
-    } catch (error) {
-        responseVal = responseObj.constructResponseObject(error.message, error['statusCode'], null, error.name)
-    } finally {
-        res.status(responseVal.statusCode).send(responseVal);
-    }
-}
-
 exports.getAllReviews = async (req, res, next) => {
     var responseVal = undefined;
     try {

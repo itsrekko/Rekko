@@ -1,21 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {Typography, Avatar} from "@material-ui/core";
+import {Typography, Avatar, IconButton, ListItemAvatar, ListItemText} from "@mui/material";
 import '../assets/css/reviewCard.css';
+import { useGlobalState } from '../context/GlobalState';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const Comment = (props) => {
+    const navigate = useNavigate();
     const [globalState, setGlobalState] = useGlobalState();
     const [state, setState] = useState(
         {   
             likes: props.likes,
             hasLiked: props.likes.includes(globalState.userName)
         });
-
+    
     const handleLikeButton = async (event) => {
         if (globalState.userName !== '') {
             await axios.put(`${window.location.origin.toString()}/comment/likes`, {
                 userName: globalState.userName,
-                id: props.id,
+                commentId: props.id,
                 hasUserLiked: state.hasLiked
             })
             .then(res => {
@@ -28,8 +34,9 @@ const Comment = (props) => {
             navigate('/'); // Take them to the login page
         }
     }
-        return(
+        return (
             <div className="reviewCard__commentBox">
+                <ListItemAvatar>
                     <Avatar 
                         aria-label="recipe"
                         className="reviewCard__avatar"
@@ -37,9 +44,20 @@ const Comment = (props) => {
                     >
                         {props.userName.charAt(0)}
                     </Avatar>
-                    <Typography variant="body2" align='left' component="p">{props.text}</Typography>
+                </ListItemAvatar>
+                <ListItemText 
+                    primary ={<Typography variant="body2" align='left' component="p"> {props.text}</Typography>}
+                    secondary = {<Typography variant="body2" align='left' component="p" color="textSecondary">{state.likes.length} likes</Typography>}
+                />
+                <IconButton
+                    aria-label="Like"
+                    onClick={() => handleLikeButton()}
+                    edge="end"
+                    size="large">
+                    {state.hasLiked === true ?<FavoriteIcon className='reviewCard__likeButton'/>: <FavoriteBorderIcon/>}
+                </IconButton>
             </div>
-    )
+        );
 }
 
 Comment.propTypes = {
@@ -49,4 +67,8 @@ Comment.propTypes = {
     likes: PropTypes.array.isRequired
 }
 
-export default Comment;
+Comment.defaultProps = {
+    likes: []
+}
+
+export default React.memo(Comment);
