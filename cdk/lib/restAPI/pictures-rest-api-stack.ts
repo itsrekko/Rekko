@@ -22,9 +22,24 @@ export const PictureRestStack = async (parent: CdkStack) => {
         operationName: 'getPictureURL',
         authorizationType: AuthorizationType.NONE, // TO DO this would need to change to cognito auth
     });
+
+    getPictureURL.addCorsPreflight({
+        statusCode: 404,
+        allowOrigins: ["*"],
+        allowHeaders: ['Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'],
+        allowMethods: ['POST', 'GET', 'PUT']
+    })
     
     uploadPictureURL.addMethod('POST', new LambdaIntegration(putObjectLambda), {
         operationName: 'uploadPictureURL',
         authorizationType: AuthorizationType.NONE, // TO DO this would need to change to cognito auth
     });
+
+    uploadPictureURL.addCorsPreflight({
+        statusCode: 404,
+        allowOrigins: ["*"],
+        allowHeaders: ['Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'],
+        allowMethods: ['POST', 'GET', 'PUT']
+    })
+    
 }

@@ -4,7 +4,7 @@ import {join} from 'path';
 import {CdkStack} from '../../cdk-stack';
 
 export const S3FilesGetLambda = (parent: CdkStack, s3BucketName: string) => {
-    const putLambda = new Function(parent, `S3FilesGetLambda`, {
+    const getLambda = new Function(parent, `S3FilesGetLambda`, {
         runtime: Runtime.NODEJS_12_X,
         handler: 'index.handler',
         code: Code.fromAsset(join(__dirname, 'lambda-get-handler')),
@@ -14,17 +14,16 @@ export const S3FilesGetLambda = (parent: CdkStack, s3BucketName: string) => {
     });
 
     // access to list, get, put stuff to AWS bucket
-    putLambda.addToRolePolicy(new PolicyStatement(
+    getLambda.addToRolePolicy(new PolicyStatement(
         {
             actions: [
                 "s3:Get*",
-                "s3:List*",
-                "s3:Put*"
+                "s3:List*"
             ],
             effect: Effect.ALLOW,
             resources: ["*"]
         }
     ));
 
-    return putLambda;
+    return getLambda;
 }

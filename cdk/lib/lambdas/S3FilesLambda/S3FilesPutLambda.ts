@@ -17,8 +17,6 @@ export const S3FilesPutLambda = (parent: CdkStack, s3BucketName: string) => {
     putLambda.addToRolePolicy(new PolicyStatement(
         {
             actions: [
-                "s3:Get*",
-                "s3:List*",
                 "s3:Put*"
             ],
             effect: Effect.ALLOW,

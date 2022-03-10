@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6fd8f13f1eff26513a0d1d0bca1f5af7f6a2a23c03da4fa1e9e158f89c0ad7e6.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b4fd6426d132def48de258e26cb999581d4477c86245ac39cb87fe3116ac3d02.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -204,7 +204,7 @@
         "/RekkoCDKStack/RekkoPicturesRestAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "RekkoPicturesRestAPIDeployment53E5CC30369a628b1b9184674bfe8569d7c6b1a3"
+            "data": "RekkoPicturesRestAPIDeployment53E5CC3013221d1c6773db5c9a77657fcd90c334"
           }
         ],
         "/RekkoCDKStack/RekkoPicturesRestAPI/DeploymentStage.prod/Resource": [
@@ -249,6 +249,12 @@
             "data": "RekkoPicturesRestAPIgetPictureURLPOST37327F40"
           }
         ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIgetPictureURLOPTIONS79D6EC73"
+          }
+        ],
         "/RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -271,6 +277,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoPicturesRestAPIuploadPictureURLPOST83467236"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIuploadPictureURLOPTIONSF4619DC4"
           }
         ],
         "/RekkoCDKStack/CDKMetadata/Default": [

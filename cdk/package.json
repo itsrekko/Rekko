@@ -9,6 +9,7 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
+    "deploy": "cdk deploy",
     "clean": "tsc --build --clean"
   },
   "devDependencies": {

@@ -807,8 +807,7 @@
                                 {
                                   "Action": [
                                     "s3:Get*",
-                                    "s3:List*",
-                                    "s3:Put*"
+                                    "s3:List*"
                                   ],
                                   "Effect": "Allow",
                                   "Resource": "*"
@@ -967,11 +966,7 @@
                             "policyDocument": {
                               "Statement": [
                                 {
-                                  "Action": [
-                                    "s3:Get*",
-                                    "s3:List*",
-                                    "s3:Put*"
-                                  ],
+                                  "Action": "s3:Put*",
                                   "Effect": "Allow",
                                   "Resource": "*"
                                 }
@@ -1197,7 +1192,7 @@
                           "Ref": "RekkoPicturesRestAPIEA4E61E4"
                         },
                         "deploymentId": {
-                          "Ref": "RekkoPicturesRestAPIDeployment53E5CC30369a628b1b9184674bfe8569d7c6b1a3"
+                          "Ref": "RekkoPicturesRestAPIDeployment53E5CC3013221d1c6773db5c9a77657fcd90c334"
                         },
                         "stageName": "prod"
                       }
@@ -1441,6 +1436,63 @@
                           "fqn": "aws-cdk-lib.aws_apigateway.Method",
                           "version": "2.15.0"
                         }
+                      },
+                      "OPTIONS": {
+                        "id": "OPTIONS",
+                        "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/OPTIONS",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/OPTIONS/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "OPTIONS",
+                                "resourceId": {
+                                  "Ref": "RekkoPicturesRestAPIgetPictureURLAC87336D"
+                                },
+                                "restApiId": {
+                                  "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "MOCK",
+                                  "requestTemplates": {
+                                    "application/json": "{ statusCode: 200 }"
+                                  },
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "404",
+                                      "responseParameters": {
+                                        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                        "method.response.header.Access-Control-Allow-Origin": "'*'",
+                                        "method.response.header.Access-Control-Allow-Methods": "'POST,GET,PUT'"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "404",
+                                    "responseParameters": {
+                                      "method.response.header.Access-Control-Allow-Headers": true,
+                                      "method.response.header.Access-Control-Allow-Origin": true,
+                                      "method.response.header.Access-Control-Allow-Methods": true
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.15.0"
+                        }
                       }
                     },
                     "constructInfo": {
@@ -1615,6 +1667,63 @@
                                   "integrationHttpMethod": "POST"
                                 },
                                 "operationName": "uploadPictureURL"
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "OPTIONS": {
+                        "id": "OPTIONS",
+                        "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/OPTIONS",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/OPTIONS/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "OPTIONS",
+                                "resourceId": {
+                                  "Ref": "RekkoPicturesRestAPIuploadPictureURLFD8B91DB"
+                                },
+                                "restApiId": {
+                                  "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "MOCK",
+                                  "requestTemplates": {
+                                    "application/json": "{ statusCode: 200 }"
+                                  },
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "404",
+                                      "responseParameters": {
+                                        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                        "method.response.header.Access-Control-Allow-Origin": "'*'",
+                                        "method.response.header.Access-Control-Allow-Methods": "'POST,GET,PUT'"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "404",
+                                    "responseParameters": {
+                                      "method.response.header.Access-Control-Allow-Headers": true,
+                                      "method.response.header.Access-Control-Allow-Origin": true,
+                                      "method.response.header.Access-Control-Allow-Methods": true
+                                    }
+                                  }
+                                ]
                               }
                             },
                             "constructInfo": {
