@@ -32,6 +32,11 @@ module.exports = new Schema({
             required: true
         },
     },
+    ImageName: {
+        type: String,
+        required: true, //every review should have a picture
+        default: ''
+    },
     LengthOfUse: {
         type: String,
         default: '',

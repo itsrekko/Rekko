@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import IconButton from "@mui/material/IconButton";
 import axios from 'axios';
 import ReviewCard from '../components/ReviewCard';
+import {PICTURES_API} from '../consts/awsConsts';
 import {useGlobalState} from '../context/GlobalState';
 
 const Home = (props) => {
@@ -18,17 +19,35 @@ const Home = (props) => {
         await axios.get(`${window.location.origin.toString()}/review/getAllReviews`, {})
         .then(res => {
             let allReviews = [];
-            res.data.data.forEach(x => allReviews.push(
-                <ReviewCard
-                    id={x['_id']}
-                    key={x['_id']}
-                    timeStamp={`${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
-                    brandName={x['Product']['ProductBrand']} 
-                    productName={x['Product']['ProductName']} 
-                    reviewText={x['ReviewText']}
-                    likes={x['Likes']}
-                    userName={x['User']['UserName']} 
-                />));
+            res.data.data.forEach(x => {
+                // fetch the particular picture from s3 here
+                // get pre-signed URL using APIGateway
+                const pictureName = x['ImageName'];
+                var data = JSON.stringify({
+                    "fileName": pictureName
+                });
+
+                var config = {
+                    method: 'post',
+                    url: PICTURES_API.GET_PICTURE_URL,
+                    data : data
+                };
+
+                var imgObj = axios(config);
+                allReviews.push(
+                    <ReviewCard
+                        id={x['_id']}
+                        key={x['_id']}
+                        timeStamp={`${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
+                        brandName={x['Product']['ProductBrand']} 
+                        productName={x['Product']['ProductName']} 
+                        reviewText={x['ReviewText']}
+                        likes={x['Likes']}
+                        userName={x['User']['UserName']}
+                        imageObj={imgObj}
+                    />
+                )
+            });
             setState({...state, allReviewCards: allReviews});
         })
         .catch(error => {

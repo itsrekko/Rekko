@@ -126,6 +126,7 @@ exports.addNewProductReview = async (req, res, next) => {
     const productName = req.body.productName;
     const productURI = req.body.productURI;
     const lengthOfUse = req.body.lengthOfUse;
+    const imageName = req.body.imageName;
     const reviewText = req.body.reviewText;
 
     var responseVal = undefined;
@@ -142,6 +143,11 @@ exports.addNewProductReview = async (req, res, next) => {
         else if (!reviewText || reviewText === null || reviewText === undefined){
             responseVal = responseObj.constructResponseObject(`Response body requires param reviewText`, req.headers, null, errorTypes.default.badQuery)
         }
+        // response validation
+        else if (!imageName || imageName === null || imageName === undefined){
+            // user login has not been passed in
+            responseVal = responseObj.constructResponseObject(`Response body requires param imageName`, req.headers, null, errorTypes.default.badQuery)
+        }
         else{
             const userCheck = await userController.checkIfUserExists(userName);
             if (!userCheck || userCheck === undefined || userCheck === null){
@@ -153,12 +159,14 @@ exports.addNewProductReview = async (req, res, next) => {
                     userCheck,
                     productVal,
                     lengthOfUse,
+                    imageName,
                     reviewText);
                 responseVal = responseObj.constructResponseObject(`Created a new product review`, req.headers, 
                 {
                     "user": newReview?.User,
                     "product": newReview?.Product,
-                    "lengthOfUse": newReview?.lengthOfUse,
+                    "lengthOfUse": newReview?.LengthOfUse,
+                    "imageName": newReview?.ImageName,
                     "reviewText": newReview?.ReviewText,
                     "reviewedAt": newReview?.ReviewedAt
                 });

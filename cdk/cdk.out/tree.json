@@ -1,0 +1,1796 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.0.79"
+        }
+      },
+      "RekkoCDKStack": {
+        "id": "RekkoCDKStack",
+        "path": "RekkoCDKStack",
+        "children": {
+          "HealthFunction": {
+            "id": "HealthFunction",
+            "path": "RekkoCDKStack/HealthFunction",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "RekkoCDKStack/HealthFunction/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/HealthFunction/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.15.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "RekkoCDKStack/HealthFunction/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "RekkoCDKStack/HealthFunction/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "RekkoCDKStack/HealthFunction/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.15.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "RekkoCDKStack/HealthFunction/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "7958f076886ee8387ea683bfc4b1aef249b5b5ae361ec74d6ee31f964ad2fa00.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "HealthFunctionServiceRole04552894",
+                        "Arn"
+                      ]
+                    },
+                    "handler": "index.handler",
+                    "runtime": "nodejs12.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.15.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.15.0"
+            }
+          },
+          "RekkoUsersRestAPI": {
+            "id": "RekkoUsersRestAPI",
+            "path": "RekkoCDKStack/RekkoUsersRestAPI",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "RekkoCDKStack/RekkoUsersRestAPI/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "description": "Rest API for Rekko User Info",
+                    "name": "RekkoUsersRestAPI"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnRestApi",
+                  "version": "2.15.0"
+                }
+              },
+              "CloudWatchRole": {
+                "id": "CloudWatchRole",
+                "path": "RekkoCDKStack/RekkoUsersRestAPI/CloudWatchRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/CloudWatchRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.15.0"
+                }
+              },
+              "Account": {
+                "id": "Account",
+                "path": "RekkoCDKStack/RekkoUsersRestAPI/Account",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                  "aws:cdk:cloudformation:props": {
+                    "cloudWatchRoleArn": {
+                      "Fn::GetAtt": [
+                        "RekkoUsersRestAPICloudWatchRoleC18D9E89",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnAccount",
+                  "version": "2.15.0"
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "RekkoCDKStack/RekkoUsersRestAPI/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "RekkoUsersRestAPI70ABA7ED"
+                        },
+                        "description": "Automatically created by the RestApi construct"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
+                  "version": "2.15.0"
+                }
+              },
+              "DeploymentStage.prod": {
+                "id": "DeploymentStage.prod",
+                "path": "RekkoCDKStack/RekkoUsersRestAPI/DeploymentStage.prod",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/DeploymentStage.prod/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "RekkoUsersRestAPI70ABA7ED"
+                        },
+                        "deploymentId": {
+                          "Ref": "RekkoUsersRestAPIDeployment86CF7D8Bb1d4dc5ce22f844db3f2d36a6cf14179"
+                        },
+                        "stageName": "prod"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Stage",
+                  "version": "2.15.0"
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "RekkoCDKStack/RekkoUsersRestAPI/Endpoint",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.15.0"
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "RekkoCDKStack/RekkoUsersRestAPI/Default",
+                "children": {
+                  "ANY": {
+                    "id": "ANY",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/ANY",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/ANY/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                          "aws:cdk:cloudformation:props": {
+                            "httpMethod": "ANY",
+                            "resourceId": {
+                              "Fn::GetAtt": [
+                                "RekkoUsersRestAPI70ABA7ED",
+                                "RootResourceId"
+                              ]
+                            },
+                            "restApiId": {
+                              "Ref": "RekkoUsersRestAPI70ABA7ED"
+                            },
+                            "authorizationType": "NONE",
+                            "integration": {
+                              "type": "MOCK"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "getAllUsers": {
+                    "id": "getAllUsers",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "RekkoUsersRestAPI70ABA7ED",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "getAllUsers",
+                            "restApiId": {
+                              "Ref": "RekkoUsersRestAPI70ABA7ED"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "GET": {
+                        "id": "GET",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET",
+                        "children": {
+                          "ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers": {
+                            "id": "ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers",
+                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "HealthFunction19D7724A",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "RekkoUsersRestAPI70ABA7ED"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "RekkoUsersRestAPIDeploymentStageprodF9989DB5"
+                                      },
+                                      "/GET/getAllUsers"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.15.0"
+                            }
+                          },
+                          "ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers": {
+                            "id": "ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers",
+                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "HealthFunction19D7724A",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "RekkoUsersRestAPI70ABA7ED"
+                                      },
+                                      "/test-invoke-stage/GET/getAllUsers"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.15.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "GET",
+                                "resourceId": {
+                                  "Ref": "RekkoUsersRestAPIgetAllUsersD7E61452"
+                                },
+                                "restApiId": {
+                                  "Ref": "RekkoUsersRestAPI70ABA7ED"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "HealthFunction19D7724A",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                },
+                                "operationName": "getAllUsers"
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "checkAndCreateNewUser": {
+                    "id": "checkAndCreateNewUser",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "RekkoUsersRestAPI70ABA7ED",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "checkAndCreateNewUser",
+                            "restApiId": {
+                              "Ref": "RekkoUsersRestAPI70ABA7ED"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "POST": {
+                        "id": "POST",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST",
+                        "children": {
+                          "ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser": {
+                            "id": "ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser",
+                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "HealthFunction19D7724A",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "RekkoUsersRestAPI70ABA7ED"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "RekkoUsersRestAPIDeploymentStageprodF9989DB5"
+                                      },
+                                      "/POST/checkAndCreateNewUser"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.15.0"
+                            }
+                          },
+                          "ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser": {
+                            "id": "ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser",
+                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "HealthFunction19D7724A",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "RekkoUsersRestAPI70ABA7ED"
+                                      },
+                                      "/test-invoke-stage/POST/checkAndCreateNewUser"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.15.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "POST",
+                                "resourceId": {
+                                  "Ref": "RekkoUsersRestAPIcheckAndCreateNewUser7B3E9864"
+                                },
+                                "restApiId": {
+                                  "Ref": "RekkoUsersRestAPI70ABA7ED"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "HealthFunction19D7724A",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                },
+                                "operationName": "createUsers"
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
+                  "version": "2.15.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.RestApi",
+              "version": "2.15.0"
+            }
+          },
+          "RekkoImagesBucket": {
+            "id": "RekkoImagesBucket",
+            "path": "RekkoCDKStack/RekkoImagesBucket",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "RekkoCDKStack/RekkoImagesBucket/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                  "aws:cdk:cloudformation:props": {
+                    "corsConfiguration": {
+                      "corsRules": [
+                        {
+                          "allowedHeaders": [
+                            "*"
+                          ],
+                          "allowedMethods": [
+                            "GET",
+                            "POST",
+                            "PUT"
+                          ],
+                          "allowedOrigins": [
+                            "*"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
+                  "version": "2.15.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3.Bucket",
+              "version": "2.15.0"
+            }
+          },
+          "S3FilesGetLambda": {
+            "id": "S3FilesGetLambda",
+            "path": "RekkoCDKStack/S3FilesGetLambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "RekkoCDKStack/S3FilesGetLambda/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/S3FilesGetLambda/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/S3FilesGetLambda/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/S3FilesGetLambda/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "s3:Get*",
+                                    "s3:List*"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "S3FilesGetLambdaServiceRoleDefaultPolicy25DE6BF0",
+                            "roles": [
+                              {
+                                "Ref": "S3FilesGetLambdaServiceRole18DF8B49"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.15.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "RekkoCDKStack/S3FilesGetLambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "RekkoCDKStack/S3FilesGetLambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "RekkoCDKStack/S3FilesGetLambda/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.15.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "RekkoCDKStack/S3FilesGetLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "050a6d57211fafa2b160b6fa311d68d3434b91a8ef50a09b10dd4dd3d90748e2.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "S3FilesGetLambdaServiceRole18DF8B49",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "s3Bucket": {
+                          "Ref": "RekkoImagesBucket39511A0E"
+                        }
+                      }
+                    },
+                    "handler": "index.handler",
+                    "runtime": "nodejs12.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.15.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.15.0"
+            }
+          },
+          "S3FilesPutLambda": {
+            "id": "S3FilesPutLambda",
+            "path": "RekkoCDKStack/S3FilesPutLambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "RekkoCDKStack/S3FilesPutLambda/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/S3FilesPutLambda/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/S3FilesPutLambda/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/S3FilesPutLambda/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "s3:Put*",
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "S3FilesPutLambdaServiceRoleDefaultPolicy3E027B93",
+                            "roles": [
+                              {
+                                "Ref": "S3FilesPutLambdaServiceRole975BEA4F"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.15.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "RekkoCDKStack/S3FilesPutLambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "RekkoCDKStack/S3FilesPutLambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "RekkoCDKStack/S3FilesPutLambda/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.15.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "RekkoCDKStack/S3FilesPutLambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "5481631e56868a4ac08deb19a510771eb27ef9e7b33256c1430a64eaa2d493b3.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "S3FilesPutLambdaServiceRole975BEA4F",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "s3Bucket": {
+                          "Ref": "RekkoImagesBucket39511A0E"
+                        }
+                      }
+                    },
+                    "handler": "index.handler",
+                    "runtime": "nodejs12.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.15.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.15.0"
+            }
+          },
+          "RekkoPicturesRestAPI": {
+            "id": "RekkoPicturesRestAPI",
+            "path": "RekkoCDKStack/RekkoPicturesRestAPI",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "RekkoCDKStack/RekkoPicturesRestAPI/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "description": "Rest API for Rekko Users to upload pictures",
+                    "name": "RekkoPicturesRestAPI"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnRestApi",
+                  "version": "2.15.0"
+                }
+              },
+              "CloudWatchRole": {
+                "id": "CloudWatchRole",
+                "path": "RekkoCDKStack/RekkoPicturesRestAPI/CloudWatchRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/RekkoPicturesRestAPI/CloudWatchRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "apigateway.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.15.0"
+                }
+              },
+              "Account": {
+                "id": "Account",
+                "path": "RekkoCDKStack/RekkoPicturesRestAPI/Account",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::Account",
+                  "aws:cdk:cloudformation:props": {
+                    "cloudWatchRoleArn": {
+                      "Fn::GetAtt": [
+                        "RekkoPicturesRestAPICloudWatchRole684BE468",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnAccount",
+                  "version": "2.15.0"
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "RekkoCDKStack/RekkoPicturesRestAPI/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/RekkoPicturesRestAPI/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                        },
+                        "description": "Automatically created by the RestApi construct"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
+                  "version": "2.15.0"
+                }
+              },
+              "DeploymentStage.prod": {
+                "id": "DeploymentStage.prod",
+                "path": "RekkoCDKStack/RekkoPicturesRestAPI/DeploymentStage.prod",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/RekkoPicturesRestAPI/DeploymentStage.prod/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                        },
+                        "deploymentId": {
+                          "Ref": "RekkoPicturesRestAPIDeployment53E5CC3013221d1c6773db5c9a77657fcd90c334"
+                        },
+                        "stageName": "prod"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Stage",
+                  "version": "2.15.0"
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "RekkoCDKStack/RekkoPicturesRestAPI/Endpoint",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.15.0"
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default",
+                "children": {
+                  "ANY": {
+                    "id": "ANY",
+                    "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/ANY",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/ANY/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                          "aws:cdk:cloudformation:props": {
+                            "httpMethod": "ANY",
+                            "resourceId": {
+                              "Fn::GetAtt": [
+                                "RekkoPicturesRestAPIEA4E61E4",
+                                "RootResourceId"
+                              ]
+                            },
+                            "restApiId": {
+                              "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                            },
+                            "authorizationType": "NONE",
+                            "integration": {
+                              "type": "MOCK"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "getPictureURL": {
+                    "id": "getPictureURL",
+                    "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "RekkoPicturesRestAPIEA4E61E4",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "getPictureURL",
+                            "restApiId": {
+                              "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "POST": {
+                        "id": "POST",
+                        "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/POST",
+                        "children": {
+                          "ApiPermission.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..getPictureURL": {
+                            "id": "ApiPermission.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..getPictureURL",
+                            "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/POST/ApiPermission.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..getPictureURL",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "S3FilesGetLambda59DC02D5",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "RekkoPicturesRestAPIDeploymentStageprodA272572A"
+                                      },
+                                      "/POST/getPictureURL"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.15.0"
+                            }
+                          },
+                          "ApiPermission.Test.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..getPictureURL": {
+                            "id": "ApiPermission.Test.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..getPictureURL",
+                            "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/POST/ApiPermission.Test.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..getPictureURL",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "S3FilesGetLambda59DC02D5",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                                      },
+                                      "/test-invoke-stage/POST/getPictureURL"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.15.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/POST/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "POST",
+                                "resourceId": {
+                                  "Ref": "RekkoPicturesRestAPIgetPictureURLAC87336D"
+                                },
+                                "restApiId": {
+                                  "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "S3FilesGetLambda59DC02D5",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                },
+                                "operationName": "getPictureURL"
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "OPTIONS": {
+                        "id": "OPTIONS",
+                        "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/OPTIONS",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/OPTIONS/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "OPTIONS",
+                                "resourceId": {
+                                  "Ref": "RekkoPicturesRestAPIgetPictureURLAC87336D"
+                                },
+                                "restApiId": {
+                                  "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "MOCK",
+                                  "requestTemplates": {
+                                    "application/json": "{ statusCode: 200 }"
+                                  },
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "404",
+                                      "responseParameters": {
+                                        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                        "method.response.header.Access-Control-Allow-Origin": "'*'",
+                                        "method.response.header.Access-Control-Allow-Methods": "'POST,GET,PUT'"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "404",
+                                    "responseParameters": {
+                                      "method.response.header.Access-Control-Allow-Headers": true,
+                                      "method.response.header.Access-Control-Allow-Origin": true,
+                                      "method.response.header.Access-Control-Allow-Methods": true
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "uploadPictureURL": {
+                    "id": "uploadPictureURL",
+                    "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "RekkoPicturesRestAPIEA4E61E4",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "uploadPictureURL",
+                            "restApiId": {
+                              "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "POST": {
+                        "id": "POST",
+                        "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/POST",
+                        "children": {
+                          "ApiPermission.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..uploadPictureURL": {
+                            "id": "ApiPermission.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..uploadPictureURL",
+                            "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/POST/ApiPermission.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..uploadPictureURL",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "S3FilesPutLambda4B50B441",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "RekkoPicturesRestAPIDeploymentStageprodA272572A"
+                                      },
+                                      "/POST/uploadPictureURL"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.15.0"
+                            }
+                          },
+                          "ApiPermission.Test.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..uploadPictureURL": {
+                            "id": "ApiPermission.Test.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..uploadPictureURL",
+                            "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/POST/ApiPermission.Test.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..uploadPictureURL",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "S3FilesPutLambda4B50B441",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:",
+                                      {
+                                        "Ref": "AWS::Region"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "AWS::AccountId"
+                                      },
+                                      ":",
+                                      {
+                                        "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                                      },
+                                      "/test-invoke-stage/POST/uploadPictureURL"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.15.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/POST/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "POST",
+                                "resourceId": {
+                                  "Ref": "RekkoPicturesRestAPIuploadPictureURLFD8B91DB"
+                                },
+                                "restApiId": {
+                                  "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:",
+                                        {
+                                          "Ref": "AWS::Region"
+                                        },
+                                        ":lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "S3FilesPutLambda4B50B441",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                },
+                                "operationName": "uploadPictureURL"
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.15.0"
+                        }
+                      },
+                      "OPTIONS": {
+                        "id": "OPTIONS",
+                        "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/OPTIONS",
+                        "children": {
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/OPTIONS/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "OPTIONS",
+                                "resourceId": {
+                                  "Ref": "RekkoPicturesRestAPIuploadPictureURLFD8B91DB"
+                                },
+                                "restApiId": {
+                                  "Ref": "RekkoPicturesRestAPIEA4E61E4"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "MOCK",
+                                  "requestTemplates": {
+                                    "application/json": "{ statusCode: 200 }"
+                                  },
+                                  "integrationResponses": [
+                                    {
+                                      "statusCode": "404",
+                                      "responseParameters": {
+                                        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                        "method.response.header.Access-Control-Allow-Origin": "'*'",
+                                        "method.response.header.Access-Control-Allow-Methods": "'POST,GET,PUT'"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "methodResponses": [
+                                  {
+                                    "statusCode": "404",
+                                    "responseParameters": {
+                                      "method.response.header.Access-Control-Allow-Headers": true,
+                                      "method.response.header.Access-Control-Allow-Origin": true,
+                                      "method.response.header.Access-Control-Allow-Methods": true
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.15.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
+                  "version": "2.15.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.RestApi",
+              "version": "2.15.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "RekkoCDKStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "RekkoCDKStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.15.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "RekkoCDKStack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.15.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.0.79"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.15.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.15.0"
+    }
+  }
+}

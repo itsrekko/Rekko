@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from "@mui/material/Card";
-import {CardContent, CardHeader, Button, Typography, TextField, Avatar, IconButton} from "@mui/material";
+import {CardContent, CardMedia, CardHeader, Button, Typography, TextField, Avatar, IconButton} from "@mui/material";
 import '../assets/css/reviewCard.css';
 import axios from 'axios';
 import { useGlobalState } from '../context/GlobalState';
@@ -17,11 +17,17 @@ const ReviewCard = (props) => {
     const navigate = useNavigate();
     const [numComments, setNumComments] = useState(0);
     const [state, setState] = useState(
-        {   
-            likes: props.likes,
-            hasLiked: props.likes.includes(globalState.userName)
-        });
+    {   
+        likes: props.likes,
+        hasLiked: props.likes.includes(globalState.userName)
+    });
     
+    useEffect(async () => {
+        const imgObj = await props.imageObj;
+        console.log(imgObj);
+        setState({...state, imageURL: imgObj.data});
+    }, []);
+
     const handleLikeButton = async (event) => {
         if (globalState.userName !== '') {
             await axios.put(`${window.location.origin.toString()}/review/likes`, {
@@ -31,6 +37,7 @@ const ReviewCard = (props) => {
             })
             .then(res => {
                 setState(prevState => ({
+                    ...state,
                     likes: JSON.parse(res.data['data']),
                     hasLiked: !prevState.hasLiked}));
             });
@@ -70,7 +77,14 @@ const ReviewCard = (props) => {
             </CardHeader>
             
             <CardContent>
-                {/* Insert a picture over here */}
+                <CardMedia
+                    component="img"
+                    image={state.imageURL}
+                    alt={state.imageAlt}
+                    sx={{
+                        
+                    }}
+                />
             </CardContent>
             <CardContent>
             <Typography variant="body2" align='left' component="p">

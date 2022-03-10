@@ -12,9 +12,8 @@ const AddProductFileStyler = () => ({
         "&.MuiButton-sizeLarge": "56px"
       },
     card: {
-        marginTop: '19vh',
-        height: "475px",
-        "@media (max-width: 742px)": { height: "520px" },
+        marginTop: '8vh',
+        height: "fitContent",
         width: "710px",
         "@media (max-width: 768px)": { width: "78vw" },
         backgroundColor: "#FFFFFF",
