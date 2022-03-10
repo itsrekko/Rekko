@@ -121,7 +121,6 @@ exports.home = (req, res, next) => {
 }
 
 exports.addNewProductReview = async (req, res, next) => {
-    console.log(req.body);
     const userName = req.body.userName;
     const productBrand = req.body.productBrand;
     const productName = req.body.productName;
