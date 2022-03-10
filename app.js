@@ -12,6 +12,8 @@ var indexRouter = require('./routes/index.route')
 var userRouter = require('./routes/user.route');
 var productRouter = require('./routes/product.route');
 var reviewRouter = require('./routes/review.route');
+var commentRouter = require('./routes/comment.route');
+
 var app = express();
 
 if(process.env.NODE_ENV === 'production') {
@@ -53,6 +55,7 @@ app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/product', productRouter);
 app.use('/review', reviewRouter);
+app.use('/comment', commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

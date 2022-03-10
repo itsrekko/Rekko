@@ -5,7 +5,7 @@ import '../assets/css/home.css';
 import ReviewCardContainer from "../components/ReviewCardContainer";
 import Box from '@mui/material/Box';
 import AddIcon from '@mui/icons-material/Add';
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@mui/material/IconButton";
 import axios from 'axios';
 import ReviewCard from '../components/ReviewCard';
 import {PICTURES_API} from '../consts/awsConsts';
@@ -38,19 +38,20 @@ const Home = (props) => {
                     <ReviewCard
                         id={x['_id']}
                         key={x['_id']}
-                        heading={`${x['User']['UserName']}, ${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
+                        timeStamp={`${(new Date(x['ReviwedAt'])).toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric'})} at ${(new Date(x['ReviwedAt'])).toLocaleString('default', { timeStyle: 'long'})}`} 
                         brandName={x['Product']['ProductBrand']} 
                         productName={x['Product']['ProductName']} 
                         reviewText={x['ReviewText']}
-                        imageAlt = {pictureName}
-                        imageObj = {imgObj}
                         likes={x['Likes']}
-                    />);
+                        userName={x['User']['UserName']}
+                        imageObj={imgObj}
+                    />
+                )
             });
             setState({...state, allReviewCards: allReviews});
         })
         .catch(error => {
-            console.log (`Error fetching all the reviews while mounting the home page with error: ${error}`);
+            console.error(`Error fetching all the reviews while mounting the home page with error: ${error}`);
         })
     }, [])
 
@@ -61,11 +62,15 @@ const Home = (props) => {
         navigate(`/review`);
     }
 
-    return(
+    return (
         <div>
              <Box sx={{ '& > button': { m: 1 } }} className="searchbar-container">
                 <CustomSearchBar />
-                <IconButton aria-label="add" style={{marginTop: '18px'}} onClick={changeToReviewScreen}>
+                <IconButton
+                    aria-label="add"
+                    style={{marginTop: '18px'}}
+                    onClick={changeToReviewScreen}
+                    size="large">
                     <AddIcon />
                 </IconButton>
              </Box>
@@ -73,7 +78,6 @@ const Home = (props) => {
                 <ReviewCardContainer />
             </div>
         </div>
-        
     );
 }
 

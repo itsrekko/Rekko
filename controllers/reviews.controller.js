@@ -12,9 +12,7 @@ exports.createNewReview = async (userModel, productModel, lengthOfUse, imageName
         ImageName: imageName,
         ReviewText: reviewText
     });
-
     await newUserReview.save();
-
     return newUserReview;
 }
 
@@ -69,49 +67,6 @@ async function searchThroughEntireReviews (searchText) {
     .then(results => {
         return results;
     });
-}
-
-async function incrementLikesOnReview (reviewId, userName) {
-    return await reviewModel.findByIdAndUpdate(reviewId, {$push: {Likes: userName}}, {new: true})
-        .then(results => {
-            return results;
-    }).catch(error => {
-        console.error(`Failed to add liked user to the review: ${error}`);
-        throw(error);
-    })
-}
-
-async function decrementLikesOnReview (reviewId, userName) {
-
-    return await reviewModel.findByIdAndUpdate(reviewId, {$pull: {Likes: userName}}, {new: true})
-        .then(results => {
-            return results;
-    })
-    .catch(error => {
-        console.error(`Failed to remove liked user from the review: ${error}`);
-        throw(error);
-    })
-}
-
-exports.updateLikes = async (req, res, next) => {
-    const userName = req.body.userName; // Pass the current user's information
-    const reviewId = req.body.reviewId;
-    const hasUserLiked = req.body.hasUserLiked;
-
-    try {
-        var updatedReview;
-        if (hasUserLiked) {
-            updatedReview = await decrementLikesOnReview(reviewId, userName);
-
-        } else {
-            updatedReview = await incrementLikesOnReview(reviewId, userName);
-        }
-        responseVal = responseObj.constructResponseObject(`Incremented the like`, req.headers, JSON.stringify(updatedReview.Likes));
-    } catch (error) {
-        responseVal = responseObj.constructResponseObject(error.message, error['statusCode'], null, error.name)
-    } finally {
-        res.status(responseVal.statusCode).send(responseVal);
-    }
 }
 
 exports.getAllReviews = async (req, res, next) => {

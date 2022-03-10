@@ -44,7 +44,6 @@ module.exports = new Schema({
     },
     Likes: {
         type: [String],
-        ref: 'User',
         uniqueItems: true,
         required: true,
         default: []

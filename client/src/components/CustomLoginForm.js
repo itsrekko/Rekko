@@ -1,14 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import {withStyles} from '@material-ui/core/styles';
+import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
 
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import LoginFormStyler from "../utils/LoginFormStyler";
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 
 import {useGlobalState} from '../context/GlobalState';
 
