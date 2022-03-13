@@ -33,7 +33,7 @@ exports.createNewComment = async (req, res, next) => {
 
 async function getCommentsForReviewId (reviewId) {
     const reviewIdObject = mongoose.Types.ObjectId(reviewId);
-    return await commentModel.find({ReviewId: reviewIdObject}).sort({CommentedAt: -1})
+    return await commentModel.find({ReviewId: reviewIdObject})
     .then(results => {
         return results;
     })
