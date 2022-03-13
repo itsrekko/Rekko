@@ -9,10 +9,7 @@ import Comment from './Comment';
 import CommentInput from './CommentInput';
 
 const CommentContainer = (props) => {
-    const [globalState, setGlobalState] = useGlobalState();
-    const navigate = useNavigate();
     const [comments, setComments] = useState([]);
-    const [comment, setComment] = useState('');
 
     useEffect(async () => {
         await axios.get(`${window.location.origin.toString()}/comment`, {
@@ -29,7 +26,6 @@ const CommentContainer = (props) => {
     }, []);
 
     useEffect(async () => {
-        console.log(comments);
         props.getCommentCount(comments.length);
     }, [comments]);
 
