@@ -23,6 +23,12 @@ const ReviewCard = (props) => {
             likes: props.likes,
             hasLiked: props.likes.includes(globalState.userName)
         });
+
+    useEffect(async () => {
+            const imgObj = await props.imageObj;
+            console.log(imgObj);
+            setState({...state, imageURL: imgObj.data});
+    }, []);
     
     const handleLikeButton = async (event) => {
         if (globalState.userName !== '') {
@@ -33,6 +39,7 @@ const ReviewCard = (props) => {
             })
             .then(res => {
                 setState(prevState => ({
+                    ...state,
                     likes: JSON.parse(res.data['data']),
                     hasLiked: !prevState.hasLiked}));
             });
@@ -76,7 +83,14 @@ const ReviewCard = (props) => {
             </CardHeader>
             
             <CardContent>
-                {/* Insert a picture over here */}
+                <CardMedia
+                    component="img"
+                    image={state.imageURL}
+                    alt={state.imageAlt}
+                    sx={{
+
+                    }}
+                />
             </CardContent>
             <CardContent>
             <Typography variant="body2" align='left' component="p">
