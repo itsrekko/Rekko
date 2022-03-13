@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from "@mui/material/IconButton";
 import axios from 'axios';
-import ReviewCard from '../components/ReviewCard';
+import ReviewCard from '../components/ReviewCard/ReviewCard';
 import {PICTURES_API} from '../consts/awsConsts';
 import {useGlobalState} from '../context/GlobalState';
 
@@ -64,7 +64,7 @@ const Home = (props) => {
 
     return (
         <div>
-             <Box sx={{ '& > button': { m: 1 } }} className="searchbar-container">
+             <Box sx={{ '& > button': { m: 1 } }} className="searchbar__container">
                 <CustomSearchBar />
                 <IconButton
                     aria-label="add"

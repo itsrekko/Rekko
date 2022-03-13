@@ -2,13 +2,14 @@ import React, {useState, useEffect, useCallback} from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from "@mui/material/Card";
-import {CardContent, CardMedia, CardHeader, Button, Typography, TextField, Avatar, IconButton} from "@mui/material";
-import '../assets/css/reviewCard.css';
+import {CardContent, CardHeader, Button, Typography, TextField, Avatar, IconButton, CardActions} from "@mui/material";
+import '../../assets/css/reviewCard.css';
 import axios from 'axios';
-import { useGlobalState } from '../context/GlobalState';
+import { useGlobalState } from '../../context/GlobalState';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CommentContainer from './CommentContainer';
+import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 
 const ReviewCard = (props) => {
 
@@ -16,18 +17,13 @@ const ReviewCard = (props) => {
     
     const navigate = useNavigate();
     const [numComments, setNumComments] = useState(0);
+    const [hideComments, setHideComments] = useState(false);
     const [state, setState] = useState(
-    {   
-        likes: props.likes,
-        hasLiked: props.likes.includes(globalState.userName)
-    });
+        {   
+            likes: props.likes,
+            hasLiked: props.likes.includes(globalState.userName)
+        });
     
-    useEffect(async () => {
-        const imgObj = await props.imageObj;
-        console.log(imgObj);
-        setState({...state, imageURL: imgObj.data});
-    }, []);
-
     const handleLikeButton = async (event) => {
         if (globalState.userName !== '') {
             await axios.put(`${window.location.origin.toString()}/review/likes`, {
@@ -37,7 +33,6 @@ const ReviewCard = (props) => {
             })
             .then(res => {
                 setState(prevState => ({
-                    ...state,
                     likes: JSON.parse(res.data['data']),
                     hasLiked: !prevState.hasLiked}));
             });
@@ -45,6 +40,10 @@ const ReviewCard = (props) => {
             console.error('User name is set to empty');
             navigate('/'); // Take users to the login page if userName not defined
         }
+    }
+
+    const toggleHideComments = () => {
+        setHideComments(prevHideComments => !prevHideComments);
     }
 
     useEffect(async () => {
@@ -77,14 +76,7 @@ const ReviewCard = (props) => {
             </CardHeader>
             
             <CardContent>
-                <CardMedia
-                    component="img"
-                    image={state.imageURL}
-                    alt={state.imageAlt}
-                    sx={{
-                        
-                    }}
-                />
+                {/* Insert a picture over here */}
             </CardContent>
             <CardContent>
             <Typography variant="body2" align='left' component="p">
@@ -94,6 +86,9 @@ const ReviewCard = (props) => {
             <IconButton aria-label="Like" onClick={() => handleLikeButton()} size="large">
                 {state.hasLiked === true ? <FavoriteIcon className='reviewCard__likeButton'/>: <FavoriteBorderIcon/>}
             </IconButton>
+            <IconButton aria-label="Comment" onClick={() => toggleHideComments()} size="large">
+                {<ModeCommentOutlinedIcon />}
+            </IconButton>
             <div className='reviewCard__actionContainer'>
             <Typography className='reviewCard__actionText' variant="body2" align='left' color="textSecondary" component="p">
                 {state.likes.length} likes 
@@ -102,7 +97,7 @@ const ReviewCard = (props) => {
                 {numComments} comments 
             </Typography>
             </div>
-            <CommentContainer reviewId={props.id} getCommentCount={useCallback((count) => setNumComments(count), [numComments])}/>
+            <CommentContainer hideComments={hideComments} reviewId={props.id} getCommentCount={useCallback((count) => setNumComments(count), [numComments])}/>
         </Card>
     );
 }
