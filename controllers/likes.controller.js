@@ -58,7 +58,6 @@ exports.updateCommentLikes = async (req, res, next) => {
             updatedReview = await decrementLikes(commentModel, commentId, userName);
 
         } else {
-            console.log('Before increment likes')
             updatedReview = await incrementLikes(commentModel, commentId, userName);
         }
         responseVal = responseObj.constructResponseObject(`Incremented the like`, req.headers, JSON.stringify(updatedReview.Likes));

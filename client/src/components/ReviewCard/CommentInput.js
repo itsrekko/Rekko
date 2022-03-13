@@ -2,8 +2,8 @@ import React, {useState, useEffect, useCallback, useMemo} from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { TextField, Button} from "@mui/material";
-import { useGlobalState } from '../context/GlobalState';
-import '../assets/css/reviewCard.css';
+import { useGlobalState } from '../../context/GlobalState';
+import '../../assets/css/reviewCard.css';
 import axios from 'axios';
 import Comment from './Comment';
 
@@ -14,6 +14,7 @@ const CommentInput = (props, {comments, setComments}) => {
     const [comment, setComment] = useState('');
 
     const postComment = async (event, getComments, getNumComments) => {
+        if (comment === '' || comment === null || comment === undefined) return;
         if (globalState.userName !== '') {
             await axios.post(`${window.location.origin.toString()}/comment`, {
                 userName: globalState.userName,
@@ -22,7 +23,10 @@ const CommentInput = (props, {comments, setComments}) => {
             })
             .then(
                 res => {
-                    getComments(res.data['data']);
+                    if (res.data['data'] !== null && res.data['data'] !== undefined) {
+                        getComments(res.data['data']);
+                        setComment('');
+                    }
                 }
             )
         } else {

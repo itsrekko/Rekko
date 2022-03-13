@@ -3,8 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {Typography, Avatar, IconButton, ListItemAvatar, ListItemText} from "@mui/material";
-import '../assets/css/reviewCard.css';
-import { useGlobalState } from '../context/GlobalState';
+import '../../assets/css/reviewCard.css';
+import { useGlobalState } from '../../context/GlobalState';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
