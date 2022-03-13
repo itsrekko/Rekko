@@ -16,8 +16,8 @@ exports.createNewReview = async (userModel, productModel, lengthOfUse, imageName
     return newUserReview;
 }
 
-async function getAllReviews () {
-    return await reviewModel.find({})
+async function getAllReviews() {
+    return await reviewModel.find({}).sort({ReviwedAt: -1})
     .then(results => {
         return results;
     })
