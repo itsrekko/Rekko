@@ -13,7 +13,7 @@ const CommentInput = (props, {comments, setComments}) => {
     const navigate = useNavigate();
     const [comment, setComment] = useState('');
 
-    const postComment = async (event, getComments, getNumComments) => {
+    const postComment = async (event, getComments) => {
         if (globalState.userName !== '') {
             await axios.post(`${window.location.origin.toString()}/comment`, {
                 userName: globalState.userName,

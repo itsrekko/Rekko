@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from "@mui/material/Card";
-import {CardContent, CardHeader, Button, Typography, TextField, Avatar, IconButton, CardActions} from "@mui/material";
+import {CardContent, CardHeader, CardMedia, Typography, Avatar, IconButton} from "@mui/material";
 import '../../assets/css/reviewCard.css';
 import axios from 'axios';
 import { useGlobalState } from '../../context/GlobalState';
@@ -26,7 +26,6 @@ const ReviewCard = (props) => {
 
     useEffect(async () => {
             const imgObj = await props.imageObj;
-            console.log(imgObj);
             setState({...state, imageURL: imgObj.data});
     }, []);
     

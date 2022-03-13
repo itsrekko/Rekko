@@ -9,7 +9,7 @@ import LoginFormStyler from '../utils/LoginFormStyler';
 import axios from 'axios';
 import {useGlobalState} from '../context/GlobalState';
 import {PICTURES_API} from '../consts/awsConsts';
-import ReviewCard from './ReviewCard';
+import ReviewCard from './ReviewCard/ReviewCard';
 
 const CustomSearchBar = (props) => {
   const [globalState, globalSetState] = useGlobalState();

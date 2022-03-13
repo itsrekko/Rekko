@@ -22,7 +22,6 @@ const DropZoneToUploadFile = (props) => {
     });
   
     const onDropAccepted = useCallback(async acceptedFiles => {
-      console.log(acceptedFiles[0]);
       setState({
         topText: `${acceptedFiles[0].path} - ${acceptedFiles[0].size} bytes`,
         bottomText: `Accepted`,
@@ -31,9 +30,7 @@ const DropZoneToUploadFile = (props) => {
 
 
       // start generating a link here
-      console.log(props.userName.replace(/ /g,'')) // remove_all_spaces
       uploadFileName = `${props.userName.replace(/ /g,'')}-${Date.now()}-${acceptedFiles[0].path}`;
-      console.log(uploadFileName);
       var data = JSON.stringify({
           "fileName": uploadFileName,
           "fileType": acceptedFiles[0].type
@@ -47,17 +44,14 @@ const DropZoneToUploadFile = (props) => {
       
       await axios(config)
         .then(function (response) {
-            console.log(JSON.stringify(response.data));
             uploadFile = acceptedFiles[0];
             presignedPostUrl = response.data;
         })
         .catch(function (error) {
-            console.log(error);
         });
     }, []);
   
     const onDropRejected = useCallback(rejectedFiles => {
-      console.log(rejectedFiles[0]);
       setState({
         topText: `${rejectedFiles[0].file.path} rejected`,
         bottomText: `Please upload the correct file format`,
@@ -102,7 +96,6 @@ class AddProductForm extends Component {
     }
 
     handleSubmit = async (event) => {
-        console.log(uploadFile);
         if (uploadFileName !== '')
         {
             let formData = new FormData();

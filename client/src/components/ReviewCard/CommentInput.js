@@ -14,6 +14,7 @@ const CommentInput = (props, {comments, setComments}) => {
     const [comment, setComment] = useState('');
 
     const postComment = async (event, getComments, getNumComments) => {
+        if (comment === '' || comment === null || comment === undefined) return;
         if (globalState.userName !== '') {
             await axios.post(`${window.location.origin.toString()}/comment`, {
                 userName: globalState.userName,
@@ -22,8 +23,10 @@ const CommentInput = (props, {comments, setComments}) => {
             })
             .then(
                 res => {
-                    getComments(res.data['data']);
-                    setComment('');
+                    if (res.data['data'] !== null && res.data['data'] !== undefined) {
+                        getComments(res.data['data']);
+                        setComment('');
+                    }
                 }
             )
         } else {

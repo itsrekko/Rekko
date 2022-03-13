@@ -21,12 +21,15 @@ const CommentContainer = (props) => {
             }
         }).then(
             res=> {
-                setComments(res.data['data'])
+                if (res.data['data'] !== null && res.data['data'] !== undefined) {
+                    setComments(res.data['data'])
+                }
             }
         )
     }, []);
 
     useEffect(async () => {
+        console.log(comments);
         props.getCommentCount(comments.length);
     }, [comments]);
 
@@ -37,26 +40,6 @@ const CommentContainer = (props) => {
                 <Comment key={comment['_id']} likes={comment['Likes']} userName={comment['UserName']} text={comment['Text']} id={comment['_id']} reviewId={props.reviewId}/>
         )})
         return commentList;      
-    }
-
-    const postComment = async (event, getCommentCount) => {
-        if (globalState.userName !== '') {
-            await axios.post(`${window.location.origin.toString()}/comment`, {
-                userName: globalState.userName,
-                reviewId: props.reviewId,
-                commentText: comment
-            })
-            .then(
-                res => {
-                    setComments(res.data['data']);
-                    getCommentCount(res.data['data'].length);
-                    setComment('');
-                }
-            )
-        } else {
-            console.error('User name is set to empty');
-            navigate('/'); // Take users to the login page if userName not defined
-        }
     }
     
     return (
@@ -69,7 +52,7 @@ const CommentContainer = (props) => {
 
 CommentContainer.propTypes = {
     reviewId: PropTypes.string.isRequired,
-    getCommentCount: PropTypes.func,
+    getCommentCountCallback: PropTypes.func,
     hideComments: PropTypes.bool
 }
 
