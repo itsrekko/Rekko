@@ -48,6 +48,7 @@ const DropZoneToUploadFile = (props) => {
             presignedPostUrl = response.data;
         })
         .catch(function (error) {
+            console.error(error)
         });
     }, []);
   
