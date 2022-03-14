@@ -3,6 +3,7 @@ export const ButtonStyler = () => ({
         "&.MuiButton-root": {
           backgroundColor: '#6C5B57',
           width: "500px",
+          borderRadius: '25px',
           "@media (max-width: 768px)": { width: "245px" },
           outerHeight: '30px',
           '&:hover': {
@@ -11,4 +12,5 @@ export const ButtonStyler = () => ({
         },
         "&.MuiButton-sizeLarge": "56px"
     }
+    
 })

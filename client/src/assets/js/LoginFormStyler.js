@@ -51,7 +51,6 @@ const LoginFormStyler = (textfieldLabelPosition= "center") => ({
       color: '#A0A5BD',
     },
   
-    
     notchedOutline: {
       borderRadius: '25px',
       borderWidth: '0px',

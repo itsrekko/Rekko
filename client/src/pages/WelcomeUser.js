@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import AddProductForm from "../components/AddProductForm";
+import AddReviewForm from "../components/AddReviewForm/AddReviewForm";
 import {useNavigate} from 'react-router-dom';
 import {useGlobalState} from '../context/GlobalState';
 
@@ -15,7 +15,7 @@ const WelcomeUser = (props) => {
 
     return(
         <div>
-            <AddProductForm
+            <AddReviewForm
                 userName={globalState.userName}
                 userId={globalState.userId}
                 cardTitle={props.cardTitle}
