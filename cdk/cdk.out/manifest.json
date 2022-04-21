@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b4fd6426d132def48de258e26cb999581d4477c86245ac39cb87fe3116ac3d02.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/08c6fa2099010fd3367be77b15097696203cc0064ee47e398af15bfe6145fd4f.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -283,6 +283,24 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoPicturesRestAPIuploadPictureURLOPTIONSF4619DC4"
+          }
+        ],
+        "/RekkoCDKStack/RekkoCognitoUserpool/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoCognitoUserpool4CEF1431"
+          }
+        ],
+        "/RekkoCDKStack/RekkoCognitoUserpool/RekkoCognitoUserpool-client/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoCognitoUserpoolRekkoCognitoUserpoolclientB1EFB505"
+          }
+        ],
+        "/RekkoCDKStack/RekkoCognitoUserpool/RekkoCognitoUserpool-domain/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoCognitoUserpoolRekkoCognitoUserpooldomain9C5A23F6"
           }
         ],
         "/RekkoCDKStack/CDKMetadata/Default": [

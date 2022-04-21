@@ -40,7 +40,7 @@
         }
       }
     },
-    "b4fd6426d132def48de258e26cb999581d4477c86245ac39cb87fe3116ac3d02": {
+    "08c6fa2099010fd3367be77b15097696203cc0064ee47e398af15bfe6145fd4f": {
       "source": {
         "path": "RekkoCDKStack.template.json",
         "packaging": "file"
@@ -48,7 +48,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "b4fd6426d132def48de258e26cb999581d4477c86245ac39cb87fe3116ac3d02.json",
+          "objectKey": "08c6fa2099010fd3367be77b15097696203cc0064ee47e398af15bfe6145fd4f.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }
