@@ -1755,6 +1755,144 @@
               "version": "2.15.0"
             }
           },
+          "RekkoCognitoUserpool": {
+            "id": "RekkoCognitoUserpool",
+            "path": "RekkoCDKStack/RekkoCognitoUserpool",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "RekkoCDKStack/RekkoCognitoUserpool/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Cognito::UserPool",
+                  "aws:cdk:cloudformation:props": {
+                    "accountRecoverySetting": {
+                      "recoveryMechanisms": [
+                        {
+                          "name": "verified_email",
+                          "priority": 1
+                        }
+                      ]
+                    },
+                    "adminCreateUserConfig": {
+                      "allowAdminCreateUserOnly": false
+                    },
+                    "autoVerifiedAttributes": [
+                      "email"
+                    ],
+                    "emailVerificationMessage": "The verification code to your new account is {####}",
+                    "emailVerificationSubject": "Verify your new account",
+                    "policies": {
+                      "passwordPolicy": {
+                        "minimumLength": 6,
+                        "requireLowercase": true,
+                        "requireUppercase": true,
+                        "requireNumbers": true,
+                        "requireSymbols": false
+                      }
+                    },
+                    "schema": [
+                      {
+                        "name": "given_name",
+                        "mutable": true,
+                        "required": false
+                      },
+                      {
+                        "name": "family_name",
+                        "mutable": true,
+                        "required": false
+                      }
+                    ],
+                    "smsVerificationMessage": "The verification code to your new account is {####}",
+                    "usernameAttributes": [
+                      "email"
+                    ],
+                    "userPoolName": "RekkoCognitoUserpool",
+                    "verificationMessageTemplate": {
+                      "defaultEmailOption": "CONFIRM_WITH_CODE",
+                      "emailMessage": "The verification code to your new account is {####}",
+                      "emailSubject": "Verify your new account",
+                      "smsMessage": "The verification code to your new account is {####}"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_cognito.CfnUserPool",
+                  "version": "2.15.0"
+                }
+              },
+              "RekkoCognitoUserpool-client": {
+                "id": "RekkoCognitoUserpool-client",
+                "path": "RekkoCDKStack/RekkoCognitoUserpool/RekkoCognitoUserpool-client",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/RekkoCognitoUserpool/RekkoCognitoUserpool-client/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Cognito::UserPoolClient",
+                      "aws:cdk:cloudformation:props": {
+                        "userPoolId": {
+                          "Ref": "RekkoCognitoUserpool4CEF1431"
+                        },
+                        "allowedOAuthFlows": [
+                          "code"
+                        ],
+                        "allowedOAuthFlowsUserPoolClient": true,
+                        "allowedOAuthScopes": [
+                          "openid"
+                        ],
+                        "callbackUrLs": [
+                          "https://www.rekko.co/"
+                        ],
+                        "clientName": "RekkoCognitoUserpool-client",
+                        "supportedIdentityProviders": [
+                          "COGNITO"
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cognito.CfnUserPoolClient",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_cognito.UserPoolClient",
+                  "version": "2.15.0"
+                }
+              },
+              "RekkoCognitoUserpool-domain": {
+                "id": "RekkoCognitoUserpool-domain",
+                "path": "RekkoCDKStack/RekkoCognitoUserpool/RekkoCognitoUserpool-domain",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RekkoCDKStack/RekkoCognitoUserpool/RekkoCognitoUserpool-domain/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Cognito::UserPoolDomain",
+                      "aws:cdk:cloudformation:props": {
+                        "domain": "rekko",
+                        "userPoolId": {
+                          "Ref": "RekkoCognitoUserpool4CEF1431"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_cognito.CfnUserPoolDomain",
+                      "version": "2.15.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_cognito.UserPoolDomain",
+                  "version": "2.15.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_cognito.UserPool",
+              "version": "2.15.0"
+            }
+          },
           "CDKMetadata": {
             "id": "CDKMetadata",
             "path": "RekkoCDKStack/CDKMetadata",

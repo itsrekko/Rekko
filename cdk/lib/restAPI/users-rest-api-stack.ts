@@ -1,6 +1,6 @@
+import { AuthorizationType, LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import {CdkStack} from '../cdk-stack';
 import { HealthLambda } from '../lambdas/healthLambda/healthLambda';
-import { AuthorizationType, LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
 
 export const UsersRestAPIStack = (parent: CdkStack) => {
     // deploy the lambdas first

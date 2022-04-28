@@ -1190,10 +1190,105 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/OPTIONS/Resource"
       }
     },
+    "RekkoCognitoUserpool4CEF1431": {
+      "Type": "AWS::Cognito::UserPool",
+      "Properties": {
+        "AccountRecoverySetting": {
+          "RecoveryMechanisms": [
+            {
+              "Name": "verified_email",
+              "Priority": 1
+            }
+          ]
+        },
+        "AdminCreateUserConfig": {
+          "AllowAdminCreateUserOnly": false
+        },
+        "AutoVerifiedAttributes": [
+          "email"
+        ],
+        "EmailVerificationMessage": "The verification code to your new account is {####}",
+        "EmailVerificationSubject": "Verify your new account",
+        "Policies": {
+          "PasswordPolicy": {
+            "MinimumLength": 6,
+            "RequireLowercase": true,
+            "RequireNumbers": true,
+            "RequireSymbols": false,
+            "RequireUppercase": true
+          }
+        },
+        "Schema": [
+          {
+            "Mutable": true,
+            "Name": "given_name",
+            "Required": false
+          },
+          {
+            "Mutable": true,
+            "Name": "family_name",
+            "Required": false
+          }
+        ],
+        "SmsVerificationMessage": "The verification code to your new account is {####}",
+        "UsernameAttributes": [
+          "email"
+        ],
+        "UserPoolName": "RekkoCognitoUserpool",
+        "VerificationMessageTemplate": {
+          "DefaultEmailOption": "CONFIRM_WITH_CODE",
+          "EmailMessage": "The verification code to your new account is {####}",
+          "EmailSubject": "Verify your new account",
+          "SmsMessage": "The verification code to your new account is {####}"
+        }
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoCognitoUserpool/Resource"
+      }
+    },
+    "RekkoCognitoUserpoolRekkoCognitoUserpoolclientB1EFB505": {
+      "Type": "AWS::Cognito::UserPoolClient",
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "RekkoCognitoUserpool4CEF1431"
+        },
+        "AllowedOAuthFlows": [
+          "code"
+        ],
+        "AllowedOAuthFlowsUserPoolClient": true,
+        "AllowedOAuthScopes": [
+          "openid"
+        ],
+        "CallbackURLs": [
+          "https://www.rekko.co/"
+        ],
+        "ClientName": "RekkoCognitoUserpool-client",
+        "SupportedIdentityProviders": [
+          "COGNITO"
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoCognitoUserpool/RekkoCognitoUserpool-client/Resource"
+      }
+    },
+    "RekkoCognitoUserpoolRekkoCognitoUserpooldomain9C5A23F6": {
+      "Type": "AWS::Cognito::UserPoolDomain",
+      "Properties": {
+        "Domain": "rekko",
+        "UserPoolId": {
+          "Ref": "RekkoCognitoUserpool4CEF1431"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoCognitoUserpool/RekkoCognitoUserpool-domain/Resource"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/02QwU7DMAyGn2X31FAmuHdD3BDT9gBTlpritUmq2tlUVX13knSInvzZv3/byQuUr/C80XcuTN0WHV1gOok2rYql89Rpe6k1TB/BGSHv1P7brfmAgyXmmM2KtIXp6DtMQo4H35EZc1+mWfH2rJlRGKoUYg7TLpgWZacZ1YLJsNCsdE+NFrzrMc5GlqqnPP4fK2N8cKLese/8aNFl/yqLz2nyTQtEqw+DwbzwE+XH10l80J/6WJJ5nlW+NvnJNUn6CtIHWTcl3ntXk+TPcL5GuPLTrXyDcgvl5spExRAPJYtwXOIv+tpA8X0BAAA="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/12QwW6DMAyGn6X3kI1V251S9TYNddq5SoPHXJIYkWQVQrz7kgAb2snf79+OHT/x/Jk/7sTdZrJuM4VXPr47IVsWUpdRCX2tBR9P3kiHZFj5abZcQa/R2qAmhkLz8UwKopFiRQrlkOoSTczuL8JacJYXMQTNx4OXLbiDsMBmjA0zTUx02AgHdzGEt8G6osP0/B8WUpI3jh2hUzRoMKl/o8J3mrTTDKGVfC8hDXwF90V1NBda3WVI4olJagw64uOHhb4iUtH+5RVKhcv0f5lVHkkLNNuCOTNNLJ0jLoimiQVv3nXebbeIXJKp0aVrG6qB3+zDd/7C8z3PdzeLmPXhEqiBn+f4A66IVOPeAQAA"
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/CDKMetadata/Default"
