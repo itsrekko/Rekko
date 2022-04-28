@@ -15,6 +15,7 @@ import {useGlobalState} from '../context/GlobalState';
 const CustomLoginForm = (props) => {
     const [state, setState] = useGlobalState({
             userName: '',
+            passWord: '',
             userId: '',
             existingUser: false
     });
@@ -60,6 +61,51 @@ const CustomLoginForm = (props) => {
                     className={classes.textField}
                     value={state.userName}
                     onChange= {(event) => setState({...state, userName: event.target.value})}
+                    margin="normal"
+                    variant="outlined"
+                    required={true}
+                    InputLabelProps={{
+                        style: {
+                            fontSize: '13px'
+                        },
+                        classes: {
+                        root: classes.cssLabel,
+                        focused: classes.cssFocused,
+                        },
+                    }}
+                    onKeyPress={(event) => {
+                        if (event.key === 'Enter') {
+                            handleSubmit();
+                            event.preventDefault();
+                        }
+                    }}
+                    InputProps={{
+                        inputProps: {
+                            style: { 
+                                textAlign: "left",
+                                fontSize: '13px'
+                            },
+                        },
+                        classes: {
+                            root: classes.cssOutlinedInput,
+                            focused: classes.cssFocused,
+                            notchedOutline: classes.notchedOutline,
+                        },
+                        inputMode: 'numeric',
+                    }}
+                    style={{
+                        minHeight: '54px',
+                        maxHeight: '54px',
+                    }}
+                />
+                <TextField
+                    id="password"
+                    label = "Password"
+                    placeholder="Password"
+                    className={classes.textField}
+                    value={state.passWord}
+                    required={true}
+                    onChange= {(event) => setState({...state, passWord: event.target.value})}
                     margin="normal"
                     variant="outlined"
                     InputLabelProps={{
