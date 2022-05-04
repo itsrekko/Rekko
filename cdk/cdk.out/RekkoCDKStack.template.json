@@ -41,7 +41,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "e9a326758d7cd6d9e1b390f960d7cb6df5497d0a8a4a11ee78470f7e3246b730.zip"
+          "S3Key": "e48fa23bed86e7522a693d49a7c01d107a1f4da75465bd7e7a2531aa5d1c748f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -49,7 +49,7 @@
             "Arn"
           ]
         },
-        "Handler": "index.healthHandler",
+        "Handler": "restIndex.healthHandler",
         "Runtime": "nodejs12.x"
       },
       "DependsOn": [
@@ -57,7 +57,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/HealthFunction/Resource",
-        "aws:asset:path": "asset.e9a326758d7cd6d9e1b390f960d7cb6df5497d0a8a4a11ee78470f7e3246b730",
+        "aws:asset:path": "asset.e48fa23bed86e7522a693d49a7c01d107a1f4da75465bd7e7a2531aa5d1c748f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -497,7 +497,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "050a6d57211fafa2b160b6fa311d68d3434b91a8ef50a09b10dd4dd3d90748e2.zip"
+          "S3Key": "e48fa23bed86e7522a693d49a7c01d107a1f4da75465bd7e7a2531aa5d1c748f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -512,7 +512,7 @@
             }
           }
         },
-        "Handler": "index.handler",
+        "Handler": "s3Index.getS3URLHandler",
         "Runtime": "nodejs12.x"
       },
       "DependsOn": [
@@ -521,7 +521,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesGetLambda/Resource",
-        "aws:asset:path": "asset.050a6d57211fafa2b160b6fa311d68d3434b91a8ef50a09b10dd4dd3d90748e2",
+        "aws:asset:path": "asset.e48fa23bed86e7522a693d49a7c01d107a1f4da75465bd7e7a2531aa5d1c748f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -591,7 +591,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "5481631e56868a4ac08deb19a510771eb27ef9e7b33256c1430a64eaa2d493b3.zip"
+          "S3Key": "e48fa23bed86e7522a693d49a7c01d107a1f4da75465bd7e7a2531aa5d1c748f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -606,7 +606,7 @@
             }
           }
         },
-        "Handler": "index.handler",
+        "Handler": "s3Index.putS3Handler",
         "Runtime": "nodejs12.x"
       },
       "DependsOn": [
@@ -615,7 +615,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesPutLambda/Resource",
-        "aws:asset:path": "asset.5481631e56868a4ac08deb19a510771eb27ef9e7b33256c1430a64eaa2d493b3",
+        "aws:asset:path": "asset.e48fa23bed86e7522a693d49a7c01d107a1f4da75465bd7e7a2531aa5d1c748f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }

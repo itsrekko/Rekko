@@ -1,13 +1,12 @@
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import {Function, Runtime, Code } from 'aws-cdk-lib/aws-lambda';
-import {join} from 'path';
 import {CdkStack} from '../../cdk-stack';
 
 export const S3FilesGetLambda = (parent: CdkStack, s3BucketName: string) => {
     const getLambda = new Function(parent, `S3FilesGetLambda`, {
         runtime: Runtime.NODEJS_12_X,
-        handler: 'index.handler',
-        code: Code.fromAsset(join(__dirname, 'lambda-get-handler')),
+        handler: 's3Index.getS3URLHandler',
+        code: Code.fromAsset('src'),
         environment: {
             s3Bucket: s3BucketName
         }

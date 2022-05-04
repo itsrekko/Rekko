@@ -105,7 +105,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "e9a326758d7cd6d9e1b390f960d7cb6df5497d0a8a4a11ee78470f7e3246b730.zip"
+                      "s3Key": "e48fa23bed86e7522a693d49a7c01d107a1f4da75465bd7e7a2531aa5d1c748f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -113,7 +113,7 @@
                         "Arn"
                       ]
                     },
-                    "handler": "index.healthHandler",
+                    "handler": "restIndex.healthHandler",
                     "runtime": "nodejs12.x"
                   }
                 },
@@ -822,7 +822,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "050a6d57211fafa2b160b6fa311d68d3434b91a8ef50a09b10dd4dd3d90748e2.zip"
+                      "s3Key": "e48fa23bed86e7522a693d49a7c01d107a1f4da75465bd7e7a2531aa5d1c748f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -837,7 +837,7 @@
                         }
                       }
                     },
-                    "handler": "index.handler",
+                    "handler": "s3Index.getS3URLHandler",
                     "runtime": "nodejs12.x"
                   }
                 },
@@ -980,7 +980,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "5481631e56868a4ac08deb19a510771eb27ef9e7b33256c1430a64eaa2d493b3.zip"
+                      "s3Key": "e48fa23bed86e7522a693d49a7c01d107a1f4da75465bd7e7a2531aa5d1c748f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -995,7 +995,7 @@
                         }
                       }
                     },
-                    "handler": "index.handler",
+                    "handler": "s3Index.putS3Handler",
                     "runtime": "nodejs12.x"
                   }
                 },
