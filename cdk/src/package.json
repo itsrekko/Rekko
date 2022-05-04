@@ -1,0 +1,27 @@
+{
+  "name": "rekko-lambdas",
+  "version": "1.0.0",
+  "description": "Lambda handlers for Rekko backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo Please start unit testing mo. Mo: yes I know I tired pls allow this for now"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohaimenhasan/Rekko.git"
+  },
+  "keywords": [
+    "rekko",
+    "lambda",
+    "cdk"
+  ],
+  "author": "Mohaimen K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohaimenhasan/Rekko/issues"
+  },
+  "homepage": "https://github.com/mohaimenhasan/Rekko#readme",
+  "dependencies": {
+    "mongoose": "^6.3.2"
+  }
+}

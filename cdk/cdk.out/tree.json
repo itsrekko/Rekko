@@ -105,7 +105,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "7958f076886ee8387ea683bfc4b1aef249b5b5ae361ec74d6ee31f964ad2fa00.zip"
+                      "s3Key": "e9a326758d7cd6d9e1b390f960d7cb6df5497d0a8a4a11ee78470f7e3246b730.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -113,7 +113,7 @@
                         "Arn"
                       ]
                     },
-                    "handler": "index.handler",
+                    "handler": "index.healthHandler",
                     "runtime": "nodejs12.x"
                   }
                 },
@@ -256,7 +256,7 @@
                           "Ref": "RekkoUsersRestAPI70ABA7ED"
                         },
                         "deploymentId": {
-                          "Ref": "RekkoUsersRestAPIDeployment86CF7D8Bb1d4dc5ce22f844db3f2d36a6cf14179"
+                          "Ref": "RekkoUsersRestAPIDeployment86CF7D8B47396fcb7af82a937b5790183c010ef6"
                         },
                         "stageName": "prod"
                       }
@@ -321,13 +321,13 @@
                       "version": "2.15.0"
                     }
                   },
-                  "getAllUsers": {
-                    "id": "getAllUsers",
-                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers",
+                  "health": {
+                    "id": "health",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/health",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/Resource",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/health/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                           "aws:cdk:cloudformation:props": {
@@ -337,7 +337,7 @@
                                 "RootResourceId"
                               ]
                             },
-                            "pathPart": "getAllUsers",
+                            "pathPart": "health",
                             "restApiId": {
                               "Ref": "RekkoUsersRestAPI70ABA7ED"
                             }
@@ -350,11 +350,11 @@
                       },
                       "GET": {
                         "id": "GET",
-                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/health/GET",
                         "children": {
-                          "ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers": {
-                            "id": "ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers",
-                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers",
+                          "ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..health": {
+                            "id": "ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..health",
+                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/health/GET/ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..health",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                               "aws:cdk:cloudformation:props": {
@@ -390,7 +390,7 @@
                                       {
                                         "Ref": "RekkoUsersRestAPIDeploymentStageprodF9989DB5"
                                       },
-                                      "/GET/getAllUsers"
+                                      "/GET/health"
                                     ]
                                   ]
                                 }
@@ -401,9 +401,9 @@
                               "version": "2.15.0"
                             }
                           },
-                          "ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers": {
-                            "id": "ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers",
-                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers",
+                          "ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..health": {
+                            "id": "ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..health",
+                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/health/GET/ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..health",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                               "aws:cdk:cloudformation:props": {
@@ -435,7 +435,7 @@
                                       {
                                         "Ref": "RekkoUsersRestAPI70ABA7ED"
                                       },
-                                      "/test-invoke-stage/GET/getAllUsers"
+                                      "/test-invoke-stage/GET/health"
                                     ]
                                   ]
                                 }
@@ -448,13 +448,13 @@
                           },
                           "Resource": {
                             "id": "Resource",
-                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/Resource",
+                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/health/GET/Resource",
                             "attributes": {
                               "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
                               "aws:cdk:cloudformation:props": {
                                 "httpMethod": "GET",
                                 "resourceId": {
-                                  "Ref": "RekkoUsersRestAPIgetAllUsersD7E61452"
+                                  "Ref": "RekkoUsersRestAPIhealth0D351F32"
                                 },
                                 "restApiId": {
                                   "Ref": "RekkoUsersRestAPI70ABA7ED"
@@ -487,7 +487,7 @@
                                   },
                                   "integrationHttpMethod": "POST"
                                 },
-                                "operationName": "getAllUsers"
+                                "operationName": "status"
                               }
                             },
                             "constructInfo": {
@@ -507,13 +507,13 @@
                       "version": "2.15.0"
                     }
                   },
-                  "checkAndCreateNewUser": {
-                    "id": "checkAndCreateNewUser",
-                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser",
+                  "product": {
+                    "id": "product",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/product",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/Resource",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/product/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
                           "aws:cdk:cloudformation:props": {
@@ -523,7 +523,7 @@
                                 "RootResourceId"
                               ]
                             },
-                            "pathPart": "checkAndCreateNewUser",
+                            "pathPart": "product",
                             "restApiId": {
                               "Ref": "RekkoUsersRestAPI70ABA7ED"
                             }
@@ -533,157 +533,103 @@
                           "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
                           "version": "2.15.0"
                         }
-                      },
-                      "POST": {
-                        "id": "POST",
-                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST",
-                        "children": {
-                          "ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser": {
-                            "id": "ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser",
-                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
-                              "aws:cdk:cloudformation:props": {
-                                "action": "lambda:InvokeFunction",
-                                "functionName": {
-                                  "Fn::GetAtt": [
-                                    "HealthFunction19D7724A",
-                                    "Arn"
-                                  ]
-                                },
-                                "principal": "apigateway.amazonaws.com",
-                                "sourceArn": {
-                                  "Fn::Join": [
-                                    "",
-                                    [
-                                      "arn:",
-                                      {
-                                        "Ref": "AWS::Partition"
-                                      },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "RekkoUsersRestAPI70ABA7ED"
-                                      },
-                                      "/",
-                                      {
-                                        "Ref": "RekkoUsersRestAPIDeploymentStageprodF9989DB5"
-                                      },
-                                      "/POST/checkAndCreateNewUser"
-                                    ]
-                                  ]
-                                }
-                              }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "review": {
+                    "id": "review",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/review",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/review/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "RekkoUsersRestAPI70ABA7ED",
+                                "RootResourceId"
+                              ]
                             },
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
-                              "version": "2.15.0"
-                            }
-                          },
-                          "ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser": {
-                            "id": "ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser",
-                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
-                              "aws:cdk:cloudformation:props": {
-                                "action": "lambda:InvokeFunction",
-                                "functionName": {
-                                  "Fn::GetAtt": [
-                                    "HealthFunction19D7724A",
-                                    "Arn"
-                                  ]
-                                },
-                                "principal": "apigateway.amazonaws.com",
-                                "sourceArn": {
-                                  "Fn::Join": [
-                                    "",
-                                    [
-                                      "arn:",
-                                      {
-                                        "Ref": "AWS::Partition"
-                                      },
-                                      ":execute-api:",
-                                      {
-                                        "Ref": "AWS::Region"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "AWS::AccountId"
-                                      },
-                                      ":",
-                                      {
-                                        "Ref": "RekkoUsersRestAPI70ABA7ED"
-                                      },
-                                      "/test-invoke-stage/POST/checkAndCreateNewUser"
-                                    ]
-                                  ]
-                                }
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
-                              "version": "2.15.0"
-                            }
-                          },
-                          "Resource": {
-                            "id": "Resource",
-                            "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/Resource",
-                            "attributes": {
-                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
-                              "aws:cdk:cloudformation:props": {
-                                "httpMethod": "POST",
-                                "resourceId": {
-                                  "Ref": "RekkoUsersRestAPIcheckAndCreateNewUser7B3E9864"
-                                },
-                                "restApiId": {
-                                  "Ref": "RekkoUsersRestAPI70ABA7ED"
-                                },
-                                "authorizationType": "NONE",
-                                "integration": {
-                                  "type": "AWS_PROXY",
-                                  "uri": {
-                                    "Fn::Join": [
-                                      "",
-                                      [
-                                        "arn:",
-                                        {
-                                          "Ref": "AWS::Partition"
-                                        },
-                                        ":apigateway:",
-                                        {
-                                          "Ref": "AWS::Region"
-                                        },
-                                        ":lambda:path/2015-03-31/functions/",
-                                        {
-                                          "Fn::GetAtt": [
-                                            "HealthFunction19D7724A",
-                                            "Arn"
-                                          ]
-                                        },
-                                        "/invocations"
-                                      ]
-                                    ]
-                                  },
-                                  "integrationHttpMethod": "POST"
-                                },
-                                "operationName": "createUsers"
-                              }
-                            },
-                            "constructInfo": {
-                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
-                              "version": "2.15.0"
+                            "pathPart": "review",
+                            "restApiId": {
+                              "Ref": "RekkoUsersRestAPI70ABA7ED"
                             }
                           }
                         },
                         "constructInfo": {
-                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "comment": {
+                    "id": "comment",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/comment",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/comment/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "RekkoUsersRestAPI70ABA7ED",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "comment",
+                            "restApiId": {
+                              "Ref": "RekkoUsersRestAPI70ABA7ED"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Resource",
+                      "version": "2.15.0"
+                    }
+                  },
+                  "brand": {
+                    "id": "brand",
+                    "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/brand",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/RekkoUsersRestAPI/Default/brand/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "RekkoUsersRestAPI70ABA7ED",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "brand",
+                            "restApiId": {
+                              "Ref": "RekkoUsersRestAPI70ABA7ED"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
                           "version": "2.15.0"
                         }
                       }
@@ -1841,7 +1787,8 @@
                           "openid"
                         ],
                         "callbackUrLs": [
-                          "https://www.rekko.co/"
+                          "https://www.rekko.co/",
+                          "http://localhost:3000/"
                         ],
                         "clientName": "RekkoCognitoUserpool-client",
                         "supportedIdentityProviders": [

@@ -41,7 +41,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "7958f076886ee8387ea683bfc4b1aef249b5b5ae361ec74d6ee31f964ad2fa00.zip"
+          "S3Key": "e9a326758d7cd6d9e1b390f960d7cb6df5497d0a8a4a11ee78470f7e3246b730.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -49,7 +49,7 @@
             "Arn"
           ]
         },
-        "Handler": "index.handler",
+        "Handler": "index.healthHandler",
         "Runtime": "nodejs12.x"
       },
       "DependsOn": [
@@ -57,7 +57,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/HealthFunction/Resource",
-        "aws:asset:path": "asset.7958f076886ee8387ea683bfc4b1aef249b5b5ae361ec74d6ee31f964ad2fa00",
+        "aws:asset:path": "asset.e9a326758d7cd6d9e1b390f960d7cb6df5497d0a8a4a11ee78470f7e3246b730",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -123,7 +123,7 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Account"
       }
     },
-    "RekkoUsersRestAPIDeployment86CF7D8Bb1d4dc5ce22f844db3f2d36a6cf14179": {
+    "RekkoUsersRestAPIDeployment86CF7D8B47396fcb7af82a937b5790183c010ef6": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -133,10 +133,12 @@
       },
       "DependsOn": [
         "RekkoUsersRestAPIANYE07DD136",
-        "RekkoUsersRestAPIcheckAndCreateNewUserPOST817B864D",
-        "RekkoUsersRestAPIcheckAndCreateNewUser7B3E9864",
-        "RekkoUsersRestAPIgetAllUsersGET58935D7F",
-        "RekkoUsersRestAPIgetAllUsersD7E61452"
+        "RekkoUsersRestAPIbrand778D798A",
+        "RekkoUsersRestAPIcomment9703279A",
+        "RekkoUsersRestAPIhealthGET2D327E15",
+        "RekkoUsersRestAPIhealth0D351F32",
+        "RekkoUsersRestAPIproduct5000DD74",
+        "RekkoUsersRestAPIreview87DCF673"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Deployment/Resource"
@@ -149,7 +151,7 @@
           "Ref": "RekkoUsersRestAPI70ABA7ED"
         },
         "DeploymentId": {
-          "Ref": "RekkoUsersRestAPIDeployment86CF7D8Bb1d4dc5ce22f844db3f2d36a6cf14179"
+          "Ref": "RekkoUsersRestAPIDeployment86CF7D8B47396fcb7af82a937b5790183c010ef6"
         },
         "StageName": "prod"
       },
@@ -182,7 +184,7 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/ANY/Resource"
       }
     },
-    "RekkoUsersRestAPIgetAllUsersD7E61452": {
+    "RekkoUsersRestAPIhealth0D351F32": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
@@ -191,16 +193,16 @@
             "RootResourceId"
           ]
         },
-        "PathPart": "getAllUsers",
+        "PathPart": "health",
         "RestApiId": {
           "Ref": "RekkoUsersRestAPI70ABA7ED"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/Resource"
+        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/health/Resource"
       }
     },
-    "RekkoUsersRestAPIgetAllUsersGETApiPermissionRekkoCDKStackRekkoUsersRestAPI85279EF2GETgetAllUsersC4D235EE": {
+    "RekkoUsersRestAPIhealthGETApiPermissionRekkoCDKStackRekkoUsersRestAPI85279EF2GEThealthABE189D4": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -235,16 +237,16 @@
               {
                 "Ref": "RekkoUsersRestAPIDeploymentStageprodF9989DB5"
               },
-              "/GET/getAllUsers"
+              "/GET/health"
             ]
           ]
         }
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers"
+        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/health/GET/ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..health"
       }
     },
-    "RekkoUsersRestAPIgetAllUsersGETApiPermissionTestRekkoCDKStackRekkoUsersRestAPI85279EF2GETgetAllUsers04FC055D": {
+    "RekkoUsersRestAPIhealthGETApiPermissionTestRekkoCDKStackRekkoUsersRestAPI85279EF2GEThealth96C5E8F5": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -275,21 +277,21 @@
               {
                 "Ref": "RekkoUsersRestAPI70ABA7ED"
               },
-              "/test-invoke-stage/GET/getAllUsers"
+              "/test-invoke-stage/GET/health"
             ]
           ]
         }
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..getAllUsers"
+        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/health/GET/ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.GET..health"
       }
     },
-    "RekkoUsersRestAPIgetAllUsersGET58935D7F": {
+    "RekkoUsersRestAPIhealthGET2D327E15": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "GET",
         "ResourceId": {
-          "Ref": "RekkoUsersRestAPIgetAllUsersD7E61452"
+          "Ref": "RekkoUsersRestAPIhealth0D351F32"
         },
         "RestApiId": {
           "Ref": "RekkoUsersRestAPI70ABA7ED"
@@ -322,13 +324,13 @@
             ]
           }
         },
-        "OperationName": "getAllUsers"
+        "OperationName": "status"
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/getAllUsers/GET/Resource"
+        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/health/GET/Resource"
       }
     },
-    "RekkoUsersRestAPIcheckAndCreateNewUser7B3E9864": {
+    "RekkoUsersRestAPIproduct5000DD74": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
@@ -337,141 +339,67 @@
             "RootResourceId"
           ]
         },
-        "PathPart": "checkAndCreateNewUser",
+        "PathPart": "product",
         "RestApiId": {
           "Ref": "RekkoUsersRestAPI70ABA7ED"
         }
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/Resource"
+        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/product/Resource"
       }
     },
-    "RekkoUsersRestAPIcheckAndCreateNewUserPOSTApiPermissionRekkoCDKStackRekkoUsersRestAPI85279EF2POSTcheckAndCreateNewUser42CF2651": {
-      "Type": "AWS::Lambda::Permission",
+    "RekkoUsersRestAPIreview87DCF673": {
+      "Type": "AWS::ApiGateway::Resource",
       "Properties": {
-        "Action": "lambda:InvokeFunction",
-        "FunctionName": {
+        "ParentId": {
           "Fn::GetAtt": [
-            "HealthFunction19D7724A",
-            "Arn"
+            "RekkoUsersRestAPI70ABA7ED",
+            "RootResourceId"
           ]
         },
-        "Principal": "apigateway.amazonaws.com",
-        "SourceArn": {
-          "Fn::Join": [
-            "",
-            [
-              "arn:",
-              {
-                "Ref": "AWS::Partition"
-              },
-              ":execute-api:",
-              {
-                "Ref": "AWS::Region"
-              },
-              ":",
-              {
-                "Ref": "AWS::AccountId"
-              },
-              ":",
-              {
-                "Ref": "RekkoUsersRestAPI70ABA7ED"
-              },
-              "/",
-              {
-                "Ref": "RekkoUsersRestAPIDeploymentStageprodF9989DB5"
-              },
-              "/POST/checkAndCreateNewUser"
-            ]
-          ]
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/ApiPermission.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser"
-      }
-    },
-    "RekkoUsersRestAPIcheckAndCreateNewUserPOSTApiPermissionTestRekkoCDKStackRekkoUsersRestAPI85279EF2POSTcheckAndCreateNewUser325432A7": {
-      "Type": "AWS::Lambda::Permission",
-      "Properties": {
-        "Action": "lambda:InvokeFunction",
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "HealthFunction19D7724A",
-            "Arn"
-          ]
-        },
-        "Principal": "apigateway.amazonaws.com",
-        "SourceArn": {
-          "Fn::Join": [
-            "",
-            [
-              "arn:",
-              {
-                "Ref": "AWS::Partition"
-              },
-              ":execute-api:",
-              {
-                "Ref": "AWS::Region"
-              },
-              ":",
-              {
-                "Ref": "AWS::AccountId"
-              },
-              ":",
-              {
-                "Ref": "RekkoUsersRestAPI70ABA7ED"
-              },
-              "/test-invoke-stage/POST/checkAndCreateNewUser"
-            ]
-          ]
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/ApiPermission.Test.RekkoCDKStackRekkoUsersRestAPI85279EF2.POST..checkAndCreateNewUser"
-      }
-    },
-    "RekkoUsersRestAPIcheckAndCreateNewUserPOST817B864D": {
-      "Type": "AWS::ApiGateway::Method",
-      "Properties": {
-        "HttpMethod": "POST",
-        "ResourceId": {
-          "Ref": "RekkoUsersRestAPIcheckAndCreateNewUser7B3E9864"
-        },
+        "PathPart": "review",
         "RestApiId": {
           "Ref": "RekkoUsersRestAPI70ABA7ED"
-        },
-        "AuthorizationType": "NONE",
-        "Integration": {
-          "IntegrationHttpMethod": "POST",
-          "Type": "AWS_PROXY",
-          "Uri": {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition"
-                },
-                ":apigateway:",
-                {
-                  "Ref": "AWS::Region"
-                },
-                ":lambda:path/2015-03-31/functions/",
-                {
-                  "Fn::GetAtt": [
-                    "HealthFunction19D7724A",
-                    "Arn"
-                  ]
-                },
-                "/invocations"
-              ]
-            ]
-          }
-        },
-        "OperationName": "createUsers"
+        }
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/checkAndCreateNewUser/POST/Resource"
+        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/review/Resource"
+      }
+    },
+    "RekkoUsersRestAPIcomment9703279A": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "RekkoUsersRestAPI70ABA7ED",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "comment",
+        "RestApiId": {
+          "Ref": "RekkoUsersRestAPI70ABA7ED"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/comment/Resource"
+      }
+    },
+    "RekkoUsersRestAPIbrand778D798A": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "RekkoUsersRestAPI70ABA7ED",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "brand",
+        "RestApiId": {
+          "Ref": "RekkoUsersRestAPI70ABA7ED"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoUsersRestAPI/Default/brand/Resource"
       }
     },
     "RekkoImagesBucket39511A0E": {
@@ -1262,7 +1190,8 @@
           "openid"
         ],
         "CallbackURLs": [
-          "https://www.rekko.co/"
+          "https://www.rekko.co/",
+          "http://localhost:3000/"
         ],
         "ClientName": "RekkoCognitoUserpool-client",
         "SupportedIdentityProviders": [
