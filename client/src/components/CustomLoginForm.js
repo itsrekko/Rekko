@@ -33,7 +33,7 @@ const CustomLoginForm = (props) => {
                     userId: res.data['data']['_id'],
                     existingUser: true
                 })
-                navigate(`/home/${state.userName}`);
+                navigate(`/home`);
             }
             else{
                 setState({

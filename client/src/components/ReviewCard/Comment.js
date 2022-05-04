@@ -26,7 +26,7 @@ const Comment = (props) => {
             })
             .then(res => {
                 setState(prevState => ({
-                    likes: JSON.parse(res.data['data']),
+                    likesd: JSON.parse(res.data['data']),
                     hasLiked: !prevState.hasLiked}));
             });
         } else {

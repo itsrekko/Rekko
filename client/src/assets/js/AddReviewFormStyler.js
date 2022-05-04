@@ -1,8 +1,11 @@
+import { alignProperty } from "@mui/material/styles/cssUtils";
+
 export const AddReviewFormStyler = () => ({
     card: {
-        marginTop: '19vh',
-        "@media (max-width: 742px)": { height: "520px" },
+        height: "fitContent",
+        width: "710px",
         "@media (max-width: 768px)": { width: "78vw" },
+        backgroundColor: "#FFFFFF",
         borderRadius: '25px'
     },
     customTitle: {
@@ -10,9 +13,13 @@ export const AddReviewFormStyler = () => ({
         paddingTop: '32px',
         fontSize: '18px',
         fontWeight: 'bold',
-        marginLeft: '20px',
-        marginRight: '20px',
-        marginBottom: '30px',
-        paddingBottom: '30px'
+        textAlign: 'center'
+    },
+    customSpacing: {
+        marginBottom: '20px',
+        minHeight: '56px',
+    },
+    root: {
+        flexGrow: 1,
     }
 });

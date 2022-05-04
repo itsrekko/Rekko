@@ -1,9 +1,9 @@
-const InputStyler = (textfieldLabelPosition= "center") => ({
+export const InputStyler = (textfieldLabelPosition= "center") => ({
     cssLabel: {
         color: '#A0A5BD',
     },
     cssFocused: {
-        color: 'black',
+        bordercolor: 'black',
     },
     textField: {
         backgroundColor: '#F5F5F7',
@@ -14,21 +14,8 @@ const InputStyler = (textfieldLabelPosition= "center") => ({
             textAlign: "left",
             transformOrigin: "left",
             "&.Mui-focused": {
-              transformOrigin: "left"
+              transformOrigin: "left",
             }
         },
-    },
-    cssOutlinedInput: {
-        '&$cssFocused $notchedOutline': {
-            borderColor: `#F5F5F7 !important`,
-            borderRadius: '25px',
-            borderWidth: '0px',
-        },
-    },
-    notchedOutline: {
-        borderWidth: '1px',
-        borderColor: '#F5F5F7 !important',
     }
 })
-
-export default InputStyler;

@@ -11,7 +11,7 @@ import ReviewCard from '../components/ReviewCard/ReviewCard';
 import {PICTURES_API} from '../consts/awsConsts';
 import {useGlobalState} from '../context/GlobalState';
 
-const Home = (props) => {
+const Home = () => {
     const [state, setState] = useGlobalState({reviewCards: []});
     const navigate = useNavigate();
 

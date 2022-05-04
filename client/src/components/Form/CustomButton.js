@@ -5,8 +5,6 @@ import {Button, Typography}  from '@mui/material';
 import {ButtonStyler} from '../../assets/js/ButtonStyler';
 
 const CustomButton = (props) => {
-    const [value, setValue] = useState('');
-
     // These style classes come from the forward Ref from styler
     const {classes} = props;
 
@@ -20,7 +18,7 @@ const CustomButton = (props) => {
                 maxHeight: '54px',
                 marginBottom: '30px'
             }}
-            onClick={(e) => props.onClickCallbackFunction(e)}
+            type={props.type}
             className={classes.button}>
             <Typography style={{
                 fontWeight: 550,
@@ -37,8 +35,8 @@ const CustomButton = (props) => {
 CustomButton.propTypes = {
     id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
-    onClickCallbackFunction: PropTypes.func.isRequired,
-    label: PropTypes.string
+    label: PropTypes.string,
+    type: PropTypes.string
 };
 
 export default withStyles(ButtonStyler)(CustomButton);
