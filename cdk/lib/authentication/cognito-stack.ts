@@ -39,7 +39,7 @@ export const CognitoStack = (parent: CdkStack) => {
         oAuth: {
             flows: { authorizationCodeGrant: true },
             scopes: [OAuthScope.OPENID],
-            callbackUrls: ['https://www.rekko.co/']
+            callbackUrls: ['https://www.rekko.co/', 'http://localhost:3000/']
         },
         supportedIdentityProviders: [
             UserPoolClientIdentityProvider.COGNITO,
