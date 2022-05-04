@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from './pages/Login';
 import WelcomeUser from './pages/WelcomeUser';
 import Home from './pages/Home';
+import {InitializeAmplify} from './auth/api/amplify-client';
 import GlobalStateProvider from './context/GlobalState';
 
 const theme = createTheme(adaptV4Theme({
@@ -15,6 +16,9 @@ const theme = createTheme(adaptV4Theme({
       'Regular 400',
     ].join(','),
   },}));
+
+// Initialize Auth
+InitializeAmplify();
 
 const App = () => {
 
