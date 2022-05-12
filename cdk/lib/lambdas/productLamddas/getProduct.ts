@@ -1,10 +1,10 @@
 import {Function, Runtime, Code } from 'aws-cdk-lib/aws-lambda';
 import {CdkStack} from '../../cdk-stack';
 
-export const HealthLambda = (parent: CdkStack) : Function => {
-    return new Function(parent, 'HealthFunction', {
+export const GetProductLambda = (parent: CdkStack) : Function => {
+    return new Function(parent, 'GetProduct', {
         runtime: Runtime.NODEJS_12_X,
-        handler: 'restIndex.healthHandler',
+        handler: 'productIndex.getProductsByProductName',
         code: Code.fromAsset('src'),
     });
 }

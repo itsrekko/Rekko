@@ -1,4 +1,4 @@
-exports.healthHandler = async (event) => {
+exports.indexHandler = async (event) => {
     // TODO implement
     const response = {
         statusCode: 200,
@@ -8,7 +8,7 @@ exports.healthHandler = async (event) => {
             'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
             'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
         },
-        body: JSON.stringify('You have reached the test endpoint. Wallahi Neyah Eh!'),
+        body: JSON.stringify('Home page for backend of rekko'),
     };
     return response;
-};
+}

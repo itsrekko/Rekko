@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "deploy": "cdk deploy && npm run clean",
+    "deploy": "npm run clean && npm run build && cdk deploy && npm run clean",
     "clean": "tsc --build --clean"
   },
   "devDependencies": {
