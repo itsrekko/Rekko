@@ -3,7 +3,7 @@ import {CdkStack} from '../../cdk-stack';
 
 export const IndexLambda = (parent: CdkStack) : Function => {
     return new Function(parent, 'IndexFunction', {
-        runtime: Runtime.NODEJS_12_X,
+        runtime: Runtime.NODEJS_14_X,
         handler: 'index.indexHandler',
         code: Code.fromAsset('src'),
     });

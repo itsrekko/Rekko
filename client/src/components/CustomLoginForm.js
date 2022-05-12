@@ -30,6 +30,7 @@ const CustomLoginForm = (props) => {
     const navigate = useNavigate();
 
     const validateEmail = (email) => {
+        return true;
         const emailValidatorRegex = /\S+@\S+\.\S+/;
         const isValidEmail = emailValidatorRegex.test(email);
         
@@ -43,6 +44,7 @@ const CustomLoginForm = (props) => {
     }
 
     const validatePassword = (password) => {
+        return true;
         let validPassword =  password !== undefined && password !== '';
         localSetState({
             ...localState,

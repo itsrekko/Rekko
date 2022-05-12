@@ -26,9 +26,10 @@ async function decrementLikes(model, id, userName) {
 }
 
 exports.updateReviewLikes = async (event, context) => {
-    const userName = event.body.userName;
-    const reviewId = event.body.reviewId;
-    const hasUserLiked = event.body.hasUserLiked;
+    const body = JSON.parse(event.body);
+    const userName = body.userName;
+    const reviewId = body.reviewId;
+    const hasUserLiked = body.hasUserLiked;
 
     try {
         var updatedReview;
@@ -47,9 +48,10 @@ exports.updateReviewLikes = async (event, context) => {
 }
 
 exports.updateCommentLikes = async (event, context) => {
-    const userName = event.body.userName;
-    const commentId = event.body.commentId;
-    const hasUserLiked = event.body.hasUserLiked;
+    const body = JSON.parse(event.body);
+    const userName = body.userName;
+    const commentId = body.commentId;
+    const hasUserLiked = body.hasUserLiked;
 
     try {
         var updatedReview;

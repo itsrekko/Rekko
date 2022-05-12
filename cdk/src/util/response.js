@@ -40,7 +40,7 @@ module.exports = class Response {
         return {
             statusCode: this.statusCode,
             headers: this.headers,
-            body: JSON.stringify(data)
+            body: this.data === null | undefined ? message : JSON.stringify(data) 
         }
     }
 }

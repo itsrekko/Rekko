@@ -3,7 +3,7 @@ import {CdkStack} from '../../cdk-stack';
 
 export const GetReviewsLambda = (parent: CdkStack) : Function => {
     return new Function(parent, 'GetReviews', {
-        runtime: Runtime.NODEJS_12_X,
+        runtime: Runtime.NODEJS_14_X,
         handler: 'reviewsIndex.getReview',
         code: Code.fromAsset('src'),
     });

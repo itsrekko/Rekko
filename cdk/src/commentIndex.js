@@ -28,9 +28,10 @@ async function getCommentsForReviewId (reviewId) {
 
 //
 exports.createNewComment = async (event, context) => {
-    const userName = event.body.userName;
-    const reviewId = event.body.reviewId;
-    const commentText = event.body.commentText;
+    const body = JSON.parse(event.body);
+    const userName = body.userName;
+    const reviewId = body.reviewId;
+    const commentText = body.commentText;
     try{
         await addNewComment(userName, reviewId, commentText);
         const mongoRequest = await getCommentsForReviewId(reviewId);

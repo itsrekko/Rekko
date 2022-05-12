@@ -14,11 +14,17 @@ import { UpdateCommentLikesLambda } from '../lambdas/likesLambdas/updateCommentL
 import { GetAllProductsLambda } from '../lambdas/productLamddas/getAllProducts';
 import { GetProductLambda } from '../lambdas/productLamddas/getProduct';
 import { AddNewProductReviewLambda } from '../lambdas/productLamddas/addNewProductReview';
+import { GetAllUsersLambda } from '../lambdas/userLambdas/getAllUsersLambda';
+import { CreateNewUserLambda } from '../lambdas/userLambdas/createNewUserLambda';
 
 export const RestAPIStack = (parent: CdkStack) => {
     // deploy the lambdas first
     const healthLambda = HealthLambda(parent);
     const indexLambda = IndexLambda(parent);
+
+    // user lambdas
+    const getAllUsersLambda = GetAllUsersLambda(parent);
+    const createNewUserLambda = CreateNewUserLambda(parent);
 
     // review lambdas
     const getAllReviewsLambda = GetAllReviewsLambda(parent);
@@ -51,6 +57,7 @@ export const RestAPIStack = (parent: CdkStack) => {
 
     const indexResource: Resource = restAPI.root.addResource('home');
     const healthResource: Resource = restAPI.root.addResource('health');
+    const userResource: Resource = restAPI.root.addResource('user');
     const productResource: Resource = restAPI.root.addResource('product');
     const reviewResource: Resource = restAPI.root.addResource('review');
     const likesResource: Resource = restAPI.root.addResource('likes');
@@ -66,6 +73,20 @@ export const RestAPIStack = (parent: CdkStack) => {
     healthResource.addMethod('GET', new LambdaIntegration(healthLambda), {
         operationName: 'status',
         authorizationType: AuthorizationType.NONE, // TO DO this would need to change to cognito auth
+    });
+
+    // user routes
+    const getAllUsersResource = userResource.addResource('getAllUsers');
+    const createNewUserResource = userResource.addResource('createNewUser');
+    
+    getAllUsersResource.addMethod('GET', new LambdaIntegration(getAllUsersLambda), {
+        operationName: 'getAllUsers',
+        authorizationType: AuthorizationType.NONE
+    });
+
+    createNewUserResource.addMethod('POST', new LambdaIntegration(createNewUserLambda), {
+        operationName: 'createNewUser',
+        authorizationType: AuthorizationType.NONE
     });
 
     // review routes

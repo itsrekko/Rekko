@@ -3,8 +3,8 @@ const Response = require('./util/response');
 const errorTypes = require('./consts/errorTypes');
 const productModel = require('./models/product.model');
 
-var userController = require('./user.controller');
-var reviewController = require('./reviews.controller')
+var userController = require('./userIndex');
+var reviewController = require('./reviewsIndex');
 
 const responseObj = new Response();
 
@@ -95,6 +95,7 @@ exports.getAllProducts = async (event, context) => {
     var responseVal = undefined;
     try{
         const mongoRequest = await getAllProducts();
+        console.log(mongoRequest);
         responseVal = responseObj.constructResponseObject(`Successfully fetched all products`, event.headers, mongoRequest);
     }
     catch (error){
@@ -125,13 +126,14 @@ exports.home = async (event, context) => {
 }
 
 exports.addNewProductReview = async (event, context) => {
-    const userName = event.body.userName;
-    const productBrand = event.body.productBrand;
-    const productName = event.body.productName;
-    const productURI = event.body.productURI;
-    const lengthOfUse = event.body.lengthOfUse;
-    const imageName = event.body.imageName;
-    const reviewText = event.body.reviewText;
+    const body = JSON.parse(event.body);
+    const userName = body.userName;
+    const productBrand = body.productBrand;
+    const productName = body.productName;
+    const productURI = body.productURI;
+    const lengthOfUse = body.lengthOfUse;
+    const imageName = body.imageName;
+    const reviewText = body.reviewText;
 
     var responseVal = undefined;
     try {

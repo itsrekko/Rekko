@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/073f962f490ce431e1d54226d6e95d7c5973f0857f13647ea59fac2010892f67.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/45985d733e9e254a66fa16a9de1d5d38103aa1e27f47b73fb02ba3f41e9479d9.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -61,6 +61,30 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "IndexFunctionAA14D79F"
+          }
+        ],
+        "/RekkoCDKStack/GetAllUsers/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAllUsersServiceRole8209C00B"
+          }
+        ],
+        "/RekkoCDKStack/GetAllUsers/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAllUsersB73738E4"
+          }
+        ],
+        "/RekkoCDKStack/CreateNewUser/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CreateNewUserServiceRole822A0516"
+          }
+        ],
+        "/RekkoCDKStack/CreateNewUser/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CreateNewUser8293963B"
           }
         ],
         "/RekkoCDKStack/GetAllReviews/ServiceRole/Resource": [
@@ -228,7 +252,7 @@
         "/RekkoCDKStack/RekkoRestAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "RekkoRestAPIDeploymentC1A789A906b8f63163b047fcbceea24d00b49cce"
+            "data": "RekkoRestAPIDeploymentC1A789A9b151cf8fe4f7b16a26403d58a8ea42d6"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/DeploymentStage.prod/Resource": [
@@ -295,6 +319,60 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIhealthGET5270D846"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIuser12EA21FF"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIusergetAllUsers433C5CE7"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..user.getAllUsers": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIusergetAllUsersGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GETusergetAllUsers7FEFBEFD"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/GET/ApiPermission.Test.RekkoCDKStackRekkoRestAPIBE5FB652.GET..user.getAllUsers": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIusergetAllUsersGETApiPermissionTestRekkoCDKStackRekkoRestAPIBE5FB652GETusergetAllUsers571CD7AB"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIusergetAllUsersGETDFE501E1"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIusercreateNewUser4DCC88E2"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/POST/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.POST..user.createNewUser": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIusercreateNewUserPOSTApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652POSTusercreateNewUserB676C258"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/POST/ApiPermission.Test.RekkoCDKStackRekkoRestAPIBE5FB652.POST..user.createNewUser": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIusercreateNewUserPOSTApiPermissionTestRekkoCDKStackRekkoRestAPIBE5FB652POSTusercreateNewUserBEF197AA"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIusercreateNewUserPOST9C9CAE2C"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/product/Resource": [

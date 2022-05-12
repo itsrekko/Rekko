@@ -41,7 +41,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -50,14 +50,14 @@
           ]
         },
         "Handler": "restIndex.healthHandler",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "HealthFunctionServiceRole04552894"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/HealthFunction/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -103,7 +103,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -112,14 +112,138 @@
           ]
         },
         "Handler": "index.indexHandler",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "IndexFunctionServiceRole2A41AC78"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/IndexFunction/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "GetAllUsersServiceRole8209C00B": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/GetAllUsers/ServiceRole/Resource"
+      }
+    },
+    "GetAllUsersB73738E4": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "GetAllUsersServiceRole8209C00B",
+            "Arn"
+          ]
+        },
+        "Handler": "userIndex.getAllUsers",
+        "Runtime": "nodejs14.x"
+      },
+      "DependsOn": [
+        "GetAllUsersServiceRole8209C00B"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/GetAllUsers/Resource",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "CreateNewUserServiceRole822A0516": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/CreateNewUser/ServiceRole/Resource"
+      }
+    },
+    "CreateNewUser8293963B": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "CreateNewUserServiceRole822A0516",
+            "Arn"
+          ]
+        },
+        "Handler": "userIndex.createNewUser",
+        "Runtime": "nodejs14.x"
+      },
+      "DependsOn": [
+        "CreateNewUserServiceRole822A0516"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/CreateNewUser/Resource",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -165,7 +289,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -174,14 +298,14 @@
           ]
         },
         "Handler": "reviewsIndex.getAllReviews",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "GetAllReviewsServiceRole4AAF2483"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllReviews/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -227,7 +351,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -236,14 +360,14 @@
           ]
         },
         "Handler": "reviewsIndex.getReview",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "GetReviewsServiceRole4DEA3A74"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetReviews/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -289,7 +413,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -298,14 +422,14 @@
           ]
         },
         "Handler": "reviewsIndex.searchThroughEntireReview",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "SearchThroughEntireReviewServiceRole30B18DCA"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/SearchThroughEntireReview/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -351,7 +475,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -360,14 +484,14 @@
           ]
         },
         "Handler": "likesIndex.updateReviewLikes",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "UpdateReviewLikesServiceRoleF774DAA2"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/UpdateReviewLikes/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -413,7 +537,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -422,14 +546,14 @@
           ]
         },
         "Handler": "likesIndex.updateCommentLikes",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "UpdateCommentLikesServiceRole44FD4247"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/UpdateCommentLikes/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -475,7 +599,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -484,14 +608,14 @@
           ]
         },
         "Handler": "brandIndex.getAllBrands",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "GetAllBrandsServiceRoleAF1FA909"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllBrands/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -537,7 +661,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -546,14 +670,14 @@
           ]
         },
         "Handler": "brandIndex.addNewBrand",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "AddNewBrandServiceRoleC291CA1C"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/AddNewBrand/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -599,7 +723,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -608,14 +732,14 @@
           ]
         },
         "Handler": "commentIndex.createNewComment",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "CreateNewCommentServiceRole7B29BA44"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/CreateNewComment/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -661,7 +785,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -670,14 +794,14 @@
           ]
         },
         "Handler": "commentIndex.getCommentsForReview",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "GetCommentForReviewServiceRole410A3CA8"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetCommentForReview/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -723,7 +847,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -732,14 +856,14 @@
           ]
         },
         "Handler": "productIndex.getAllProducts",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "GetAllProductsServiceRole1FD49630"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllProducts/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -785,7 +909,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -794,14 +918,14 @@
           ]
         },
         "Handler": "productIndex.getProductsByProductName",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "GetProductServiceRole1936696A"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetProduct/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -847,7 +971,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -856,14 +980,14 @@
           ]
         },
         "Handler": "productIndex.addNewProductReview",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "AddNewProductReviewServiceRole09BFDB11"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/AddNewProductReview/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -929,7 +1053,7 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Account"
       }
     },
-    "RekkoRestAPIDeploymentC1A789A906b8f63163b047fcbceea24d00b49cce": {
+    "RekkoRestAPIDeploymentC1A789A9b151cf8fe4f7b16a26403d58a8ea42d6": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -971,7 +1095,12 @@
         "RekkoRestAPIreviewgetReviewsBEA681A0",
         "RekkoRestAPIreview093E5FC0",
         "RekkoRestAPIreviewsearchThroughEntireReviewGETE12A369C",
-        "RekkoRestAPIreviewsearchThroughEntireReviewF68F9390"
+        "RekkoRestAPIreviewsearchThroughEntireReviewF68F9390",
+        "RekkoRestAPIusercreateNewUserPOST9C9CAE2C",
+        "RekkoRestAPIusercreateNewUser4DCC88E2",
+        "RekkoRestAPIusergetAllUsersGETDFE501E1",
+        "RekkoRestAPIusergetAllUsers433C5CE7",
+        "RekkoRestAPIuser12EA21FF"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Deployment/Resource"
@@ -984,7 +1113,7 @@
           "Ref": "RekkoRestAPIB11286BC"
         },
         "DeploymentId": {
-          "Ref": "RekkoRestAPIDeploymentC1A789A906b8f63163b047fcbceea24d00b49cce"
+          "Ref": "RekkoRestAPIDeploymentC1A789A9b151cf8fe4f7b16a26403d58a8ea42d6"
         },
         "StageName": "prod"
       },
@@ -1307,6 +1436,310 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/health/GET/Resource"
+      }
+    },
+    "RekkoRestAPIuser12EA21FF": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "RekkoRestAPIB11286BC",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "user",
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/Resource"
+      }
+    },
+    "RekkoRestAPIusergetAllUsers433C5CE7": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "RekkoRestAPIuser12EA21FF"
+        },
+        "PathPart": "getAllUsers",
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/Resource"
+      }
+    },
+    "RekkoRestAPIusergetAllUsersGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GETusergetAllUsers7FEFBEFD": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GetAllUsersB73738E4",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "RekkoRestAPIB11286BC"
+              },
+              "/",
+              {
+                "Ref": "RekkoRestAPIDeploymentStageprod29C103AD"
+              },
+              "/GET/user/getAllUsers"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..user.getAllUsers"
+      }
+    },
+    "RekkoRestAPIusergetAllUsersGETApiPermissionTestRekkoCDKStackRekkoRestAPIBE5FB652GETusergetAllUsers571CD7AB": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GetAllUsersB73738E4",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "RekkoRestAPIB11286BC"
+              },
+              "/test-invoke-stage/GET/user/getAllUsers"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/GET/ApiPermission.Test.RekkoCDKStackRekkoRestAPIBE5FB652.GET..user.getAllUsers"
+      }
+    },
+    "RekkoRestAPIusergetAllUsersGETDFE501E1": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIusergetAllUsers433C5CE7"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "GetAllUsersB73738E4",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "OperationName": "getAllUsers"
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/GET/Resource"
+      }
+    },
+    "RekkoRestAPIusercreateNewUser4DCC88E2": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "RekkoRestAPIuser12EA21FF"
+        },
+        "PathPart": "createNewUser",
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/Resource"
+      }
+    },
+    "RekkoRestAPIusercreateNewUserPOSTApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652POSTusercreateNewUserB676C258": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CreateNewUser8293963B",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "RekkoRestAPIB11286BC"
+              },
+              "/",
+              {
+                "Ref": "RekkoRestAPIDeploymentStageprod29C103AD"
+              },
+              "/POST/user/createNewUser"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/POST/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.POST..user.createNewUser"
+      }
+    },
+    "RekkoRestAPIusercreateNewUserPOSTApiPermissionTestRekkoCDKStackRekkoRestAPIBE5FB652POSTusercreateNewUserBEF197AA": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CreateNewUser8293963B",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "RekkoRestAPIB11286BC"
+              },
+              "/test-invoke-stage/POST/user/createNewUser"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/POST/ApiPermission.Test.RekkoCDKStackRekkoRestAPIBE5FB652.POST..user.createNewUser"
+      }
+    },
+    "RekkoRestAPIusercreateNewUserPOST9C9CAE2C": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "POST",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIusercreateNewUser4DCC88E2"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "CreateNewUser8293963B",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "OperationName": "createNewUser"
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/POST/Resource"
       }
     },
     "RekkoRestAPIproduct5C135A2C": {
@@ -3210,7 +3643,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -3226,7 +3659,7 @@
           }
         },
         "Handler": "s3Index.getS3URLHandler",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "S3FilesGetLambdaServiceRoleDefaultPolicy25DE6BF0",
@@ -3234,7 +3667,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesGetLambda/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -3304,7 +3737,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade.zip"
+          "S3Key": "f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -3320,7 +3753,7 @@
           }
         },
         "Handler": "s3Index.putS3Handler",
-        "Runtime": "nodejs12.x"
+        "Runtime": "nodejs14.x"
       },
       "DependsOn": [
         "S3FilesPutLambdaServiceRoleDefaultPolicy3E027B93",
@@ -3328,7 +3761,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesPutLambda/Resource",
-        "aws:asset:path": "asset.76a0697900aa8969caece890f6b9afc7ff0d9386d87f0b20488bcc1767753ade",
+        "aws:asset:path": "asset.f08f2c1f625567201d1fbe1c87a54560b2e0291b842b560550eb173378ae4719",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }

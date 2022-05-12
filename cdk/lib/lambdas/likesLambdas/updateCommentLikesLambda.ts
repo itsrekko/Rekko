@@ -3,7 +3,7 @@ import {CdkStack} from '../../cdk-stack';
 
 export const UpdateCommentLikesLambda = (parent: CdkStack) : Function => {
     return new Function(parent, 'UpdateCommentLikes', {
-        runtime: Runtime.NODEJS_12_X,
+        runtime: Runtime.NODEJS_14_X,
         handler: 'likesIndex.updateCommentLikes',
         code: Code.fromAsset('src'),
     });

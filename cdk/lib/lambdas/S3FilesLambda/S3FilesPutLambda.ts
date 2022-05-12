@@ -4,7 +4,7 @@ import {CdkStack} from '../../cdk-stack';
 
 export const S3FilesPutLambda = (parent: CdkStack, s3BucketName: string) => {
     const putLambda = new Function(parent, `S3FilesPutLambda`, {
-        runtime: Runtime.NODEJS_12_X,
+        runtime: Runtime.NODEJS_14_X,
         handler: 's3Index.putS3Handler',
         code: Code.fromAsset('src'),
         environment: {
