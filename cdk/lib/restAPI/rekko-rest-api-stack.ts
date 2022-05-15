@@ -16,6 +16,7 @@ import { GetProductLambda } from '../lambdas/productLamddas/getProduct';
 import { AddNewProductReviewLambda } from '../lambdas/productLamddas/addNewProductReview';
 import { GetAllUsersLambda } from '../lambdas/userLambdas/getAllUsersLambda';
 import { CreateNewUserLambda } from '../lambdas/userLambdas/createNewUserLambda';
+import { Stage } from 'aws-cdk-lib';
 
 export const RestAPIStack = (parent: CdkStack) => {
     // deploy the lambdas first

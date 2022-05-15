@@ -105,7 +105,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -217,7 +217,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -286,6 +286,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/GetAllUsers/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/GetAllUsers/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "GetAllUsersServiceRoleDefaultPolicy575CA905",
+                            "roles": [
+                              {
+                                "Ref": "GetAllUsersServiceRole8209C00B"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -329,7 +376,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -398,6 +445,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/CreateNewUser/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/CreateNewUser/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "CreateNewUserServiceRoleDefaultPolicyD556A8EA",
+                            "roles": [
+                              {
+                                "Ref": "CreateNewUserServiceRole822A0516"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -441,7 +535,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -510,6 +604,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/GetAllReviews/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/GetAllReviews/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "GetAllReviewsServiceRoleDefaultPolicy2CD5F81E",
+                            "roles": [
+                              {
+                                "Ref": "GetAllReviewsServiceRole4AAF2483"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -553,7 +694,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -622,6 +763,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/GetReviews/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/GetReviews/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "GetReviewsServiceRoleDefaultPolicy1BE56634",
+                            "roles": [
+                              {
+                                "Ref": "GetReviewsServiceRole4DEA3A74"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -665,7 +853,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -734,6 +922,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/SearchThroughEntireReview/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/SearchThroughEntireReview/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "SearchThroughEntireReviewServiceRoleDefaultPolicyE1927B84",
+                            "roles": [
+                              {
+                                "Ref": "SearchThroughEntireReviewServiceRole30B18DCA"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -777,7 +1012,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -846,6 +1081,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/UpdateReviewLikes/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/UpdateReviewLikes/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "UpdateReviewLikesServiceRoleDefaultPolicy29F588FA",
+                            "roles": [
+                              {
+                                "Ref": "UpdateReviewLikesServiceRoleF774DAA2"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -889,7 +1171,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -958,6 +1240,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/UpdateCommentLikes/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/UpdateCommentLikes/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "UpdateCommentLikesServiceRoleDefaultPolicy136A9C59",
+                            "roles": [
+                              {
+                                "Ref": "UpdateCommentLikesServiceRole44FD4247"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -1001,7 +1330,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -1070,6 +1399,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/GetAllBrands/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/GetAllBrands/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "GetAllBrandsServiceRoleDefaultPolicyCC4B959A",
+                            "roles": [
+                              {
+                                "Ref": "GetAllBrandsServiceRoleAF1FA909"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -1113,7 +1489,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -1182,6 +1558,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/AddNewBrand/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/AddNewBrand/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "AddNewBrandServiceRoleDefaultPolicyDF31705C",
+                            "roles": [
+                              {
+                                "Ref": "AddNewBrandServiceRoleC291CA1C"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -1225,7 +1648,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -1294,6 +1717,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/CreateNewComment/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/CreateNewComment/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "CreateNewCommentServiceRoleDefaultPolicy104D3732",
+                            "roles": [
+                              {
+                                "Ref": "CreateNewCommentServiceRole7B29BA44"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -1337,7 +1807,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -1406,6 +1876,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/GetCommentForReview/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/GetCommentForReview/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "GetCommentForReviewServiceRoleDefaultPolicy1A94300E",
+                            "roles": [
+                              {
+                                "Ref": "GetCommentForReviewServiceRole410A3CA8"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -1449,7 +1966,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -1518,6 +2035,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/GetAllProducts/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/GetAllProducts/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "GetAllProductsServiceRoleDefaultPolicy1F6262CB",
+                            "roles": [
+                              {
+                                "Ref": "GetAllProductsServiceRole1FD49630"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -1561,7 +2125,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -1630,6 +2194,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/GetProduct/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/GetProduct/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "GetProductServiceRoleDefaultPolicy5CA15324",
+                            "roles": [
+                              {
+                                "Ref": "GetProductServiceRole1936696A"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -1673,7 +2284,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -1742,6 +2353,53 @@
                       "fqn": "aws-cdk-lib.aws_iam.CfnRole",
                       "version": "2.15.0"
                     }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RekkoCDKStack/AddNewProductReview/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RekkoCDKStack/AddNewProductReview/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "secretsmanager:GetSecretValue",
+                                    "secretsmanager:DescribeSecret",
+                                    "secretsmanager:ListSecretVersionIds",
+                                    "secretsmanager:PutSecretValue",
+                                    "secretsmanager:UpdateSecret",
+                                    "secretsmanager:TagResource",
+                                    "secretsmanager:UntagResource"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "AddNewProductReviewServiceRoleDefaultPolicyA3C18685",
+                            "roles": [
+                              {
+                                "Ref": "AddNewProductReviewServiceRole09BFDB11"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.15.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.15.0"
+                    }
                   }
                 },
                 "constructInfo": {
@@ -1785,7 +2443,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -5316,7 +5974,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [
@@ -5474,7 +6132,7 @@
                       "s3Bucket": {
                         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                       },
-                      "s3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+                      "s3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
                     },
                     "role": {
                       "Fn::GetAtt": [

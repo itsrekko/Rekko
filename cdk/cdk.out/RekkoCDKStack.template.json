@@ -41,7 +41,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -57,7 +57,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/HealthFunction/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -103,7 +103,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -119,7 +119,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/IndexFunction/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -158,6 +158,38 @@
         "aws:cdk:path": "RekkoCDKStack/GetAllUsers/ServiceRole/Resource"
       }
     },
+    "GetAllUsersServiceRoleDefaultPolicy575CA905": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "GetAllUsersServiceRoleDefaultPolicy575CA905",
+        "Roles": [
+          {
+            "Ref": "GetAllUsersServiceRole8209C00B"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/GetAllUsers/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "GetAllUsersB73738E4": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -165,7 +197,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -177,11 +209,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "GetAllUsersServiceRoleDefaultPolicy575CA905",
         "GetAllUsersServiceRole8209C00B"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllUsers/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -220,6 +253,38 @@
         "aws:cdk:path": "RekkoCDKStack/CreateNewUser/ServiceRole/Resource"
       }
     },
+    "CreateNewUserServiceRoleDefaultPolicyD556A8EA": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "CreateNewUserServiceRoleDefaultPolicyD556A8EA",
+        "Roles": [
+          {
+            "Ref": "CreateNewUserServiceRole822A0516"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/CreateNewUser/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "CreateNewUser8293963B": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -227,7 +292,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -239,11 +304,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "CreateNewUserServiceRoleDefaultPolicyD556A8EA",
         "CreateNewUserServiceRole822A0516"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/CreateNewUser/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -282,6 +348,38 @@
         "aws:cdk:path": "RekkoCDKStack/GetAllReviews/ServiceRole/Resource"
       }
     },
+    "GetAllReviewsServiceRoleDefaultPolicy2CD5F81E": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "GetAllReviewsServiceRoleDefaultPolicy2CD5F81E",
+        "Roles": [
+          {
+            "Ref": "GetAllReviewsServiceRole4AAF2483"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/GetAllReviews/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "GetAllReviews260113C2": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -289,7 +387,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -301,11 +399,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "GetAllReviewsServiceRoleDefaultPolicy2CD5F81E",
         "GetAllReviewsServiceRole4AAF2483"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllReviews/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -344,6 +443,38 @@
         "aws:cdk:path": "RekkoCDKStack/GetReviews/ServiceRole/Resource"
       }
     },
+    "GetReviewsServiceRoleDefaultPolicy1BE56634": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "GetReviewsServiceRoleDefaultPolicy1BE56634",
+        "Roles": [
+          {
+            "Ref": "GetReviewsServiceRole4DEA3A74"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/GetReviews/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "GetReviewsF0F53ABF": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -351,7 +482,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -363,11 +494,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "GetReviewsServiceRoleDefaultPolicy1BE56634",
         "GetReviewsServiceRole4DEA3A74"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetReviews/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -406,6 +538,38 @@
         "aws:cdk:path": "RekkoCDKStack/SearchThroughEntireReview/ServiceRole/Resource"
       }
     },
+    "SearchThroughEntireReviewServiceRoleDefaultPolicyE1927B84": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "SearchThroughEntireReviewServiceRoleDefaultPolicyE1927B84",
+        "Roles": [
+          {
+            "Ref": "SearchThroughEntireReviewServiceRole30B18DCA"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/SearchThroughEntireReview/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "SearchThroughEntireReviewBE546503": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -413,7 +577,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -425,11 +589,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "SearchThroughEntireReviewServiceRoleDefaultPolicyE1927B84",
         "SearchThroughEntireReviewServiceRole30B18DCA"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/SearchThroughEntireReview/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -468,6 +633,38 @@
         "aws:cdk:path": "RekkoCDKStack/UpdateReviewLikes/ServiceRole/Resource"
       }
     },
+    "UpdateReviewLikesServiceRoleDefaultPolicy29F588FA": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "UpdateReviewLikesServiceRoleDefaultPolicy29F588FA",
+        "Roles": [
+          {
+            "Ref": "UpdateReviewLikesServiceRoleF774DAA2"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/UpdateReviewLikes/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "UpdateReviewLikes8C999616": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -475,7 +672,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -487,11 +684,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "UpdateReviewLikesServiceRoleDefaultPolicy29F588FA",
         "UpdateReviewLikesServiceRoleF774DAA2"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/UpdateReviewLikes/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -530,6 +728,38 @@
         "aws:cdk:path": "RekkoCDKStack/UpdateCommentLikes/ServiceRole/Resource"
       }
     },
+    "UpdateCommentLikesServiceRoleDefaultPolicy136A9C59": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "UpdateCommentLikesServiceRoleDefaultPolicy136A9C59",
+        "Roles": [
+          {
+            "Ref": "UpdateCommentLikesServiceRole44FD4247"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/UpdateCommentLikes/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "UpdateCommentLikesB0BC119B": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -537,7 +767,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -549,11 +779,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "UpdateCommentLikesServiceRoleDefaultPolicy136A9C59",
         "UpdateCommentLikesServiceRole44FD4247"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/UpdateCommentLikes/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -592,6 +823,38 @@
         "aws:cdk:path": "RekkoCDKStack/GetAllBrands/ServiceRole/Resource"
       }
     },
+    "GetAllBrandsServiceRoleDefaultPolicyCC4B959A": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "GetAllBrandsServiceRoleDefaultPolicyCC4B959A",
+        "Roles": [
+          {
+            "Ref": "GetAllBrandsServiceRoleAF1FA909"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/GetAllBrands/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "GetAllBrands9154C8BD": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -599,7 +862,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -611,11 +874,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "GetAllBrandsServiceRoleDefaultPolicyCC4B959A",
         "GetAllBrandsServiceRoleAF1FA909"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllBrands/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -654,6 +918,38 @@
         "aws:cdk:path": "RekkoCDKStack/AddNewBrand/ServiceRole/Resource"
       }
     },
+    "AddNewBrandServiceRoleDefaultPolicyDF31705C": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "AddNewBrandServiceRoleDefaultPolicyDF31705C",
+        "Roles": [
+          {
+            "Ref": "AddNewBrandServiceRoleC291CA1C"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/AddNewBrand/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "AddNewBrandDAF00351": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -661,7 +957,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -673,11 +969,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "AddNewBrandServiceRoleDefaultPolicyDF31705C",
         "AddNewBrandServiceRoleC291CA1C"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/AddNewBrand/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -716,6 +1013,38 @@
         "aws:cdk:path": "RekkoCDKStack/CreateNewComment/ServiceRole/Resource"
       }
     },
+    "CreateNewCommentServiceRoleDefaultPolicy104D3732": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "CreateNewCommentServiceRoleDefaultPolicy104D3732",
+        "Roles": [
+          {
+            "Ref": "CreateNewCommentServiceRole7B29BA44"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/CreateNewComment/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "CreateNewComment22AF0627": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -723,7 +1052,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -735,11 +1064,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "CreateNewCommentServiceRoleDefaultPolicy104D3732",
         "CreateNewCommentServiceRole7B29BA44"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/CreateNewComment/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -778,6 +1108,38 @@
         "aws:cdk:path": "RekkoCDKStack/GetCommentForReview/ServiceRole/Resource"
       }
     },
+    "GetCommentForReviewServiceRoleDefaultPolicy1A94300E": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "GetCommentForReviewServiceRoleDefaultPolicy1A94300E",
+        "Roles": [
+          {
+            "Ref": "GetCommentForReviewServiceRole410A3CA8"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/GetCommentForReview/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "GetCommentForReviewC2CBBBB5": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -785,7 +1147,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -797,11 +1159,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "GetCommentForReviewServiceRoleDefaultPolicy1A94300E",
         "GetCommentForReviewServiceRole410A3CA8"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetCommentForReview/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -840,6 +1203,38 @@
         "aws:cdk:path": "RekkoCDKStack/GetAllProducts/ServiceRole/Resource"
       }
     },
+    "GetAllProductsServiceRoleDefaultPolicy1F6262CB": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "GetAllProductsServiceRoleDefaultPolicy1F6262CB",
+        "Roles": [
+          {
+            "Ref": "GetAllProductsServiceRole1FD49630"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/GetAllProducts/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "GetAllProductsADFB8793": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -847,7 +1242,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -859,11 +1254,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "GetAllProductsServiceRoleDefaultPolicy1F6262CB",
         "GetAllProductsServiceRole1FD49630"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllProducts/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -902,6 +1298,38 @@
         "aws:cdk:path": "RekkoCDKStack/GetProduct/ServiceRole/Resource"
       }
     },
+    "GetProductServiceRoleDefaultPolicy5CA15324": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "GetProductServiceRoleDefaultPolicy5CA15324",
+        "Roles": [
+          {
+            "Ref": "GetProductServiceRole1936696A"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/GetProduct/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "GetProductB1843B98": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -909,7 +1337,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -921,11 +1349,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "GetProductServiceRoleDefaultPolicy5CA15324",
         "GetProductServiceRole1936696A"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetProduct/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -964,6 +1393,38 @@
         "aws:cdk:path": "RekkoCDKStack/AddNewProductReview/ServiceRole/Resource"
       }
     },
+    "AddNewProductReviewServiceRoleDefaultPolicyA3C18685": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:UpdateSecret",
+                "secretsmanager:TagResource",
+                "secretsmanager:UntagResource"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "AddNewProductReviewServiceRoleDefaultPolicyA3C18685",
+        "Roles": [
+          {
+            "Ref": "AddNewProductReviewServiceRole09BFDB11"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/AddNewProductReview/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
     "AddNewProductReviewCFFFA146": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -971,7 +1432,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -983,11 +1444,12 @@
         "Runtime": "nodejs14.x"
       },
       "DependsOn": [
+        "AddNewProductReviewServiceRoleDefaultPolicyA3C18685",
         "AddNewProductReviewServiceRole09BFDB11"
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/AddNewProductReview/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -3643,7 +4105,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -3667,7 +4129,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesGetLambda/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -3737,7 +4199,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a.zip"
+          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -3761,7 +4223,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesPutLambda/Resource",
-        "aws:asset:path": "asset.6c96043b9b734965f89e178aba9b5a85f0dd91671f787d2c6fcc3394cbeffc0a",
+        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }

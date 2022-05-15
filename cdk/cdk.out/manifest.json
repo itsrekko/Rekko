@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/62708ad272284762a97c78567a35702e89a033b7ad2acee613e76c1e2f1e1fab.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a65486444fdbdf2e27b823ade641d244e266876022c7de667a8860850394ffc0.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -69,6 +69,12 @@
             "data": "GetAllUsersServiceRole8209C00B"
           }
         ],
+        "/RekkoCDKStack/GetAllUsers/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAllUsersServiceRoleDefaultPolicy575CA905"
+          }
+        ],
         "/RekkoCDKStack/GetAllUsers/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -79,6 +85,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "CreateNewUserServiceRole822A0516"
+          }
+        ],
+        "/RekkoCDKStack/CreateNewUser/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CreateNewUserServiceRoleDefaultPolicyD556A8EA"
           }
         ],
         "/RekkoCDKStack/CreateNewUser/Resource": [
@@ -93,6 +105,12 @@
             "data": "GetAllReviewsServiceRole4AAF2483"
           }
         ],
+        "/RekkoCDKStack/GetAllReviews/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAllReviewsServiceRoleDefaultPolicy2CD5F81E"
+          }
+        ],
         "/RekkoCDKStack/GetAllReviews/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -103,6 +121,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "GetReviewsServiceRole4DEA3A74"
+          }
+        ],
+        "/RekkoCDKStack/GetReviews/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetReviewsServiceRoleDefaultPolicy1BE56634"
           }
         ],
         "/RekkoCDKStack/GetReviews/Resource": [
@@ -117,6 +141,12 @@
             "data": "SearchThroughEntireReviewServiceRole30B18DCA"
           }
         ],
+        "/RekkoCDKStack/SearchThroughEntireReview/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SearchThroughEntireReviewServiceRoleDefaultPolicyE1927B84"
+          }
+        ],
         "/RekkoCDKStack/SearchThroughEntireReview/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -127,6 +157,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "UpdateReviewLikesServiceRoleF774DAA2"
+          }
+        ],
+        "/RekkoCDKStack/UpdateReviewLikes/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateReviewLikesServiceRoleDefaultPolicy29F588FA"
           }
         ],
         "/RekkoCDKStack/UpdateReviewLikes/Resource": [
@@ -141,6 +177,12 @@
             "data": "UpdateCommentLikesServiceRole44FD4247"
           }
         ],
+        "/RekkoCDKStack/UpdateCommentLikes/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateCommentLikesServiceRoleDefaultPolicy136A9C59"
+          }
+        ],
         "/RekkoCDKStack/UpdateCommentLikes/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -151,6 +193,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "GetAllBrandsServiceRoleAF1FA909"
+          }
+        ],
+        "/RekkoCDKStack/GetAllBrands/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAllBrandsServiceRoleDefaultPolicyCC4B959A"
           }
         ],
         "/RekkoCDKStack/GetAllBrands/Resource": [
@@ -165,6 +213,12 @@
             "data": "AddNewBrandServiceRoleC291CA1C"
           }
         ],
+        "/RekkoCDKStack/AddNewBrand/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddNewBrandServiceRoleDefaultPolicyDF31705C"
+          }
+        ],
         "/RekkoCDKStack/AddNewBrand/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -175,6 +229,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "CreateNewCommentServiceRole7B29BA44"
+          }
+        ],
+        "/RekkoCDKStack/CreateNewComment/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CreateNewCommentServiceRoleDefaultPolicy104D3732"
           }
         ],
         "/RekkoCDKStack/CreateNewComment/Resource": [
@@ -189,6 +249,12 @@
             "data": "GetCommentForReviewServiceRole410A3CA8"
           }
         ],
+        "/RekkoCDKStack/GetCommentForReview/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetCommentForReviewServiceRoleDefaultPolicy1A94300E"
+          }
+        ],
         "/RekkoCDKStack/GetCommentForReview/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -199,6 +265,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "GetAllProductsServiceRole1FD49630"
+          }
+        ],
+        "/RekkoCDKStack/GetAllProducts/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetAllProductsServiceRoleDefaultPolicy1F6262CB"
           }
         ],
         "/RekkoCDKStack/GetAllProducts/Resource": [
@@ -213,6 +285,12 @@
             "data": "GetProductServiceRole1936696A"
           }
         ],
+        "/RekkoCDKStack/GetProduct/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GetProductServiceRoleDefaultPolicy5CA15324"
+          }
+        ],
         "/RekkoCDKStack/GetProduct/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -223,6 +301,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "AddNewProductReviewServiceRole09BFDB11"
+          }
+        ],
+        "/RekkoCDKStack/AddNewProductReview/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AddNewProductReviewServiceRoleDefaultPolicyA3C18685"
           }
         ],
         "/RekkoCDKStack/AddNewProductReview/Resource": [

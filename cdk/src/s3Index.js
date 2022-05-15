@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 const myS3 = new AWS.S3();
 
-exports.putS3Handler = async (event) => {
+exports.putS3Handler = async (event, context) => {
     let requestObject = JSON.parse(event.body);
     const s3Bucket = process.env.s3Bucket;
     
@@ -40,7 +40,7 @@ exports.putS3Handler = async (event) => {
     
 };
 
-exports.getS3URLHandler = async (event) => {
+exports.getS3URLHandler = async (event, context) => {
     let requestObject = JSON.parse(event.body);
     const s3Bucket = process.env.s3Bucket;
     
