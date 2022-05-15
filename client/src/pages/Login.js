@@ -9,10 +9,10 @@ const Login = () => {
             <img src={rekkoLogo} className="App-logo" alt="logo" />
             <header className="login-header">
                 <div className="login-title">
-                    Shop recommended beauty products. Love what you buy.
+                    Discover your next beauty and wellness obsessions
                 </div>
                 <p className="login-sub-title">
-                    Unbiased product recommendations to help you make great purchases.
+                    Find the best products from trusted sources
                 </p>
             </header>
             <div>
