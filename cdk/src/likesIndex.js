@@ -5,10 +5,13 @@ const commentModel = require('./models/comment.model');
 const responseObj = new Response();
 
 async function incrementLikes(model, id, userName) {
+    console.log("Trying to increment likes")
     return await model.findByIdAndUpdate(id, {$addToSet: {Likes: userName}}, {new: true})
         .then(results => {
+            console.log(results);
             return results;
     }).catch(error => {
+        console.log(error);
         console.error(`Failed to add liked user ${error}`);
         throw(error);
     })
@@ -52,7 +55,9 @@ exports.updateCommentLikes = async (event, context) => {
     const userName = body.userName;
     const commentId = body.commentId;
     const hasUserLiked = body.hasUserLiked;
-
+    console.log(userName);
+    console.log(commentId);
+    console.log(hasUserLiked);
     try {
         var updatedReview;
         if (hasUserLiked) {

@@ -108,7 +108,7 @@ exports.getAllProducts = async (event, context) => {
 
 exports.getProductsByProductName = async (event, context) => {
     var responseVal = undefined;
-    const productName = event.query.productName;
+    const productName = event.queryStringParameters.productName;
     try{
         const mongoRequest = await getProductsByProductName(productName);
         responseVal = responseObj.constructResponseObject(`Successfully fetched product for product name ${productName}`, event.headers, mongoRequest);

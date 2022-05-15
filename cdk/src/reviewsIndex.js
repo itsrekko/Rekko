@@ -18,7 +18,7 @@ async function getAllReviews() {
 
 async function getReview (productId) {
     const productIdObject = mongoose.Types.ObjectId(productId);
-    return await reviewModel.find({ProductId: productIdObject})
+    return await reviewModel.find({"Product._id": productIdObject})
     .then(results => {
         return results;
     })
@@ -86,7 +86,7 @@ exports.getAllReviews = async (event) => {
 
 exports.getReview = async (event) => {
     var responseVal = undefined;
-    const productID = event.query.productId;
+    const productID = event.queryStringParameters.productId;
 
     try {
         if (!productID || productID === null || productID === undefined) {
@@ -107,7 +107,7 @@ exports.getReview = async (event) => {
 
 exports.searchThroughEntireReview = async (event) => {
     var responseVal = undefined;
-    const reviewRegex = event.query.reviewRegex;
+    const reviewRegex = event.queryStringParameters.reviewRegex;
     try {
         if (!reviewRegex || reviewRegex === null || reviewRegex === undefined) {
             responseVal = responseObj.constructResponseObject(`Fetching review by text requires param reviewRegex`, event.headers, `Fetching review by text requires param reviewRegex`, errorTypes.default.badQuery)

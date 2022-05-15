@@ -46,7 +46,7 @@ exports.createNewComment = async (event, context) => {
 }
 
 exports.getCommentsForReview = async (event, context) => {
-    const reviewId = event.query.reviewId; // update
+    const reviewId = event.queryStringParameters.reviewId; // update
     try{
         const mongoRequest = await getCommentsForReviewId(reviewId);
         responseVal = responseObj.constructResponseObject(`Successfully fetched all comments for review ${reviewId}`, event.headers, mongoRequest);
