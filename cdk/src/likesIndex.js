@@ -1,12 +1,15 @@
+require('./database');
 const Response = require('./util/response');
+const mongoose = require('mongoose');
 const reviewModel = require('./models/review.model');
 const commentModel = require('./models/comment.model');
 
 const responseObj = new Response();
 
 async function incrementLikes(model, id, userName) {
-    console.log("Trying to increment likes")
-    return await model.findByIdAndUpdate(id, {$addToSet: {Likes: userName}}, {new: true})
+    console.log("Trying to increment likes");
+    const objectId = mongoose.Types.ObjectId(id);
+    return await model.findByIdAndUpdate(objectId, {$addToSet: {Likes: userName}}, {new: true})
         .then(results => {
             console.log(results);
             return results;
@@ -18,7 +21,9 @@ async function incrementLikes(model, id, userName) {
 }
 
 async function decrementLikes(model, id, userName) {
-    return await model.findByIdAndUpdate(id, {$pull: {Likes: userName}}, {new: true})
+    console.log("Trying to decrement likes");
+    const objectId = mongoose.Types.ObjectId(id);
+    return await model.findByIdAndUpdate(objectId, {$pull: {Likes: userName}}, {new: true})
         .then(results => {
             return results;
     })

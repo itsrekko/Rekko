@@ -41,7 +41,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -57,7 +57,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/HealthFunction/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -103,7 +103,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -119,7 +119,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/IndexFunction/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -174,7 +174,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -197,7 +200,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -214,7 +217,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllUsers/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -269,7 +272,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -292,7 +298,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -309,7 +315,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/CreateNewUser/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -364,7 +370,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -387,7 +396,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -404,7 +413,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllReviews/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -459,7 +468,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -482,7 +494,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -499,7 +511,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetReviews/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -554,7 +566,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -577,7 +592,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -594,7 +609,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/SearchThroughEntireReview/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -649,7 +664,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -672,7 +690,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -689,7 +707,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/UpdateReviewLikes/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -744,7 +762,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -767,7 +788,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -784,7 +805,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/UpdateCommentLikes/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -839,7 +860,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -862,7 +886,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -879,7 +903,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllBrands/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -934,7 +958,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -957,7 +984,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -974,7 +1001,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/AddNewBrand/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1029,7 +1056,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -1052,7 +1082,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -1069,7 +1099,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/CreateNewComment/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1124,7 +1154,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -1147,7 +1180,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -1164,7 +1197,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetCommentForReview/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1219,7 +1252,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -1242,7 +1278,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -1259,7 +1295,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllProducts/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1314,7 +1350,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -1337,7 +1376,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -1354,7 +1393,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetProduct/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1409,7 +1448,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -1432,7 +1474,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -1449,7 +1491,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/AddNewProductReview/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -4105,7 +4147,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -4129,7 +4171,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesGetLambda/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -4199,7 +4241,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -4223,7 +4265,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesPutLambda/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.b434468e485482d4aa0d5af007348b314581a75935c1765274fc02150fe238df",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
