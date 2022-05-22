@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {Typography, Avatar, IconButton, ListItemAvatar, ListItemText} from "@mui/material";
+import {API_URLs} from '../../consts/awsConsts';
 import '../../assets/css/reviewCard.css';
 import { useGlobalState } from '../../context/GlobalState';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -19,14 +20,14 @@ const Comment = (props) => {
     
     const handleLikeButton = async (event) => {
         if (globalState.userName !== '') {
-            await axios.put(`${window.location.origin.toString()}/comment/likes`, {
+            await axios.put(`${API_URLs.REKKO_REST_API}/likes/updateCommentLikes`, {
                 userName: globalState.userName,
                 commentId: props.id,
                 hasUserLiked: state.hasLiked
             })
             .then(res => {
                 setState(prevState => ({
-                    likes: JSON.parse(res.data['data']),
+                    likes: JSON.parse(res.data),
                     hasLiked: !prevState.hasLiked}));
             });
         } else {

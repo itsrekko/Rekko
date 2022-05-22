@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import {useDropzone} from 'react-dropzone';
-import {PICTURES_API} from '../consts/awsConsts';
+import {API_URLs} from '../consts/awsConsts';
 import AddProductFileStyler from "../utils/AddProductFileStyler";
 import "../assets/css/dropzone.css";
 
@@ -38,7 +38,7 @@ const DropZoneToUploadFile = (props) => {
 
       var config = {
         method: 'post',
-        url: PICTURES_API.UPLOAD_PICTURE_URL,
+        url: API_URLs.UPLOAD_PICTURE_URL,
         data : data
       };
       
@@ -110,7 +110,7 @@ class AddProductForm extends Component {
             });
         }
         
-        await axios.post(`${window.location.origin.toString()}/product/addNewProductReview`, {
+        await axios.post(`${API_URLs.REKKO_REST_API}/product/addNewProductReview`, {
             userName: this.state.userName,
             productBrand: this.state.brand,
             productName: this.state.product,

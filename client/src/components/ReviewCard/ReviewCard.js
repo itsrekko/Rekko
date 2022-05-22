@@ -10,6 +10,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CommentContainer from './CommentContainer';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import { API_URLs } from '../../consts/awsConsts';
 
 const ReviewCard = (props) => {
 
@@ -31,7 +32,7 @@ const ReviewCard = (props) => {
     
     const handleLikeButton = async (event) => {
         if (globalState.userName !== '') {
-            await axios.put(`${window.location.origin.toString()}/review/likes`, {
+            await axios.put(`${API_URLs.REKKO_REST_API}/likes/updateReviewLikes`, {
                 userName: globalState.userName,
                 reviewId: props.id,
                 hasUserLiked: state.hasLiked
@@ -39,7 +40,7 @@ const ReviewCard = (props) => {
             .then(res => {
                 setState(prevState => ({
                     ...state,
-                    likes: JSON.parse(res.data['data']),
+                    likes: JSON.parse(res.data),
                     hasLiked: !prevState.hasLiked}));
             });
         } else {
@@ -53,13 +54,13 @@ const ReviewCard = (props) => {
     }
 
     useEffect(async () => {
-        await axios.get(`${window.location.origin.toString()}/comment`, {
+        await axios.get(`${API_URLs.REKKO_REST_API}/comment/getCommentsForReview`, {
             params: {
                 reviewId: props.id
             }
         }).then(
             res=> {
-                setNumComments(res.data['data'].length)
+                setNumComments(res.data.length)
             }
         )
     }, []);

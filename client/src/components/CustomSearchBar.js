@@ -8,7 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import LoginFormStyler from '../utils/LoginFormStyler';
 import axios from 'axios';
 import {useGlobalState} from '../context/GlobalState';
-import {PICTURES_API} from '../consts/awsConsts';
+import {API_URLs} from '../consts/awsConsts';
 import ReviewCard from './ReviewCard/ReviewCard';
 
 const CustomSearchBar = (props) => {
@@ -18,11 +18,10 @@ const CustomSearchBar = (props) => {
   let currentReviews = globalState.allReviewCards;
 
   const refreshAllReviews = async (event) => {
-    await axios.get(`${window.location.origin.toString()}/review/getAllReviews`, {})
-      .then(res => 
-        {
+    await axios.get(`${API_URLs.REKKO_REST_API}/review/getAllReviews`, {})
+      .then(res => {
           let allReviews = [];
-          res.data.data.forEach(x => {
+          res.data.forEach(x => {
             // fetch the particular picture from s3 here
             // get pre-signed URL using APIGateway
             const pictureName = x['ImageName'];
@@ -32,11 +31,16 @@ const CustomSearchBar = (props) => {
 
             var config = {
                 method: 'post',
-                url: PICTURES_API.GET_PICTURE_URL,
+                url: API_URLs.GET_PICTURE_URL,
                 data : data
             };
-
-            var imgObj = axios(config);
+            var imgObj
+            try{
+              imgObj = axios(config);
+            }
+            catch(err){
+              imgObj = undefined;
+            }
             allReviews.push(
               <ReviewCard
                   key={x['_id']}
@@ -63,14 +67,14 @@ const CustomSearchBar = (props) => {
       await refreshAllReviews();
       return;
     }
-    await axios.get(`${window.location.origin.toString()}/review/searchThroughEntireReview`, {
+    await axios.get(`${API_URLs.REKKO_REST_API}/review/searchThroughEntireReview`, {
       params: {
         reviewRegex: state.searchVal
       }
     })
     .then(res => {
       let allFetchedReviews = [];
-      res.data.data.forEach(x => {
+      res.data.forEach(x => {
         // fetch the particular picture from s3 here
         // get pre-signed URL using APIGateway
         const pictureName = x['ImageName'];
@@ -80,11 +84,17 @@ const CustomSearchBar = (props) => {
 
         var config = {
             method: 'post',
-            url: PICTURES_API.GET_PICTURE_URL,
+            url: API_URLs.GET_PICTURE_URL,
             data : data
         };
 
-        var imgObj = axios(config);
+        var imgObj;
+        try{
+          imgObj = axios(config);
+        }
+        catch(err){
+          imgObj = undefined;
+        }
           allFetchedReviews.push(
           <ReviewCard 
             key={x['_id']}

@@ -1,4 +1,4 @@
-import { AuthorizationType, LambdaIntegration, Resource, RestApi } from 'aws-cdk-lib/aws-apigateway';
+import { AuthorizationType, Cors, LambdaIntegration, Resource, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { CdkStack } from '../cdk-stack';
 import { GetAllBrandsLambda } from '../lambdas/brandLambdas/getAllBrands';
 import { IndexLambda } from '../lambdas/indexLambda/indexLambda';
@@ -16,7 +16,6 @@ import { GetProductLambda } from '../lambdas/productLamddas/getProduct';
 import { AddNewProductReviewLambda } from '../lambdas/productLamddas/addNewProductReview';
 import { GetAllUsersLambda } from '../lambdas/userLambdas/getAllUsersLambda';
 import { CreateNewUserLambda } from '../lambdas/userLambdas/createNewUserLambda';
-import { Stage } from 'aws-cdk-lib';
 
 export const RestAPIStack = (parent: CdkStack) => {
     // deploy the lambdas first
@@ -52,9 +51,24 @@ export const RestAPIStack = (parent: CdkStack) => {
     const restAPI = new RestApi(parent, 'RekkoRestAPI', 
     {
         description: 'Rest API for Rekko',
+        defaultCorsPreflightOptions: {
+            statusCode: 200,
+            allowOrigins: Cors.ALL_ORIGINS,
+            allowHeaders:  [
+                'Content-Type',
+                'X-Amz-Date',
+                'X-Amz-Security-Token',
+                'Authorization',
+                'X-Api-Key',
+                'X-Requested-With',
+                'Accept',
+                'Access-Control-Allow-Methods',
+                'Access-Control-Allow-Origin',
+                'Access-Control-Allow-Headers'
+            ],
+            allowMethods: ['DELETE','GET','HEAD','OPTIONS','PATCH','POST','PUT']
+        }
     });
-
-    restAPI.root.addMethod('ANY');
 
     const indexResource: Resource = restAPI.root.addResource('home');
     const healthResource: Resource = restAPI.root.addResource('health');
@@ -70,7 +84,7 @@ export const RestAPIStack = (parent: CdkStack) => {
         operationName: 'index',
         authorizationType: AuthorizationType.NONE, // TO DO this would need to change to cognito auth
     });
-
+    
     healthResource.addMethod('GET', new LambdaIntegration(healthLambda), {
         operationName: 'status',
         authorizationType: AuthorizationType.NONE, // TO DO this would need to change to cognito auth
@@ -154,7 +168,7 @@ export const RestAPIStack = (parent: CdkStack) => {
 
     // product routes
     const getAllProductsResource = productResource.addResource('getAllProducts');
-    const getProductResourse = productResource.addResource('getProduct');
+    const getProductResource = productResource.addResource('getProduct');
     const addNewProductReviewResource = productResource.addResource('addNewProductReview');
 
     getAllProductsResource.addMethod('GET', new LambdaIntegration(getAllProductsLambda), {
@@ -162,7 +176,7 @@ export const RestAPIStack = (parent: CdkStack) => {
         authorizationType: AuthorizationType.NONE
     });
 
-    getProductResourse.addMethod('GET', new LambdaIntegration(getProductLambda), {
+    getProductResource.addMethod('GET', new LambdaIntegration(getProductLambda), {
         operationName: 'getProduct',
         authorizationType: AuthorizationType.NONE
     });

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
-
+import { API_URLs } from '../consts/awsConsts';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -23,14 +23,22 @@ const CustomLoginForm = (props) => {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
-        await axios.post(`${window.location.origin.toString()}/user/checkAndCreateNewUser`, {
-            userName: state.userName
-        })
+        var config = {
+            method: 'post',
+            url:  `${API_URLs.REKKO_REST_API}/user/createNewUser`,
+            headers: { 
+              'Content-Type': 'application/json'
+            },
+            data: JSON.stringify({
+                userName: state.userName
+            })
+        };
+        await axios(config)
         .then(res => {
-            if (res.data['data']['existingUser']){
+            if (res.data.existingUser){
                 setState({
                     ...state,
-                    userId: res.data['data']['_id'],
+                    userId: res.data._id,
                     existingUser: true
                 })
                 navigate(`/home/${state.userName}`);
@@ -38,7 +46,7 @@ const CustomLoginForm = (props) => {
             else{
                 setState({
                     ...state,
-                    userId: res.data['data']['_id'],
+                    userId: res.data._id,
                     existingUser: false
                 })
                 navigate('/welcome');

@@ -8,7 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import IconButton from "@mui/material/IconButton";
 import axios from 'axios';
 import ReviewCard from '../components/ReviewCard/ReviewCard';
-import {PICTURES_API} from '../consts/awsConsts';
+import {API_URLs} from '../consts/awsConsts';
 import {useGlobalState} from '../context/GlobalState';
 
 const Home = (props) => {
@@ -16,10 +16,10 @@ const Home = (props) => {
     const navigate = useNavigate();
 
     useEffect(async () => {
-        await axios.get(`${window.location.origin.toString()}/review/getAllReviews`, {})
+        await axios.get(`${API_URLs.REKKO_REST_API}/review/getAllReviews`, {})
         .then(res => {
             let allReviews = [];
-            res.data.data.forEach(x => {
+            res.data.forEach(x => {
                 // fetch the particular picture from s3 here
                 // get pre-signed URL using APIGateway
                 const pictureName = x['ImageName'];
@@ -29,11 +29,18 @@ const Home = (props) => {
 
                 var config = {
                     method: 'post',
-                    url: PICTURES_API.GET_PICTURE_URL,
+                    url: API_URLs.GET_PICTURE_URL,
                     data : data
                 };
 
-                var imgObj = axios(config);
+                var imgObj;
+                try{
+                    imgObj = axios(config);
+                }
+                catch(err){
+                    imgObj = undefined;
+                }
+                
                 allReviews.push(
                     <ReviewCard
                         id={x['_id']}

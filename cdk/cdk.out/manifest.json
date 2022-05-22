@@ -23,7 +23,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f0f5c362a7d4d3c21a6287f36e2c4b8f5613914fb3d4a34a53d894b28f9ebe8f.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/bbed87fff0dd5fc6806c7efee089fc9b51197daafacd98c71b3ac44fd880981e.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -336,7 +336,7 @@
         "/RekkoCDKStack/RekkoRestAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "RekkoRestAPIDeploymentC1A789A9b151cf8fe4f7b16a26403d58a8ea42d6"
+            "data": "RekkoRestAPIDeploymentC1A789A93d27b9464660569e2271f1ff2c102635"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/DeploymentStage.prod/Resource": [
@@ -351,16 +351,22 @@
             "data": "RekkoRestAPIEndpoint58EBAB41"
           }
         ],
-        "/RekkoCDKStack/RekkoRestAPI/Default/ANY/Resource": [
+        "/RekkoCDKStack/RekkoRestAPI/Default/OPTIONS/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "RekkoRestAPIANY3F2316A9"
+            "data": "RekkoRestAPIOPTIONS3F5B6913"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/home/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIhome5FEF96A3"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/home/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIhomeOPTIONS1F4BF6F5"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/home/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..home": [
@@ -387,6 +393,12 @@
             "data": "RekkoRestAPIhealthD4A7B55F"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/health/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIhealthOPTIONSA4D6E1A8"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/health/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..health": [
           {
             "type": "aws:cdk:logicalId",
@@ -411,10 +423,22 @@
             "data": "RekkoRestAPIuser12EA21FF"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIuserOPTIONS0B2C1E51"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIusergetAllUsers433C5CE7"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIusergetAllUsersOPTIONS9E8FEC78"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..user.getAllUsers": [
@@ -441,6 +465,12 @@
             "data": "RekkoRestAPIusercreateNewUser4DCC88E2"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIusercreateNewUserOPTIONSFA2A3E83"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/POST/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.POST..user.createNewUser": [
           {
             "type": "aws:cdk:logicalId",
@@ -465,10 +495,22 @@
             "data": "RekkoRestAPIproduct5C135A2C"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/product/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIproductOPTIONS90935B52"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/product/getAllProducts/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIproductgetAllProducts989CF40F"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/product/getAllProducts/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIproductgetAllProductsOPTIONSA6268BD3"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/product/getAllProducts/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..product.getAllProducts": [
@@ -495,6 +537,12 @@
             "data": "RekkoRestAPIproductgetProduct59D73674"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/product/getProduct/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIproductgetProductOPTIONS25B1ABED"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/product/getProduct/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..product.getProduct": [
           {
             "type": "aws:cdk:logicalId",
@@ -517,6 +565,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIproductaddNewProductReview73BBF946"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/product/addNewProductReview/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIproductaddNewProductReviewOPTIONSA5686605"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/product/addNewProductReview/POST/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.POST..product.addNewProductReview": [
@@ -543,10 +597,22 @@
             "data": "RekkoRestAPIreview093E5FC0"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/review/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIreviewOPTIONS6E77AB6E"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/review/getAllReviews/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIreviewgetAllReviews4E81DEC9"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/review/getAllReviews/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIreviewgetAllReviewsOPTIONS8CB1B333"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/review/getAllReviews/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..review.getAllReviews": [
@@ -573,6 +639,12 @@
             "data": "RekkoRestAPIreviewgetReviewsBEA681A0"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/review/getReviews/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIreviewgetReviewsOPTIONSEBA93B34"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/review/getReviews/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..review.getReviews": [
           {
             "type": "aws:cdk:logicalId",
@@ -595,6 +667,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIreviewsearchThroughEntireReviewF68F9390"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/review/searchThroughEntireReview/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIreviewsearchThroughEntireReviewOPTIONS266E6A84"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/review/searchThroughEntireReview/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..review.searchThroughEntireReview": [
@@ -621,10 +699,22 @@
             "data": "RekkoRestAPIlikesE8C96CCF"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/likes/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIlikesOPTIONS78070083"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/likes/updateReviewLikes/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIlikesupdateReviewLikesC1FC81D6"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/likes/updateReviewLikes/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIlikesupdateReviewLikesOPTIONS1D08177E"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/likes/updateReviewLikes/PUT/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.PUT..likes.updateReviewLikes": [
@@ -651,6 +741,12 @@
             "data": "RekkoRestAPIlikesupdateCommentLikesC445300F"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/likes/updateCommentLikes/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIlikesupdateCommentLikesOPTIONS5C6E82A4"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/likes/updateCommentLikes/PUT/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.PUT..likes.updateCommentLikes": [
           {
             "type": "aws:cdk:logicalId",
@@ -675,10 +771,22 @@
             "data": "RekkoRestAPIcommentAD3B73BE"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/comment/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIcommentOPTIONSADFDBB57"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/comment/getCommentsForReview/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIcommentgetCommentsForReviewD0EB3C00"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/comment/getCommentsForReview/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIcommentgetCommentsForReviewOPTIONS5E8D9F31"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/comment/getCommentsForReview/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..comment.getCommentsForReview": [
@@ -705,6 +813,12 @@
             "data": "RekkoRestAPIcommentcreateNewComment0E858E8D"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/comment/createNewComment/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIcommentcreateNewCommentOPTIONS18EC1DEC"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/comment/createNewComment/POST/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.POST..comment.createNewComment": [
           {
             "type": "aws:cdk:logicalId",
@@ -729,10 +843,22 @@
             "data": "RekkoRestAPIbrand230A90DF"
           }
         ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/brand/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIbrandOPTIONSBFC87F01"
+          }
+        ],
         "/RekkoCDKStack/RekkoRestAPI/Default/brand/getAllBrands/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIbrandgetAllBrands283CD62B"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/brand/getAllBrands/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIbrandgetAllBrandsOPTIONS3C846816"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/brand/getAllBrands/GET/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.GET..brand.getAllBrands": [
@@ -757,6 +883,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoRestAPIbrandaddNewBrandsFC94A076"
+          }
+        ],
+        "/RekkoCDKStack/RekkoRestAPI/Default/brand/addNewBrands/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoRestAPIbrandaddNewBrandsOPTIONS6B34E359"
           }
         ],
         "/RekkoCDKStack/RekkoRestAPI/Default/brand/addNewBrands/POST/ApiPermission.RekkoCDKStackRekkoRestAPIBE5FB652.POST..brand.addNewBrands": [
@@ -840,7 +972,7 @@
         "/RekkoCDKStack/RekkoPicturesRestAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "RekkoPicturesRestAPIDeployment53E5CC3013221d1c6773db5c9a77657fcd90c334"
+            "data": "RekkoPicturesRestAPIDeployment53E5CC30f2c97d4ed61c70c26aa64c190fa7c4be"
           }
         ],
         "/RekkoCDKStack/RekkoPicturesRestAPI/DeploymentStage.prod/Resource": [
@@ -855,6 +987,12 @@
             "data": "RekkoPicturesRestAPIEndpoint7E8D259B"
           }
         ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIOPTIONS6C4780BA"
+          }
+        ],
         "/RekkoCDKStack/RekkoPicturesRestAPI/Default/ANY/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -865,6 +1003,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoPicturesRestAPIgetPictureURLAC87336D"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIgetPictureURLOPTIONS79D6EC73"
           }
         ],
         "/RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/POST/ApiPermission.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..getPictureURL": [
@@ -885,16 +1029,16 @@
             "data": "RekkoPicturesRestAPIgetPictureURLPOST37327F40"
           }
         ],
-        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "RekkoPicturesRestAPIgetPictureURLOPTIONS79D6EC73"
-          }
-        ],
         "/RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoPicturesRestAPIuploadPictureURLFD8B91DB"
+          }
+        ],
+        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RekkoPicturesRestAPIuploadPictureURLOPTIONSF4619DC4"
           }
         ],
         "/RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/POST/ApiPermission.RekkoCDKStackRekkoPicturesRestAPIACC6E291.POST..uploadPictureURL": [
@@ -913,12 +1057,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "RekkoPicturesRestAPIuploadPictureURLPOST83467236"
-          }
-        ],
-        "/RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "RekkoPicturesRestAPIuploadPictureURLOPTIONSF4619DC4"
           }
         ],
         "/RekkoCDKStack/RekkoCognitoUserpool/Resource": [
