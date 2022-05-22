@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import LoginFormStyler from "../utils/LoginFormStyler";
+import LoginFormStyler from "../assets/js/LoginFormStyler";
 import Grid from '@mui/material/Grid';
 
 import {useGlobalState} from '../context/GlobalState';
@@ -33,7 +33,7 @@ const CustomLoginForm = (props) => {
                     userId: res.data['data']['_id'],
                     existingUser: true
                 })
-                navigate(`/home/${state.userName}`);
+                navigate(`/home`);
             }
             else{
                 setState({

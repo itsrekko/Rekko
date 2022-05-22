@@ -25,6 +25,7 @@ exports.createNewComment = async (req, res, next) => {
     }
     catch (error){
         responseVal = responseObj.constructResponseObject(error.message, error['statusCode'], null, error.name)
+        console.error('ERROR: ', responseVal);
     }
     finally{
         res.status(responseVal.statusCode).send(responseVal);

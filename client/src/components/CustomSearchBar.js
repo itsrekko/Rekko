@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
-import LoginFormStyler from '../utils/LoginFormStyler';
+import LoginFormStyler from '../assets/js/LoginFormStyler';
 import axios from 'axios';
 import {useGlobalState} from '../context/GlobalState';
 import {PICTURES_API} from '../consts/awsConsts';
