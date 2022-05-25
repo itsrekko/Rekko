@@ -5814,13 +5814,13 @@
         "Schema": [
           {
             "Mutable": true,
-            "Name": "given_name",
+            "Name": "preferred_username",
             "Required": false
           },
           {
             "Mutable": true,
-            "Name": "family_name",
-            "Required": false
+            "Name": "email",
+            "Required": true
           }
         ],
         "SmsVerificationMessage": "The verification code to your new account is {####}",
@@ -5856,7 +5856,10 @@
         ],
         "CallbackURLs": [
           "https://www.rekko.co/",
-          "http://localhost:3000/"
+          "http://localhost:3000/",
+          "https://rekko-production.herokuapp.com/",
+          "https://rekko-staging.herokuapp.com/",
+          "https://rekko-development.herokuapp.com/"
         ],
         "ClientName": "RekkoCognitoUserpool-client",
         "SupportedIdentityProviders": [

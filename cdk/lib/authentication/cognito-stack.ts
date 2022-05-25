@@ -8,19 +8,17 @@ export const CognitoStack = (parent: CdkStack) => {
         userPoolName: 'RekkoCognitoUserpool',
         selfSignUpEnabled: true,
         signInAliases: {
-            email: true,
+            email: true
         },
         autoVerify: {
             email: true
         },
         standardAttributes: {
-            givenName: {
+            preferredUsername: {
                 required: false,
-                mutable: true,
             },
-            familyName: {
-                required: false,
-                mutable: true
+            email: {
+                required: true
             }
         },
         passwordPolicy: {
@@ -39,7 +37,7 @@ export const CognitoStack = (parent: CdkStack) => {
         oAuth: {
             flows: { authorizationCodeGrant: true },
             scopes: [OAuthScope.OPENID],
-            callbackUrls: ['https://www.rekko.co/', 'http://localhost:3000/']
+            callbackUrls: ['https://www.rekko.co/', 'http://localhost:3000/', 'https://rekko-production.herokuapp.com/', 'https://rekko-staging.herokuapp.com/', 'https://rekko-development.herokuapp.com/']
         },
         supportedIdentityProviders: [
             UserPoolClientIdentityProvider.COGNITO,

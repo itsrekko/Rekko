@@ -8269,14 +8269,14 @@
                     },
                     "schema": [
                       {
-                        "name": "given_name",
+                        "name": "preferred_username",
                         "mutable": true,
                         "required": false
                       },
                       {
-                        "name": "family_name",
+                        "name": "email",
                         "mutable": true,
-                        "required": false
+                        "required": true
                       }
                     ],
                     "smsVerificationMessage": "The verification code to your new account is {####}",
@@ -8319,7 +8319,10 @@
                         ],
                         "callbackUrLs": [
                           "https://www.rekko.co/",
-                          "http://localhost:3000/"
+                          "http://localhost:3000/",
+                          "https://rekko-production.herokuapp.com/",
+                          "https://rekko-staging.herokuapp.com/",
+                          "https://rekko-development.herokuapp.com/"
                         ],
                         "clientName": "RekkoCognitoUserpool-client",
                         "supportedIdentityProviders": [

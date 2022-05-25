@@ -1,37 +1,37 @@
 import React from "react";
+import rekkoLogo from '../rekkoLogo.svg';
 import axios from 'axios';
 import { Auth } from 'aws-amplify';
 import { useNavigate } from 'react-router-dom';
-import rekkoLogo from '../rekkoLogo.svg';
-import '../assets/css/login.css';
 import { API_URLs } from "../consts/awsConsts";
-import CustomFormContainter from "../components/CustomFormContainter";
 import {useGlobalState} from '../context/GlobalState';
+import AuthVerifyForm from "../components/AuthVerifyForm";
+import '../assets/css/login.css';
 
-const Login = () => {
+const VerifyCode = () => {
     const [globalState, setGlobalState] = useGlobalState();
     const navigate = useNavigate();
+    const checkAuthCode = async (childlocalState, childlocalSetState) => {
+        try{
+            console.log(childlocalState);
+            console.log(globalState.userName);
+            const checker  = await Auth.confirmSignUp(globalState.userName, childlocalState.code);
 
-    const isUserAValidUser = async (childlocalState, childlocalSetState) => {
-        try {
-            const user  = await Auth.signIn({
-                username: childlocalState.email,
-                password: childlocalState.password
-            });
-            console.log('Valid user - ', user);
+            console.log('User has confirmed', checker);
             childlocalSetState({...childlocalState, errorFound: false});
             return true;
-        } catch (error) 
+        }
+        catch (error)
         {
-            console.log('error signing in:', error);
+            console.log('Error signing up:', error);
             childlocalSetState({...childlocalState, errorFound: true, errorText: error.message});
             return false;
         }
-    }
+    };
 
-    const logUserIn = async (childlocalState, childlocalSetState) => {
-        const validUserCheck = await isUserAValidUser(childlocalState, childlocalSetState);
-        if (!validUserCheck){
+    const confirmUserSignUp = async (childlocalState, childlocalSetState) => {
+        const validCodeVerify = await checkAuthCode(childlocalState, childlocalSetState);
+        if (!validCodeVerify){
             return;
         }
 
@@ -53,7 +53,7 @@ const Login = () => {
                     ...globalState,
                     userId: res.data._id,
                     existingUser: true
-                })
+                });
                 navigate(`/home/${globalState.userName}`);
             }
             else{
@@ -72,16 +72,19 @@ const Login = () => {
             <img src={rekkoLogo} className="App-logo" alt="logo" />
             <header className="login-header">
                 <div className="login-title">
-                    Welcome back!
+                    Sign up to see more
                 </div>
+                <p className="login-sub-title">
+                    Shop recommended beauty products. Love what you buy.
+                </p>
             </header>
             <div>
-                <CustomFormContainter
-                    handleFormSubmitAction={logUserIn}
+                <AuthVerifyForm
+                    handleFormSubmitAction={confirmUserSignUp}
                 />
             </div>
         </div>
     );
 }
 
-export default Login;
+export default VerifyCode;

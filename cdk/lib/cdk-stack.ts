@@ -1,4 +1,4 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
+import { RemovalPolicy, Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { CognitoStack } from './authentication/cognito-stack';
 import { PictureRestStack } from './restAPI/pictures-rest-api-stack';

@@ -1,11 +1,12 @@
 .login-title {
     margin-top: 55px;
-    font-weight: 450;
+    font-weight: 600;
     font-size: xx-large;   
 }
 
 .login-header {
     color: #6C5B57;
+    margin-bottom: 10px;
 }
 
 .login-sub-title {

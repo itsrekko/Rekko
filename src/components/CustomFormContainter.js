@@ -1,10 +1,6 @@
 import React, {useState}  from 'react';
-import axios from 'axios';
-import { Auth } from 'aws-amplify';
-import { useNavigate } from 'react-router-dom';
 import withStyles from '@mui/styles/withStyles';
 import PropTypes from 'prop-types';
-import { API_URLs } from '../consts/awsConsts';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -13,7 +9,7 @@ import Grid from '@mui/material/Grid';
 
 import {useGlobalState} from '../context/GlobalState';
 
-const CustomLoginForm = (props) => {
+const CustomFormContainer = (props) => {
     const [state, setState] = useGlobalState({
         userName: '',
         userId: '',
@@ -53,25 +49,7 @@ const CustomLoginForm = (props) => {
         return validPassword;
     }
 
-    const isUserAValidUser = async () => {
-        try {
-            const user  = await Auth.signIn({
-                username: localState.email,
-                password: localState.password
-            });
-            console.log('Valid user');
-            localSetState({...localState, errorFound: false});
-            return true;
-        } catch (error) 
-        {
-            console.log('error signing in:', error);
-            localSetState({...localState, errorFound: true, errorText: error.message});
-            return false;
-        }
-    }
-
     const {classes} = props;
-    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
 
@@ -83,40 +61,7 @@ const CustomLoginForm = (props) => {
             return;
         }
 
-        const validUserCheck = await isUserAValidUser();
-        if (!validUserCheck){
-            return;
-        }
-
-        var config = {
-            method: 'post',
-            url:  `${API_URLs.REKKO_REST_API}/user/createNewUser`,
-            headers: { 
-              'Content-Type': 'application/json'
-            },
-            data: JSON.stringify({
-                userName: state.userName
-            })
-        };
-        await axios(config)
-        .then(res => {
-            if (res.data.existingUser){
-                setState({
-                    ...state,
-                    userId: res.data._id,
-                    existingUser: true
-                })
-                navigate(`/home/${state.userName}`);
-            }
-            else{
-                setState({
-                    ...state,
-                    userId: res.data._id,
-                    existingUser: false
-                })
-                navigate('/welcome');
-            }
-        });
+        props.handleFormSubmitAction(localState, localSetState);
     }
 
     return (
@@ -257,9 +202,10 @@ const CustomLoginForm = (props) => {
     )
 }
 
-CustomLoginForm.propTypes = {
+CustomFormContainer.propTypes = {
     classes: PropTypes.object.isRequired,
+    handleFormSubmitAction: PropTypes.func.isRequired
 };
 
-export default withStyles(LoginFormStyler("left"))(CustomLoginForm);
+export default withStyles(LoginFormStyler("left"))(CustomFormContainer);
   
