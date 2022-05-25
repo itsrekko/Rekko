@@ -12,7 +12,8 @@ export const MongoURLSecretManagerPolicy = () : PolicyStatement => {
             "secretsmanager:UntagResource"
         ],
         resources: [
-            "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+            "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+            "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
         ]
     });
 

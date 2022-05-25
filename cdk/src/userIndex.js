@@ -67,6 +67,7 @@ exports.createNewUser = async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false;
     
     const body = JSON.parse(event.body);
+    console.log(body);
     const userName = body.userName;
     var responseVal = undefined;
     try{
@@ -100,6 +101,7 @@ exports.createNewUser = async (event, context) => {
         responseVal = responseObj.constructResponseObject(error.message || 'Internal server error', error.headers, error, error.name || errorTypes.default.serverError)
     }
     finally{
+        console.log(responseVal);
         return responseVal;
     }
 }

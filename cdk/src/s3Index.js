@@ -33,6 +33,9 @@ exports.putS3Handler = async (event, context) => {
         statusCode: 404,
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': "*",
+          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
         },
         body: `bad error while uploading the file ${err}`
       }
@@ -56,7 +59,7 @@ exports.getS3URLHandler = async (event, context) => {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': "*",
           'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Accept'
         },
         body: uploadURL
       }
@@ -66,6 +69,9 @@ exports.getS3URLHandler = async (event, context) => {
         statusCode: 404,
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': "*",
+          'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, Accept'
         },
         body: `bad error while uploading the file ${err}`
       }

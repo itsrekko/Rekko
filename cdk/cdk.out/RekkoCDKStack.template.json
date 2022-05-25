@@ -41,7 +41,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -57,7 +57,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/HealthFunction/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -103,7 +103,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -119,7 +119,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/IndexFunction/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -174,7 +174,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -197,7 +200,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -214,7 +217,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllUsers/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -269,7 +272,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -292,7 +298,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -309,7 +315,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/CreateNewUser/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -364,7 +370,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -387,7 +396,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -404,7 +413,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllReviews/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -459,7 +468,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -482,7 +494,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -499,7 +511,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetReviews/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -554,7 +566,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -577,7 +592,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -594,7 +609,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/SearchThroughEntireReview/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -649,7 +664,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -672,7 +690,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -689,7 +707,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/UpdateReviewLikes/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -744,7 +762,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -767,7 +788,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -784,7 +805,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/UpdateCommentLikes/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -839,7 +860,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -862,7 +886,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -879,7 +903,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllBrands/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -934,7 +958,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -957,7 +984,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -974,7 +1001,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/AddNewBrand/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1029,7 +1056,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -1052,7 +1082,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -1069,7 +1099,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/CreateNewComment/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1124,7 +1154,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -1147,7 +1180,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -1164,7 +1197,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetCommentForReview/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1219,7 +1252,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -1242,7 +1278,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -1259,7 +1295,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetAllProducts/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1314,7 +1350,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -1337,7 +1376,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -1354,7 +1393,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/GetProduct/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1409,7 +1448,10 @@
                 "secretsmanager:UntagResource"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq"
+              "Resource": [
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBUrl-cfcOhq",
+                "arn:aws:secretsmanager:us-west-2:032629023661:secret:mongoDBMohaimenSecret-lTg5Jy"
+              ]
             }
           ],
           "Version": "2012-10-17"
@@ -1432,7 +1474,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -1449,7 +1491,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/AddNewProductReview/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -1515,7 +1557,7 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Account"
       }
     },
-    "RekkoRestAPIDeploymentC1A789A9b151cf8fe4f7b16a26403d58a8ea42d6": {
+    "RekkoRestAPIDeploymentC1A789A93d27b9464660569e2271f1ff2c102635": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1524,44 +1566,66 @@
         "Description": "Automatically created by the RestApi construct"
       },
       "DependsOn": [
-        "RekkoRestAPIANY3F2316A9",
+        "RekkoRestAPIbrandaddNewBrandsOPTIONS6B34E359",
         "RekkoRestAPIbrandaddNewBrandsPOST6705965B",
         "RekkoRestAPIbrandaddNewBrandsFC94A076",
         "RekkoRestAPIbrandgetAllBrandsGET3361ABFF",
+        "RekkoRestAPIbrandgetAllBrandsOPTIONS3C846816",
         "RekkoRestAPIbrandgetAllBrands283CD62B",
+        "RekkoRestAPIbrandOPTIONSBFC87F01",
         "RekkoRestAPIbrand230A90DF",
+        "RekkoRestAPIcommentcreateNewCommentOPTIONS18EC1DEC",
         "RekkoRestAPIcommentcreateNewCommentPOST5C122F32",
         "RekkoRestAPIcommentcreateNewComment0E858E8D",
         "RekkoRestAPIcommentgetCommentsForReviewGETCD3BD4A8",
+        "RekkoRestAPIcommentgetCommentsForReviewOPTIONS5E8D9F31",
         "RekkoRestAPIcommentgetCommentsForReviewD0EB3C00",
+        "RekkoRestAPIcommentOPTIONSADFDBB57",
         "RekkoRestAPIcommentAD3B73BE",
         "RekkoRestAPIhealthGET5270D846",
+        "RekkoRestAPIhealthOPTIONSA4D6E1A8",
         "RekkoRestAPIhealthD4A7B55F",
         "RekkoRestAPIhomeGETE2D53EB0",
+        "RekkoRestAPIhomeOPTIONS1F4BF6F5",
         "RekkoRestAPIhome5FEF96A3",
+        "RekkoRestAPIlikesOPTIONS78070083",
         "RekkoRestAPIlikesE8C96CCF",
+        "RekkoRestAPIlikesupdateCommentLikesOPTIONS5C6E82A4",
         "RekkoRestAPIlikesupdateCommentLikesPUT7CE87242",
         "RekkoRestAPIlikesupdateCommentLikesC445300F",
+        "RekkoRestAPIlikesupdateReviewLikesOPTIONS1D08177E",
         "RekkoRestAPIlikesupdateReviewLikesPUT6C718099",
         "RekkoRestAPIlikesupdateReviewLikesC1FC81D6",
+        "RekkoRestAPIOPTIONS3F5B6913",
+        "RekkoRestAPIproductaddNewProductReviewOPTIONSA5686605",
         "RekkoRestAPIproductaddNewProductReviewPOSTD947782D",
         "RekkoRestAPIproductaddNewProductReview73BBF946",
         "RekkoRestAPIproductgetAllProductsGET98B808A1",
+        "RekkoRestAPIproductgetAllProductsOPTIONSA6268BD3",
         "RekkoRestAPIproductgetAllProducts989CF40F",
         "RekkoRestAPIproductgetProductGET52757AF7",
+        "RekkoRestAPIproductgetProductOPTIONS25B1ABED",
         "RekkoRestAPIproductgetProduct59D73674",
+        "RekkoRestAPIproductOPTIONS90935B52",
         "RekkoRestAPIproduct5C135A2C",
         "RekkoRestAPIreviewgetAllReviewsGET8AE76C9A",
+        "RekkoRestAPIreviewgetAllReviewsOPTIONS8CB1B333",
         "RekkoRestAPIreviewgetAllReviews4E81DEC9",
         "RekkoRestAPIreviewgetReviewsGET21335D12",
+        "RekkoRestAPIreviewgetReviewsOPTIONSEBA93B34",
         "RekkoRestAPIreviewgetReviewsBEA681A0",
+        "RekkoRestAPIreviewOPTIONS6E77AB6E",
         "RekkoRestAPIreview093E5FC0",
         "RekkoRestAPIreviewsearchThroughEntireReviewGETE12A369C",
+        "RekkoRestAPIreviewsearchThroughEntireReviewOPTIONS266E6A84",
         "RekkoRestAPIreviewsearchThroughEntireReviewF68F9390",
+        "RekkoRestAPIusercreateNewUserOPTIONSFA2A3E83",
         "RekkoRestAPIusercreateNewUserPOST9C9CAE2C",
         "RekkoRestAPIusercreateNewUser4DCC88E2",
         "RekkoRestAPIusergetAllUsersGETDFE501E1",
+        "RekkoRestAPIusergetAllUsersOPTIONS9E8FEC78",
         "RekkoRestAPIusergetAllUsers433C5CE7",
+        "RekkoRestAPIuserOPTIONS0B2C1E51",
         "RekkoRestAPIuser12EA21FF"
       ],
       "Metadata": {
@@ -1575,7 +1639,7 @@
           "Ref": "RekkoRestAPIB11286BC"
         },
         "DeploymentId": {
-          "Ref": "RekkoRestAPIDeploymentC1A789A9b151cf8fe4f7b16a26403d58a8ea42d6"
+          "Ref": "RekkoRestAPIDeploymentC1A789A93d27b9464660569e2271f1ff2c102635"
         },
         "StageName": "prod"
       },
@@ -1586,10 +1650,10 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/DeploymentStage.prod/Resource"
       }
     },
-    "RekkoRestAPIANY3F2316A9": {
+    "RekkoRestAPIOPTIONS3F5B6913": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
-        "HttpMethod": "ANY",
+        "HttpMethod": "OPTIONS",
         "ResourceId": {
           "Fn::GetAtt": [
             "RekkoRestAPIB11286BC",
@@ -1601,11 +1665,34 @@
         },
         "AuthorizationType": "NONE",
         "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
           "Type": "MOCK"
-        }
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
       },
       "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/ANY/Resource"
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIhome5FEF96A3": {
@@ -1624,6 +1711,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/home/Resource"
+      }
+    },
+    "RekkoRestAPIhomeOPTIONS1F4BF6F5": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIhome5FEF96A3"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/home/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIhomeGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GEThome43492908": {
@@ -1772,6 +1901,48 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/health/Resource"
       }
     },
+    "RekkoRestAPIhealthOPTIONSA4D6E1A8": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIhealthD4A7B55F"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/health/OPTIONS/Resource"
+      }
+    },
     "RekkoRestAPIhealthGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GEThealth1480E482": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
@@ -1918,6 +2089,48 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/Resource"
       }
     },
+    "RekkoRestAPIuserOPTIONS0B2C1E51": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIuser12EA21FF"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/OPTIONS/Resource"
+      }
+    },
     "RekkoRestAPIusergetAllUsers433C5CE7": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
@@ -1931,6 +2144,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/Resource"
+      }
+    },
+    "RekkoRestAPIusergetAllUsersOPTIONS9E8FEC78": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIusergetAllUsers433C5CE7"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/getAllUsers/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIusergetAllUsersGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GETusergetAllUsers7FEFBEFD": {
@@ -2074,6 +2329,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/Resource"
+      }
+    },
+    "RekkoRestAPIusercreateNewUserOPTIONSFA2A3E83": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIusercreateNewUser4DCC88E2"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/user/createNewUser/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIusercreateNewUserPOSTApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652POSTusercreateNewUserB676C258": {
@@ -2222,6 +2519,48 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/product/Resource"
       }
     },
+    "RekkoRestAPIproductOPTIONS90935B52": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIproduct5C135A2C"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/product/OPTIONS/Resource"
+      }
+    },
     "RekkoRestAPIproductgetAllProducts989CF40F": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
@@ -2235,6 +2574,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/product/getAllProducts/Resource"
+      }
+    },
+    "RekkoRestAPIproductgetAllProductsOPTIONSA6268BD3": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIproductgetAllProducts989CF40F"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/product/getAllProducts/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIproductgetAllProductsGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GETproductgetAllProductsE36E0BE6": {
@@ -2380,6 +2761,48 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/product/getProduct/Resource"
       }
     },
+    "RekkoRestAPIproductgetProductOPTIONS25B1ABED": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIproductgetProduct59D73674"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/product/getProduct/OPTIONS/Resource"
+      }
+    },
     "RekkoRestAPIproductgetProductGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GETproductgetProduct63F94C1C": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
@@ -2521,6 +2944,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/product/addNewProductReview/Resource"
+      }
+    },
+    "RekkoRestAPIproductaddNewProductReviewOPTIONSA5686605": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIproductaddNewProductReview73BBF946"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/product/addNewProductReview/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIproductaddNewProductReviewPOSTApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652POSTproductaddNewProductReviewACF72C3D": {
@@ -2669,6 +3134,48 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/review/Resource"
       }
     },
+    "RekkoRestAPIreviewOPTIONS6E77AB6E": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIreview093E5FC0"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/review/OPTIONS/Resource"
+      }
+    },
     "RekkoRestAPIreviewgetAllReviews4E81DEC9": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
@@ -2682,6 +3189,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/review/getAllReviews/Resource"
+      }
+    },
+    "RekkoRestAPIreviewgetAllReviewsOPTIONS8CB1B333": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIreviewgetAllReviews4E81DEC9"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/review/getAllReviews/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIreviewgetAllReviewsGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GETreviewgetAllReviews49B817BC": {
@@ -2827,6 +3376,48 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/review/getReviews/Resource"
       }
     },
+    "RekkoRestAPIreviewgetReviewsOPTIONSEBA93B34": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIreviewgetReviewsBEA681A0"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/review/getReviews/OPTIONS/Resource"
+      }
+    },
     "RekkoRestAPIreviewgetReviewsGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GETreviewgetReviewsEC365737": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
@@ -2968,6 +3559,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/review/searchThroughEntireReview/Resource"
+      }
+    },
+    "RekkoRestAPIreviewsearchThroughEntireReviewOPTIONS266E6A84": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIreviewsearchThroughEntireReviewF68F9390"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/review/searchThroughEntireReview/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIreviewsearchThroughEntireReviewGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GETreviewsearchThroughEntireReview93359B15": {
@@ -3116,6 +3749,48 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/likes/Resource"
       }
     },
+    "RekkoRestAPIlikesOPTIONS78070083": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIlikesE8C96CCF"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/likes/OPTIONS/Resource"
+      }
+    },
     "RekkoRestAPIlikesupdateReviewLikesC1FC81D6": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
@@ -3129,6 +3804,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/likes/updateReviewLikes/Resource"
+      }
+    },
+    "RekkoRestAPIlikesupdateReviewLikesOPTIONS1D08177E": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIlikesupdateReviewLikesC1FC81D6"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/likes/updateReviewLikes/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIlikesupdateReviewLikesPUTApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652PUTlikesupdateReviewLikes72B8701D": {
@@ -3272,6 +3989,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/likes/updateCommentLikes/Resource"
+      }
+    },
+    "RekkoRestAPIlikesupdateCommentLikesOPTIONS5C6E82A4": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIlikesupdateCommentLikesC445300F"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/likes/updateCommentLikes/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIlikesupdateCommentLikesPUTApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652PUTlikesupdateCommentLikes7B6F0CB2": {
@@ -3420,6 +4179,48 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/comment/Resource"
       }
     },
+    "RekkoRestAPIcommentOPTIONSADFDBB57": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIcommentAD3B73BE"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/comment/OPTIONS/Resource"
+      }
+    },
     "RekkoRestAPIcommentgetCommentsForReviewD0EB3C00": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
@@ -3433,6 +4234,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/comment/getCommentsForReview/Resource"
+      }
+    },
+    "RekkoRestAPIcommentgetCommentsForReviewOPTIONS5E8D9F31": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIcommentgetCommentsForReviewD0EB3C00"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/comment/getCommentsForReview/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIcommentgetCommentsForReviewGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GETcommentgetCommentsForReviewFC263D48": {
@@ -3576,6 +4419,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/comment/createNewComment/Resource"
+      }
+    },
+    "RekkoRestAPIcommentcreateNewCommentOPTIONS18EC1DEC": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIcommentcreateNewComment0E858E8D"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/comment/createNewComment/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIcommentcreateNewCommentPOSTApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652POSTcommentcreateNewCommentBB0CF338": {
@@ -3724,6 +4609,48 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/brand/Resource"
       }
     },
+    "RekkoRestAPIbrandOPTIONSBFC87F01": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIbrand230A90DF"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/brand/OPTIONS/Resource"
+      }
+    },
     "RekkoRestAPIbrandgetAllBrands283CD62B": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
@@ -3737,6 +4664,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/brand/getAllBrands/Resource"
+      }
+    },
+    "RekkoRestAPIbrandgetAllBrandsOPTIONS3C846816": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIbrandgetAllBrands283CD62B"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/brand/getAllBrands/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIbrandgetAllBrandsGETApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652GETbrandgetAllBrandsDD4FDE5E": {
@@ -3880,6 +4849,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/brand/addNewBrands/Resource"
+      }
+    },
+    "RekkoRestAPIbrandaddNewBrandsOPTIONS6B34E359": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoRestAPIbrandaddNewBrandsFC94A076"
+        },
+        "RestApiId": {
+          "Ref": "RekkoRestAPIB11286BC"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoRestAPI/Default/brand/addNewBrands/OPTIONS/Resource"
       }
     },
     "RekkoRestAPIbrandaddNewBrandsPOSTApiPermissionRekkoCDKStackRekkoRestAPIBE5FB652POSTbrandaddNewBrandsBEFA6969": {
@@ -4105,7 +5116,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -4129,7 +5140,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesGetLambda/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -4199,7 +5210,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f.zip"
+          "S3Key": "72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -4223,7 +5234,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/S3FilesPutLambda/Resource",
-        "aws:asset:path": "asset.966306a8cbff3e23bbd390e3cd62607e623b86f757c29f1cc6246b261ed4ab8f",
+        "aws:asset:path": "asset.72a96b54530f182b8bdc9caa7f628b0fc12e9e15f617c1c512c5fc146e82ad73",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -4289,7 +5300,7 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Account"
       }
     },
-    "RekkoPicturesRestAPIDeployment53E5CC3013221d1c6773db5c9a77657fcd90c334": {
+    "RekkoPicturesRestAPIDeployment53E5CC30f2c97d4ed61c70c26aa64c190fa7c4be": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -4302,6 +5313,7 @@
         "RekkoPicturesRestAPIgetPictureURLOPTIONS79D6EC73",
         "RekkoPicturesRestAPIgetPictureURLPOST37327F40",
         "RekkoPicturesRestAPIgetPictureURLAC87336D",
+        "RekkoPicturesRestAPIOPTIONS6C4780BA",
         "RekkoPicturesRestAPIuploadPictureURLOPTIONSF4619DC4",
         "RekkoPicturesRestAPIuploadPictureURLPOST83467236",
         "RekkoPicturesRestAPIuploadPictureURLFD8B91DB"
@@ -4317,7 +5329,7 @@
           "Ref": "RekkoPicturesRestAPIEA4E61E4"
         },
         "DeploymentId": {
-          "Ref": "RekkoPicturesRestAPIDeployment53E5CC3013221d1c6773db5c9a77657fcd90c334"
+          "Ref": "RekkoPicturesRestAPIDeployment53E5CC30f2c97d4ed61c70c26aa64c190fa7c4be"
         },
         "StageName": "prod"
       },
@@ -4326,6 +5338,51 @@
       ],
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/DeploymentStage.prod/Resource"
+      }
+    },
+    "RekkoPicturesRestAPIOPTIONS6C4780BA": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Fn::GetAtt": [
+            "RekkoPicturesRestAPIEA4E61E4",
+            "RootResourceId"
+          ]
+        },
+        "RestApiId": {
+          "Ref": "RekkoPicturesRestAPIEA4E61E4"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/OPTIONS/Resource"
       }
     },
     "RekkoPicturesRestAPIANYE6E5FC8A": {
@@ -4366,6 +5423,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/Resource"
+      }
+    },
+    "RekkoPicturesRestAPIgetPictureURLOPTIONS79D6EC73": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoPicturesRestAPIgetPictureURLAC87336D"
+        },
+        "RestApiId": {
+          "Ref": "RekkoPicturesRestAPIEA4E61E4"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/OPTIONS/Resource"
       }
     },
     "RekkoPicturesRestAPIgetPictureURLPOSTApiPermissionRekkoCDKStackRekkoPicturesRestAPIACC6E291POSTgetPictureURL60E2C84F": {
@@ -4496,48 +5595,6 @@
         "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/POST/Resource"
       }
     },
-    "RekkoPicturesRestAPIgetPictureURLOPTIONS79D6EC73": {
-      "Type": "AWS::ApiGateway::Method",
-      "Properties": {
-        "HttpMethod": "OPTIONS",
-        "ResourceId": {
-          "Ref": "RekkoPicturesRestAPIgetPictureURLAC87336D"
-        },
-        "RestApiId": {
-          "Ref": "RekkoPicturesRestAPIEA4E61E4"
-        },
-        "AuthorizationType": "NONE",
-        "Integration": {
-          "IntegrationResponses": [
-            {
-              "ResponseParameters": {
-                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-                "method.response.header.Access-Control-Allow-Origin": "'*'",
-                "method.response.header.Access-Control-Allow-Methods": "'POST,GET,PUT'"
-              },
-              "StatusCode": "404"
-            }
-          ],
-          "RequestTemplates": {
-            "application/json": "{ statusCode: 200 }"
-          },
-          "Type": "MOCK"
-        },
-        "MethodResponses": [
-          {
-            "ResponseParameters": {
-              "method.response.header.Access-Control-Allow-Headers": true,
-              "method.response.header.Access-Control-Allow-Origin": true,
-              "method.response.header.Access-Control-Allow-Methods": true
-            },
-            "StatusCode": "404"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/getPictureURL/OPTIONS/Resource"
-      }
-    },
     "RekkoPicturesRestAPIuploadPictureURLFD8B91DB": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
@@ -4554,6 +5611,48 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/Resource"
+      }
+    },
+    "RekkoPicturesRestAPIuploadPictureURLOPTIONSF4619DC4": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "RekkoPicturesRestAPIuploadPictureURLFD8B91DB"
+        },
+        "RestApiId": {
+          "Ref": "RekkoPicturesRestAPIEA4E61E4"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,X-Amz-Security-Token,Authorization,X-Api-Key,X-Requested-With,Accept,Access-Control-Allow-Methods,Access-Control-Allow-Origin,Access-Control-Allow-Headers'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'"
+              },
+              "StatusCode": "200"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            },
+            "StatusCode": "200"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/OPTIONS/Resource"
       }
     },
     "RekkoPicturesRestAPIuploadPictureURLPOSTApiPermissionRekkoCDKStackRekkoPicturesRestAPIACC6E291POSTuploadPictureURL5DA1EA14": {
@@ -4682,48 +5781,6 @@
       },
       "Metadata": {
         "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/POST/Resource"
-      }
-    },
-    "RekkoPicturesRestAPIuploadPictureURLOPTIONSF4619DC4": {
-      "Type": "AWS::ApiGateway::Method",
-      "Properties": {
-        "HttpMethod": "OPTIONS",
-        "ResourceId": {
-          "Ref": "RekkoPicturesRestAPIuploadPictureURLFD8B91DB"
-        },
-        "RestApiId": {
-          "Ref": "RekkoPicturesRestAPIEA4E61E4"
-        },
-        "AuthorizationType": "NONE",
-        "Integration": {
-          "IntegrationResponses": [
-            {
-              "ResponseParameters": {
-                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-                "method.response.header.Access-Control-Allow-Origin": "'*'",
-                "method.response.header.Access-Control-Allow-Methods": "'POST,GET,PUT'"
-              },
-              "StatusCode": "404"
-            }
-          ],
-          "RequestTemplates": {
-            "application/json": "{ statusCode: 200 }"
-          },
-          "Type": "MOCK"
-        },
-        "MethodResponses": [
-          {
-            "ResponseParameters": {
-              "method.response.header.Access-Control-Allow-Headers": true,
-              "method.response.header.Access-Control-Allow-Origin": true,
-              "method.response.header.Access-Control-Allow-Methods": true
-            },
-            "StatusCode": "404"
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "RekkoCDKStack/RekkoPicturesRestAPI/Default/uploadPictureURL/OPTIONS/Resource"
       }
     },
     "RekkoCognitoUserpool4CEF1431": {

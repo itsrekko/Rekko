@@ -1,25 +1,23 @@
-import React, {useState, useEffect, useCallback, useMemo} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState, useEffect, useCallback} from 'react';
 import PropTypes from 'prop-types';
-import { TextField, Button} from "@mui/material";
-import { useGlobalState } from '../../context/GlobalState';
 import '../../assets/css/reviewCard.css';
 import axios from 'axios';
 import Comment from './Comment';
 import CommentInput from './CommentInput';
+import { API_URLs } from '../../consts/awsConsts';
 
 const CommentContainer = (props) => {
     const [comments, setComments] = useState([]);
 
     useEffect(async () => {
-        await axios.get(`${window.location.origin.toString()}/comment`, {
+        await axios.get(`${API_URLs.REKKO_REST_API}/comment/getCommentsForReview`, {
             params: {
                 reviewId: props.reviewId
             }
         }).then(
             res=> {
-                if (res.data['data'] !== null && res.data['data'] !== undefined) {
-                    setComments(res.data['data'])
+                if (res.data !== null && res.data !== undefined) {
+                    setComments(res.data)
                 }
             }
         )

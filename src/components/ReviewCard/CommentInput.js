@@ -6,6 +6,7 @@ import { useGlobalState } from '../../context/GlobalState';
 import '../../assets/css/reviewCard.css';
 import axios from 'axios';
 import Comment from './Comment';
+import { API_URLs } from '../../consts/awsConsts';
 
 const CommentInput = (props, {comments, setComments}) => {
     
@@ -16,15 +17,15 @@ const CommentInput = (props, {comments, setComments}) => {
     const postComment = async (event, getComments, getNumComments) => {
         if (comment === '' || comment === null || comment === undefined) return;
         if (globalState.userName !== '') {
-            await axios.post(`${window.location.origin.toString()}/comment`, {
+            await axios.post(`${API_URLs.REKKO_REST_API}/comment/createNewComment`, {
                 userName: globalState.userName,
                 reviewId: props.reviewId,
                 commentText: comment
             })
             .then(
                 res => {
-                    if (res.data['data'] !== null && res.data['data'] !== undefined) {
-                        getComments(res.data['data']);
+                    if (res.data !== null && res.data !== undefined) {
+                        getComments(res.data);
                         setComment('');
                     }
                 }
