@@ -1,6 +1,7 @@
 import './App.css';
 import { ThemeProvider, StyledEngineProvider, createTheme, adaptV4Theme } from '@mui/material/styles';
 import React from 'react';
+import {InitializeAmplify} from './auth/api/amplify-client';
 import {BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from './pages/Login';
@@ -15,6 +16,9 @@ const theme = createTheme(adaptV4Theme({
       'Regular 400',
     ].join(','),
   },}));
+
+// Initialize Auth
+InitializeAmplify();
 
 const App = () => {
 
