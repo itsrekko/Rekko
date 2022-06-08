@@ -29,7 +29,7 @@ const App = () => {
       <Router>
         <Suspense fallback={<ReactLoader />}>
         <Routes>
-            <Route path = {ROUTES.LOGIN} element={<Login />} />
+            <Route path = {ROUTES.LOGIN} element={<Home />} />
             <Route path = {ROUTES.WELCOME} element={
               <WelcomeUser cardTitle={'What’s a beauty product you can’t live without at the moment?'} buttonText={'Start discovering products'}/>}
             />

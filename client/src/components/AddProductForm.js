@@ -142,7 +142,7 @@ class AddProductForm extends Component {
                     container
                     direction={'column'}
                     justifyContent={'center'}
-                    alignItems={'center'}
+                    align={'center'}
                 >
                     <TextField
                         id="brand"

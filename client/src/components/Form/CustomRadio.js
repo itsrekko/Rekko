@@ -4,7 +4,6 @@ import {Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Typography}
 
 const CustomRadio = (props) => {
   return (
-        
         <RadioGroup
             row
             name={props.name}

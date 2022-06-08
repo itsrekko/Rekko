@@ -1,0 +1,15 @@
+.container-center-horizontal {
+    display: flex;
+    flex-direction: row;
+    pointer-events: none;
+    width: 100%;
+    border-bottom: 1px solid var(--cadet-blue);
+    height: 56px;
+    margin-bottom: 10px;
+    justify-content: "space-between";
+}
+
+.container-center-horizontal > * {
+    flex-shrink: 0;
+    pointer-events: auto;
+}

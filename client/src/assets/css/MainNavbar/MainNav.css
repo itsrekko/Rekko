@@ -1,0 +1,63 @@
+.main__nav {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid var(--cadet-blue);
+    align-items: center;
+    pointer-events: none;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+    position: sticky;
+}
+
+.main__nav > * {
+    flex-shrink: 0;
+    pointer-events: auto;
+}
+
+.header__logo {
+    height: 35px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    object-fit: contain;
+    max-width: max-content;
+}
+
+.header__input {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    border: 1px solid black;
+}
+
+.header__input > input {
+    flex: 1;
+    border: none;
+}
+
+.header__icons {
+    display: flex;
+    align-items: center;
+    padding-right: 1vw;
+}
+
+.header__inputButton {
+    width: 50px !important;
+    color: black;
+    align-items: center;
+    justify-content: center;
+    box-sizing: content-box;
+}
+
+.header__inputButtonDiv {
+    background-color: bisque;
+    max-width: 10vw;
+    height: 100%;
+}

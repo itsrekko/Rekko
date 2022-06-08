@@ -51,7 +51,7 @@ const CustomLoginForm = (props) => {
                 container
                 direction={'column'}
                 justifyContent={'center'}
-                alignItems={'center'}
+                align={'center'}
             >
             <TextField
                     id="username"
