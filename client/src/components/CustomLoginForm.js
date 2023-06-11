@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import LoginFormStyler from "../assets/js/LoginFormStyler";
 import Grid from '@mui/material/Grid';
 
-import {useGlobalState} from '../context/GlobalState';
+import {useGlobalState} from '../context/UserContext';
 
 const CustomLoginForm = (props) => {
     const [state, setState] = useGlobalState({
